@@ -1,0 +1,97 @@
+.carousel-item {
+    height: 400px;
+    object-fit: cover;
+}
+
+.catIcon {
+    width: 20px;
+    height: 16px;
+}
+
+#trade, #surplus {
+    /* width: 18px; */
+    height: 18px;
+}
+
+#category-title, .navCat {
+    background: white;
+}
+
+#switch {
+    transition: transform 0.3s;
+}
+
+#forSwitch {
+    position:relative;
+    width: 120px;
+
+}
+
+.hiddenIcons {
+    position: absolute;
+    top: 16%;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s, z-index 0.3s;
+}
+
+/* for cart blade */
+.productName {
+    transition: 0.3s;
+    cursor: pointer;
+}
+.productName:hover {
+    text-decoration: underline;
+}
+#checkOut{
+    box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+#bioEdit, #selectShopVoucher, #changePaymentMethod, #editAddress, #changeAddress, #selectVoucher {
+    cursor: pointer;
+    float: right;
+    transform: color 0.3s;
+}
+#bioEdit:hover, #selectShopVoucher:hover, #changePaymentMethod:hover, #editAddress:hover, #changeAddress:hover, #selectVoucher:hover {
+    color: darkblue;
+}
+
+/*inside voucher Modal */
+#voucherCard {
+    border: none !important;
+    background: #666362 !important;
+    height: 120px !important;
+}
+#voucherCard::after {
+    position: absolute;
+    content: "";
+    height: 40px;
+    right: -20px;
+    border-radius: 40px;
+    z-index: 1;
+    top: 40px;
+    background-color: white;
+    width: 40px;
+}
+#voucherCard::before {
+    position: absolute;
+    content: "";
+    height: 40px;
+    left: -20px;
+    border-radius: 40px;
+    z-index: 1;
+    top: 40px;
+    background-color: white;
+    width: 40px;
+}
+.vertical {
+    border-left: 5px dotted black;
+    height: 90px;
+    position: absolute;
+    left: 30%;
+}
+
+/* for radio */
+#flexRadioDefault1 {
+    cursor: pointer;
+}
