@@ -13,7 +13,7 @@
     <div class="container mt-3">
         <h2>Featured Categories</h2>
         <div class="row align-items-center product">
-            <div v-for="card in cards" :key="card.id" class="p-0 col-sm-6 col-lg-4 col-xl-3 my-5 rounded" @click="seeProduct">
+            <div v-for="card in cards" :key="card.id" class="p-0 col-sm-6 col-lg-4 col-xl-3 my-5 rounded" @click="seeCategory">
                 <div class="card mx-2 rounded" :class="{ shadow: card.isOn }" @mouseover="toggleShadow(card)" @mouseout="toggleShadow(card)" style="width: 16rem; height: 18rem; cursor: pointer;">
                     <img style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border" :alt="card.categoryName">
                     <div class="card-body bg-light rounded-bottom" style="height: 10rem;">

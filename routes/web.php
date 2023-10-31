@@ -6,6 +6,7 @@ Route::get('/', function () {
     return view('register');
 })->name('register');
 
+//ecommerce
 Route::post('/ecommerce', function() {
     return view('ecommerce.ecommerce');
 });
@@ -64,6 +65,10 @@ Route::get('/surplus', function(){
 Route::get('/searchResult', function(){
     return view('surplus.surplusSearchResult');
 })->name('surplusSearchResult');
+
+Route::get('/surplusProductPage', function(){
+    return view('surplus.surplusProductPage');
+});
 
 //swapme
 Route::get('/swapme', function(){

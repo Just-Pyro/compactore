@@ -4,57 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Name of product</title>
+    <title>Surplus | Product Page</title>
     <link rel="stylesheet" href="/customcss/ecommerce.css">
     @include('includes/header1')
 </head>
-<body style="background: lightgray">
-    @include('includes/header2')
-    <div class="container py-3">
+<body>
+    @include('includes/header3')
+    <div class="container mt-3 shadow-lg rounded">
         <div class="d-flex flex-column">
-            <div class="row py-3">
+            <div class="row flex-nowrap py-3 overflow-x-auto">
                 <div class="col-4 p-1" style=" background: white">
                     <div class="m-3" style="width: 400px; height: 400px; border: solid 1px;">sampleImage</div>
                     {{-- <img src="" alt="sampleImage" style="width: 450px; height: 450px"> --}}
                 </div>
-                <div class="col-8 p-1" style=" background: white">
-                    <div class="d-flex flex-column">
-                        <div class="p-2">
-                            <h5>This is the Product Name</h5>
-                        </div>
-                        <div>
-                            <div class="d-flex">
-                                <div class="m-2">star</div>
-                                <div class="m-2">rating</div>
-                                <div class="m-2">sold</div>
-                            </div>
-                        </div>
-                        <div class="p-2">Price P1000.00</div>
-                        <div class="p-2" style="height: 200px;">
-                            shipping Info
-                        </div>
-                        <div class="p-2">
-                            <div style="width:70px">
-                                <input min="1" max="100" type="number" class="form-control" value="1">
-                            </div>
-                        </div>
-                        <div class="p-2">
-                            <button class="btn btn-outline-dark me-2">Add to Cart</button><button class="btn btn-dark">Buy Now</button>
-                        </div>
-                    </div>
+                <div class="col-4 p-1" style=" background: white">
+                    <div class="m-3" style="width: 400px; height: 400px; border: solid 1px;">sampleImage</div>
+                    {{-- <img src="" alt="sampleImage" style="width: 450px; height: 450px"> --}}
+                </div>
+                <div class="col-4 p-1" style=" background: white">
+                    <div class="m-3" style="width: 400px; height: 400px; border: solid 1px;">sampleImage</div>
+                    {{-- <img src="" alt="sampleImage" style="width: 450px; height: 450px"> --}}
+                </div>
+                <div class="col-4 p-1" style=" background: white">
+                    <div class="m-3" style="width: 400px; height: 400px; border: solid 1px;">sampleImage</div>
+                    {{-- <img src="" alt="sampleImage" style="width: 450px; height: 450px"> --}}
                 </div>
             </div>
         </div>
         <div class="row mb-3" style="background: white;">
-            <div class="col-1 p-2">
-                <div style="height:70px; border: solid 1px;">store Profile</div>
-            </div>
-            <div class="col-2 p-2 px-0">
-                <div style="height:70px;border: solid 1px;">visit/chat store</div>
-                
-            </div>
-            <div class="col-9 p-2">
-                <div style="height:70px;border: solid 1px;">store info ratings blablabla</div>
+            <div class="col-8 p-1" style=" background: white">
+                <div class="d-flex flex-column">
+                    <div class="p-2">
+                        <h5>This is the Product Name</h5>
+                    </div>
+                    <div>
+                        <div class="d-flex">
+                            <div class="m-2">star</div>
+                            <div class="m-2">rating</div>
+                            <div class="m-2">sold</div>
+                        </div>
+                    </div>
+                    <div class="p-2">Price P1000.00</div>
+                    <div class="p-2" style="height: 200px;">
+                        shipping Info
+                    </div>
+                    <div class="p-2">
+                        <div style="width:70px">
+                            <input min="1" max="100" type="number" class="form-control" value="1">
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <button class="btn btn-outline-dark me-2">Add to Cart</button><button class="btn btn-dark">Buy Now</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row p-0">
@@ -132,6 +134,6 @@
         </div>
     </div>
     @include('includes/footer1')
-    <script src="/js/ecommerce.js"></script>
+    <script src="js/surplus.js"></script>
 </body>
 </html>

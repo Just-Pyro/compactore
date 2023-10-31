@@ -61,6 +61,13 @@ const app = Vue.createApp({
         toggleShadow(card){
             console.log(card)
             card.isOn = !card.isOn;
+        },
+        seeProduct(){
+            window.location.href = "surplusProductPage";
+        },
+        seeCategory(){
+            console.log("thisis category");
+            window.location.href = "searchResult"; //surplusSearchResult --> route name
         }
     }
 }).mount("body");
