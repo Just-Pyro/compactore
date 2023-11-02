@@ -68,6 +68,9 @@ const app = Vue.createApp({
         seeCategory(){
             console.log("thisis category");
             window.location.href = "searchResult"; //surplusSearchResult --> route name
-        }
+        },
+        // seeUserSurplus(){
+        //     window.location.href = "surs"
+        // }
     }
 }).mount("body");

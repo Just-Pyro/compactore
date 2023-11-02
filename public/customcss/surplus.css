@@ -1,0 +1,9 @@
+.userNameSurplus{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.userNameSurplus:hover{
+    text-decoration: underline;
+}
