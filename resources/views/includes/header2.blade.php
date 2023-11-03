@@ -29,12 +29,12 @@
           <li id="forSwitch" class="nav-item mx-1" @mouseover="switchHover" @mouseout="switchUnHover">
             <a href="" class="nav-link"><i class="fa-solid fa-rotate" id="switch"></i></a>
             <div class="ms-1 me-2 hiddenIcons">
-                <a href="{{ url('/surplus') }}" class="mx-3" style="display:inline-block !important;">
-                  <img src="{{ URL('images/surplus.png') }}" alt="surplus" id="surplus" style="height: 16.8px;">
-                </a>
-                <a href="{{ url('/swapme') }}" class="mx-2" style="display:inline-block;">
-                  <img src="{{ URL('images/swapme.png') }}" alt="trade" id="trade" style="height: 16.8px;">
-                </a>
+              <a href="{{ url('/swapme') }}" class="mx-3" style="display:inline-block !important;">
+                <img src="{{ URL('images/swapme.png') }}" alt="trade" id="trade" style="height: 16.8px;">
+              </a>
+              <a href="{{ url('/surplus') }}" class="mx-2" style="display:inline-block;">
+                <img src="{{ URL('images/surplus.png') }}" alt="surplus" id="surplus" style="height: 16.8px;">
+              </a>
             </div>
           </li>        
         </ul>

@@ -7,7 +7,8 @@
         </div>
     </div>
     <div class="col p-2">
-        <div class="rounded bg-white p-3">
+        <div class="rounded bg-white p-3 position-relative">
+            <button class="btn btn-sm btn-outline-warning" style="position:absolute; bottom: 10px; right: 10px;" data-bs-toggle="modal" data-bs-target="#openStore">Open Store</button>
             <div class="row">
                 <div class="col-6">
                     <span class="float-end" id="bioEdit" @click="enableEdit"><i class="fa-regular fa-pen-to-square"></i> Edit</span>
@@ -27,3 +28,5 @@
         </div>
     </div>
 </div>
+
+@include('modals/openStore')

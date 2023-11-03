@@ -15,7 +15,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <select class="form-select mb-2" id="category">
+                            <select class="form-select mb-2" style="height: 58px;" id="category">
                                 <option selected>Choose Category</option>
                                 <option value="1">SmartPhone</option>
                                 <option value="2">Laptop</option>
