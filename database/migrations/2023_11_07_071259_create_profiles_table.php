@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('userdetails', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->index('user_id');
-            $table->string('username')->unique();
-            $table->string('fullname')->default('i am a user');
-            $table->string('phonenumber', 13)->default('+639000000000');
-            $table->string('gender')->default('I am human being');
-            $table->date('birthdate');
-            $table->string('profileImage');
-            $table->integer('status')->default(1);
-            $table->rememberToken();
+            $table->string('username');
+            $table->string('fullname')->nullable();
+            $table->string('phoneNumber')->nullable();
+            $table->date('birthdate')->nullable();
+            $table->string('profileImg')->nullable();
+            $table->integer('shopStatus')->default(1);
+            $table->text('bio')->default('this User is rather lazy to write something about himself');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('userdetails');
+        Schema::dropIfExists('profile');
     }
 };

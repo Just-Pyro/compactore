@@ -18,9 +18,9 @@ return new class extends Migration
             $table->index('shop_id');
             $table->string('productName');
             $table->string('category');
-            $table->string('description');
-            $table->integer('quantity');
-            $table->decimal('price', 8, 2);
+            $table->text('description');
+            $table->integer('stock');
+            $table->float('price');
             $table->string('productImg');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('product');
     }
 };

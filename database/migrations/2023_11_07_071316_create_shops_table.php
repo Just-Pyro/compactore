@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ud_id');
-            $table->foreign('ud_id')->references('id')->on('userdetails');
-            $table->index('ud_id');
+            $table->unsignedBigInteger('profile_id');
+            $table->foreign('profile_id')->references('id')->on('profiles');
+            $table->index('profile_id');
             $table->string('shopName');
-            $table->string('shopProfileImg');
+            $table->string('shopImg');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shops');
+        Schema::dropIfExists('shop');
     }
 };
