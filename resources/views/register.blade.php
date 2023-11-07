@@ -50,12 +50,12 @@
 
               <h3 class="mb-4 mt-3 mx-3 fw-normal">Sign Up</h3>
 
-              <form action="#" method="POST" class="mx-3">
+              <form action="/register" method="POST" class="mx-3">
                 @csrf
-                <input type="text" class="form-control mb-3" placeholder="Username">
-                <input type="text" class="form-control mb-3" placeholder="Email">
-                <input type="password" class="form-control mb-3" placeholder="Password">
-                <input type="password" class="form-control mb-3" placeholder="Confirm Password">
+                <input type="text" name="username" class="form-control mb-3" placeholder="Username">
+                <input type="text" name="email" class="form-control mb-3" placeholder="Email">
+                <input type="password" name="password" class="form-control mb-3" placeholder="Password">
+                <input type="password" name="confirmpassword" class="form-control mb-3" placeholder="Confirm Password">
                 <div class="d-grid">
                   <button class="btn btn-dark mb-3" type="submit">SIGN UP</button>
                 </div>
