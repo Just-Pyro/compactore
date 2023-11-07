@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('profile_id')->references('id')->on('profiles');
             $table->index('profile_id');
             $table->string('shopName');
-            $table->string('shopImg');
+            $table->string('shopImg')->nullable();
             $table->timestamps();
         });
     }
