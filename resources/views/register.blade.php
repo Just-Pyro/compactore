@@ -26,10 +26,10 @@
 
               <h3 class="mb-4 mt-3 mx-3 fw-normal">Login</h3>
 
-              <form action="{{ url('/ecommerce') }}" method="POST" class="mx-3">
+              <form action="/login" method="POST" class="mx-3">
                 @csrf
-                <input type="text" class="form-control mb-5" placeholder="Email">
-                <input type="password" class="form-control mb-5" placeholder="Password">
+                <input type="text" name="loginEmail" class="form-control mb-5" placeholder="Email">
+                <input type="password" name="loginPassword" class="form-control mb-5" placeholder="Password">
                 <div class="d-grid">
                   <button class="btn btn-dark mb-3" type="submit">LOGIN</button>
                 </div>

@@ -1,19 +1,21 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
-Route::get('/', function () {
+Route::get('/', function () {//nagamit
+    if (Auth::check()) {
+        return redirect('/ecommerce');
+    }
     return view('register');
 })->name('register');
 
-Route::post('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'register']);//nagamit
+Route::post('/logout', [UserController::class,'logout']);//nagamit
+Route::post('/login', [UserController::class,'login']);//nagamit
 
 //ecommerce
-Route::post('/ecommerce', function() {
-    return view('ecommerce.ecommerce');
-});
-
 Route::get('/ecommerce', function() {
     return view('ecommerce.ecommerce');
 });

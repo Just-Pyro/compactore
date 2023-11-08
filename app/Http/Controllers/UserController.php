@@ -9,6 +9,23 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function logout(){
+        Auth()->logout();
+        return redirect("/");
+    }
+
+    public function login(Request $request){
+        $loginData = $request->validate([
+            "loginEmail" => 'required',
+            "loginPassword" => "required"
+        ]);
+
+        if(Auth()->attempt(["email"=>$loginData["loginEmail"],"password"=>$loginData["loginPassword"]])){
+            $request->session()->regenerate();
+        }
+
+        return redirect('/');
+    }
     public function register(Request $request){
         $dataforUser = $request->validate([
             'password'=> ['required', 'min:8','max:200'],
@@ -25,6 +42,6 @@ class UserController extends Controller
         $user->profile()->create($un);
 
         auth()->login($user);
-        return redirect('/');
+        return redirect('/ecommerce');
     }
 }
