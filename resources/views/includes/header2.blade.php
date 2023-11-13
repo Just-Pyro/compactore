@@ -2,6 +2,10 @@
   <div class="container-fluid d-flex flex-wrap mx-0">
     <span class="d-flex align-items-center mx-1 text-white"><i class="fas fa-phone-square-alt pe-1"></i>(+000)000-0000</span>
     <span class="d-flex align-items-center mx-1 text-white"><i class="fas fa-envelope-square pe-1"></i>compactore@email.com</span>
+    <form class="d-flex align-items-center ms-auto" action="/logout" method="POST">
+      @csrf
+      <button class="btn btn-danger btn-sm">Log out</button>
+    </form>
   </div>
 </header>
 <nav id="head1" class="navbar navbar-expand-lg bg-light navbar-light shadow">

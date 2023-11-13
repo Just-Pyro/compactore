@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -41,8 +42,9 @@ Route::get('/checkOut', function(){
 });
 
 // all Profile
-Route::get('/profile', function(){
-    return view('profile.profile');
+Route::get('/profile', function(){//nagamit
+    $profile = auth()->user()->profile;
+    return view('profile.profile', ['profile' => $profile]);
 });
 
 Route::get('/ecommerceProfile', function(){

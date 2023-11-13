@@ -28,10 +28,19 @@
 
               <form action="/login" method="POST" class="mx-3">
                 @csrf
-                <input type="text" name="loginEmail" class="form-control mb-5" placeholder="Email">
-                <input type="password" name="loginPassword" class="form-control mb-5" placeholder="Password">
+                <input id="loginEmail" type="text" name="loginEmail" class="form-control" :class="{'is-valid':okEmail, 'is-invalid':conEmail, 'mb-5':mbe}" placeholder="Email" required>
+                <div id="emailFeedback" class="invalid-feedback mb-4">
+                  Please provide a valid email.
+                </div>
+                @error('loginEmail')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <input id="loginPassword" type="password" name="loginPassword" class="form-control" :class="{'is-valid':okPass, 'is-invalid':conPassword, 'mb-5':mbp }" placeholder="Password" required>
+                <div id="passFeedback" class="invalid-feedback mb-4">
+                  Please provide a valid password (at least 8 characters).
+                </div>
                 <div class="d-grid">
-                  <button class="btn btn-dark mb-3" type="submit">LOGIN</button>
+                  <button class="btn btn-dark mb-3" type="submit" @click="checkInputs($event)">LOGIN</button>
                 </div>
               </form>
 

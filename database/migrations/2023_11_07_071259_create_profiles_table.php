@@ -11,18 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('profile');
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->index('user_id');
-            $table->string('username');
             $table->string('fullname')->nullable();
             $table->string('phoneNumber')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('profileImg')->nullable();
             $table->integer('shopStatus')->default(1);
             $table->text('bio')->default('this User is rather lazy to write something about himself');
+            $table->string('gender');
             $table->timestamps();
         });
     }

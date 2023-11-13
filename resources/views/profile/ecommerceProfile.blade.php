@@ -12,6 +12,7 @@
     @include('includes/header2')
     <div class="container" id="forProfile">
         {{-- User Pic and Bio --}}
+        
         @include('profile/upperProfile')
 
         {{-- side tabs and content --}}
