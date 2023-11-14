@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             // for Profile
-            editMode: false
+            isDisabled: true
         }
     },
     methods: {
@@ -40,7 +40,23 @@ const app = Vue.createApp({
         },
         // profile
         enableEdit() {
-            this.editMode = true;
+            var check = document.getElementById('saveBio');
+            var xmark = document.getElementById('cancelBio');
+
+            this.isDisabled = !this.isDisabled;
+            this.$nextTick(() => {
+                if (!this.isDisabled) {
+                    this.$refs.bioTextarea.focus();
+                    check.style.display = 'inline-block';
+                    xmark.style.display = 'inline-block';
+                }else{
+                    check.style.display = 'none';
+                    xmark.style.display = 'none';
+                }
+            });
+        },
+        submitBio() {
+            document.getElementById('formBio').submit();
         }
     }
 }).mount("body");

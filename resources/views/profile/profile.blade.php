@@ -158,7 +158,6 @@
                         </div>
                     </div>
                     @endif
-                    @endif
                     
                 </div>
             </div>
@@ -167,5 +166,6 @@
     @include('modals/changeDeliveryAddress')
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>
+    <script src="/js/profile.js"></script>
 </body>
 </html>

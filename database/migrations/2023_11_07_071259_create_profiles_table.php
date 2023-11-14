@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('profileImg')->nullable();
             $table->integer('shopStatus')->default(1);
             $table->text('bio')->default('this User is rather lazy to write something about himself');
-            $table->string('gender');
+            $table->string('gender')->nullable();
             $table->timestamps();
         });
     }

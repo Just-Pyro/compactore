@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,9 +44,12 @@ Route::get('/checkOut', function(){
 
 // all Profile
 Route::get('/profile', function(){//nagamit
-    $profile = auth()->user()->profile;
-    return view('profile.profile', ['profile' => $profile]);
+    $user = auth()->user();
+    $profile = $user->profile;
+    return view('profile.profile', ['user'=>$user, 'profile' => $profile]);
 });
+
+Route::post('/saveBio', [ProfileController::class, 'submitBio']);//nagamit
 
 Route::get('/ecommerceProfile', function(){
     return view('profile.ecommerceProfile');

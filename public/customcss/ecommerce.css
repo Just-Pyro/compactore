@@ -95,3 +95,9 @@
 #flexRadioDefault1 {
     cursor: pointer;
 }
+
+/* profile */
+#saveBio, #cancelBio {
+    display:none;
+    cursor: pointer;
+}
