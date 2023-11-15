@@ -16,7 +16,7 @@ class ProfileController extends Controller
             // If the user doesn't have a profile, create a new one
             $profile = Profile::create([
                 'user_id' => $user->id,
-                'bio' => $request->input('bio'),
+                'bio' => $request->bio,
                 // Add other fields as needed
             ]);
     
@@ -25,7 +25,7 @@ class ProfileController extends Controller
     
         // If the user has a profile, update it
         $profile->update([
-            'bio' => $request->input('bio'),
+            'bio' => $request->bio,
             // Add other fields as needed
         ]);
     

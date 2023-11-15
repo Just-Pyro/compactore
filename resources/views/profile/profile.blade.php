@@ -166,6 +166,6 @@
     @include('modals/changeDeliveryAddress')
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>
-    <script src="/js/profile.js"></script>
+    {{-- <script src="/js/profile.js"></script>s --}}
 </body>
 </html>
