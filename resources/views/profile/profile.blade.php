@@ -66,24 +66,83 @@
                     @if ($profile)
                     <div class="row">
                         <div class="col-7">
-                            <form action="" method="post" class="mt-4">
+                            <form action="/create-updateProfile" method="post" class="mt-4">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ $profile->username }}">
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ auth()->user()->username }}">
                                     <label for="username">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="email" placeholder="user@email.com" value="{{ auth()->user()->email }}">
+                                    <input name="fullname" type="text" class="form-control" id="fullname" placeholder="Brandon" value="{{ $profile->fullname }}">
+                                    <label for="fullname">FullName</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="user@email.com" value="{{ auth()->user()->email }}">
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="number" class="form-control" id="phoneNumber" placeholder="phoneNumber" value="{{ $profile->phoneNumber }}">
+                                    <input name="phoneNumber" type="number" class="form-control" id="phoneNumber" placeholder="phoneNumber" value="{{ $profile->phoneNumber }}">
                                     <label for="phoneNumber">Phone Number</label>
                                 </div>
                                 <div>
                                     <h6 class="fw-normal">Gender</h6>
                                     <div class="form-check form-check-inline mb-3">
-                                        <input type="radio" class="form-check-input" id="genderMale" placeholder="Male" value="Male" name="radioGender" {{ $profile->gender}}>
+                                        <input type="radio" class="form-check-input" id="genderMale" placeholder="Male" value="Male" name="radioGender" {{ $profile->gender === 'Male' ? 'checked' : '' }}>
+                                        <label for="genderMale" class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline mb-3">
+                                        <input type="radio" class="form-check-input" id="genderFemale" placeholder="Female" value="Female" name="radioGender" {{ $profile->gender === 'Female' ? 'checked' : '' }}>
+                                        <label for="genderFemale" class="form-check-label">Female</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <h6 class="fw-normal">Date of Birth</h6>
+                                    <input type="date" name="birthdate" id="bday" class="form-control" value="{{ $profile->birthdate }}">
+                                </div>
+                                <button type="submit" class="btn btn-success">Save Changes</button>
+                            </form>
+                        </div>
+                        <div class="col">
+                            @if($user->profile->profileImg)
+                                <img src="{{ asset('userProfileImg/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;">
+                            @else
+                                <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
+                            @endif
+                            <form action="/create-updateProfilePic" method="POST" enctype="multipart/form-data" class="mt-3">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="changeProfilePic" class="form-label">Change Profile Picture</label>
+                                    <input class="form-control form-control-sm" id="changeProfilePic" type="file" name="profilePic">
+                                </div>
+                                <button type="submit" class="btn btn-outline-success">Save Picture</button>
+                            </form>
+                        </div>
+                    </div> 
+                    @else
+                    <div class="row">
+                        <div class="col-7">
+                            <form action="/create-updateProfile" method="post" class="mt-4">
+                                @csrf
+                                <div class="form-floating mb-3">
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser">
+                                    <label for="username">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input name="fullname" type="text" class="form-control" id="fullname" placeholder="Brandon">
+                                    <label for="fullname">FullName</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="user@email.com">
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input name="phoneNumber" type="number" class="form-control" id="phoneNumber" placeholder="phoneNumber">
+                                    <label for="phoneNumber">Phone Number</label>
+                                </div>
+                                <div>
+                                    <h6 class="fw-normal">Gender</h6>
+                                    <div class="form-check form-check-inline mb-3">
+                                        <input type="radio" class="form-check-input" id="genderMale" placeholder="Male" value="Male" name="radioGender">
                                         <label for="genderMale" class="form-check-label">Male</label>
                                     </div>
                                     <div class="form-check form-check-inline mb-3">
@@ -100,58 +159,11 @@
                         </div>
                         <div class="col">
                             <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
-                            <form action="" method="POST" class="mt-3">
+                            <form action="/create-updateProfilePic" method="POST" enctype="multipart/form-data" class="mt-3">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="changeProfilePic" class="form-label">Change Profile Picture</label>
-                                    <input class="form-control form-control-sm" id="changeProfilePic" type="file">
-                                </div>
-                                <button type="submit" class="btn btn-outline-success">Save Picture</button>
-                            </form>
-                        </div>
-                    </div> 
-                    @else
-                    <div class="row">
-                        <div class="col-7">
-                            <form action="" method="post" class="mt-4">
-                                @csrf
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="username" placeholder="BrandonUser">
-                                    <label for="username">Username</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="email" placeholder="user@email.com">
-                                    <label for="email">Email</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="number" class="form-control" id="phoneNumber" placeholder="phoneNumber">
-                                    <label for="phoneNumber">Phone Number</label>
-                                </div>
-                                <div>
-                                    <h6 class="fw-normal">Gender</h6>
-                                    <div class="form-check form-check-inline mb-3">
-                                        <input type="radio" class="form-check-input" id="genderMale" placeholder="Male" value="Male" name="radioGender">
-                                        <label for="genderMale" class="form-check-label">Male</label>
-                                    </div>
-                                    <div class="form-check form-check-inline mb-3">
-                                        <input type="radio" class="form-check-input" id="genderFemale" placeholder="Female" value="Female" name="radioGender">
-                                        <label for="genderFemale" class="form-check-label">Female</label>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <h6 class="fw-normal">Date of Birth</h6>
-                                    <input type="date" name="" id="" class="form-control">
-                                </div>
-                                <button type="submit" class="btn btn-success">Save Changes</button>
-                            </form>
-                        </div>
-                        <div class="col">
-                            <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
-                            <form action="" method="POST" class="mt-3">
-                                @csrf
-                                <div class="mb-3">
-                                    <label for="changeProfilePic" class="form-label">Change Profile Picture</label>
-                                    <input class="form-control form-control-sm" id="changeProfilePic" type="file">
+                                    <input class="form-control form-control-sm" id="changeProfilePic" type="file" name="profilePic">
                                 </div>
                                 <button type="submit" class="btn btn-outline-success">Save Picture</button>
                             </form>

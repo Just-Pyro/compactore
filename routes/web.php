@@ -50,6 +50,8 @@ Route::get('/profile', function(){//nagamit
 });
 
 Route::post('/saveBio', [ProfileController::class, 'submitBio']);//nagamit
+Route::post('/create-updateProfile', [ProfileController::class, 'createUpdateProfile']);//nagamit
+Route::post('/create-updateProfilePic', [ProfileController::class, 'createUpdateProfilePic']);//nagamit
 
 Route::get('/ecommerceProfile', function(){
     return view('profile.ecommerceProfile');
