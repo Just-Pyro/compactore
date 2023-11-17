@@ -1,10 +1,16 @@
 @if ($user)
 <div class="row">
     <div class="col-3 p-2">
-        <div class="rounded bg-white p-3">
-            <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
-            <p class="fw-medium m-0 text-center">{{ $user->username }}</p>
-            <p class="fw-normal text-center">{{ auth()->user()->email }}</p>
+        <div class="rounded bg-white p-3 text-center">
+            @if($user->profile->profileImg)
+                <div class="d-flex justify-content-center align-items-center mt-4">
+                    <img src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                </div>
+            @else
+                <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
+            @endif
+            <p class="fw-medium m-0">{{ $user->username }}</p>
+            <p class="fw-normal">{{ auth()->user()->email }}</p>
         </div>
     </div>
 @else

@@ -64,58 +64,38 @@ class ProfileController extends Controller
     }
 
     public function createUpdateProfilePic(Request $request){
-        // $user = auth()->user();
-        // $profile = $user->profile;
+        $user = auth()->user();
+        $profile = $user->profile;
 
-        // if (!$profile) {
-        //     // If the user doesn't have a profile, create a new one
-        //     $profile = Profile::create([
-        //         'user_id' => $user->id,
-        //     ]);
-    
-        // }
-    
-        // // Handle file upload and store the file in the public disk under the 'profile_pictures' directory
-        // $imageName = $request->file('profilePic')->store('userProfilePic', 'public');
+        // Handle file upload and store the file in the public disk under the 'uploads/userprofile' directory
+        // $imageName = $request->file('profilePic')->getClientOriginalName();
+        // $request->file('profilePic')->move(public_path('uploads/userprofile'), $imageName);
+        $originalName = pathinfo($request->file('profilePic')->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $request->file('profilePic')->getClientOriginalExtension();
 
-        // // Update the profile with the new profile picture
-        // $profile->update(['profilePic' => basename($imageName)]);
+        $timestampCounter = time();
 
-        // return redirect('/profile')->with('success', 'Profile picture updated successfully');
+        $imageName = "{$user->id}_{$originalName}_{$timestampCounter}.{$extension}";
 
-        try {
-            $user = auth()->user();
-            $profile = $user->profile;
-    
-            if (!$profile) {
-                $profile = Profile::create([
-                    'user_id' => $user->id,
-                ]);
-            }
-    
-            $request->validate([
-                'profilePic' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        $request->file('profilePic')->move(public_path('uploads/userprofile'), $imageName);
+
+        if (!$profile) {
+            // If the user doesn't have a profile, create a new one
+            $profile = Profile::create([
+                'user_id' => $user->id,
+                'profileImg' => $imageName
             ]);
-    
-            // Log information before file upload
-            Log::info('Before file upload - User ID: ' . $user->id);
-    
-            // Store the file in the 'public/userProfileImg' directory
-            $imageName = $request->file('profilePic')->store('userProfileImg', 'public');
-    
-            // Log information after successful file upload
-            Log::info('After file upload - User ID: ' . $user->id . ' - Image Name: ' . basename($imageName));
-    
-            $profile->update(['profilePic' => basename($imageName)]);
-    
-            return redirect('/profile')->with('success', 'Profile picture updated successfully');
-        } catch (\Exception $e) {
-            // Log any exceptions that might occur
-            Log::error('Exception during file upload: ' . $e->getMessage());
-    
-            // Handle the exception or return an error response
-            return redirect('/profile')->with('error', 'Failed to update profile picture');
+            return back()
+            ->with('success', 'Image uploaded successfully.')
+            ->with('imageName', $imageName);
         }
-    
+
+        $profile->update([
+            'profileImg' => $imageName
+        ]);
+
+        return back()
+            ->with('success', 'Image uploaded successfully.')
+            ->with('imageName', $imageName);
     }
 }

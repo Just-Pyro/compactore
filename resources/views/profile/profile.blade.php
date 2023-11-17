@@ -104,7 +104,9 @@
                         </div>
                         <div class="col">
                             @if($user->profile->profileImg)
-                                <img src="{{ asset('userProfileImg/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;">
+                                <div class="d-flex justify-content-center align-items-center mt-4">
+                                    <img src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                                </div>
                             @else
                                 <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
                             @endif
