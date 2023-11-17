@@ -70,6 +70,9 @@ const app = Vue.createApp({
 
                 reader.readAsDataURL(file);
             }
+        },
+        openStore(){
+            document.getElementById('formOpenStore').submit();
         }
     }
 }).mount("body");

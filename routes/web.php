@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {//nagamit
     if (Auth::check()) {
@@ -52,6 +52,12 @@ Route::get('/profile', function(){//nagamit
 Route::post('/saveBio', [ProfileController::class, 'submitBio']);//nagamit
 Route::post('/create-updateProfile', [ProfileController::class, 'createUpdateProfile']);//nagamit
 Route::post('/create-updateProfilePic', [ProfileController::class, 'createUpdateProfilePic']);//nagamit
+
+//for Users Shop
+Route::post('/openStore', [ShopController::class, 'createShop']);
+Route::get('/userShop', function(){
+    return view('ecommerce.userShop');
+});
 
 Route::get('/ecommerceProfile', function(){
     return view('profile.ecommerceProfile');
