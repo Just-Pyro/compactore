@@ -19,9 +19,7 @@ Route::post('/login', [UserController::class,'login']);//nagamit
 
 //ecommerce
 Route::get('/ecommerce', function() {
-    $user = auth()->user();
-    $profile = $user->profile;
-    return view('ecommerce.ecommerce', ['user'=>$user, 'profile' => $profile]);
+    return view('ecommerce.ecommerce');
 });
 
 Route::get('/cart', function(){
