@@ -2,7 +2,8 @@ const app = Vue.createApp({
     data() {
         return {
             // for Profile
-            isDisabled: true
+            isDisabled: true,
+            imagePreview: null
         }
     },
     methods: {
@@ -57,6 +58,18 @@ const app = Vue.createApp({
         },
         submitBio() {
             document.getElementById('formBio').submit();
+        },
+        previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    this.imagePreview = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
         }
     }
 }).mount("body");

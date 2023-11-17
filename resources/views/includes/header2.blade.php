@@ -27,7 +27,13 @@
             <a class="nav-link" href="{{ url('/cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link" href="{{ url('/profile') }}"><i class="fa-solid fa-user"></i></a>
+            <a class="nav-link" href="{{ url('/profile') }}">
+              @if($user->profile->profileImg)
+                <img src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle" style="height: 22px;">
+              @else
+                <i class="fa-solid fa-user"></i>
+              @endif
+            </a>
           </li>
           <li id="forSwitch" class="nav-item mx-1" @mouseover="switchHover" @mouseout="switchUnHover">
             <a href="" class="nav-link"><i class="fa-solid fa-rotate" id="switch"></i></a>
