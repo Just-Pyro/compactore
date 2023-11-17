@@ -69,7 +69,7 @@
                             <form action="/create-updateProfile" method="post" class="mt-4">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ auth()->user()->username }}">
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ auth()->user()->username }}" disabled>
                                     <label for="username">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -77,7 +77,7 @@
                                     <label for="fullname">FullName</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input name="email" type="email" class="form-control" id="email" placeholder="user@email.com" value="{{ auth()->user()->email }}">
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="user@email.com" value="{{ auth()->user()->email }}" disabled>
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -124,7 +124,7 @@
                             <form action="/create-updateProfile" method="post" class="mt-4">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser">
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" disabled>
                                     <label for="username">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -132,7 +132,7 @@
                                     <label for="fullname">FullName</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input name="email" type="email" class="form-control" id="email" placeholder="user@email.com">
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="user@email.com" disabled>
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="form-floating mb-3">
