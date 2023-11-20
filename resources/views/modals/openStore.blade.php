@@ -13,6 +13,8 @@
                             <div class="form-floating mb-2">
                                 <input name="storeName" type="text" class="form-control" id="forStoreName" placeholder="Store Name">
                                 <label for="forStoreName">Store Name</label>
+                                <input name="contact" type="number" class="form-control" id="forContactNumber" placeholder="Contact">
+                                <label for="forContactNumber">Contact Number</label>
                             </div>
                         </div>
                     </div>

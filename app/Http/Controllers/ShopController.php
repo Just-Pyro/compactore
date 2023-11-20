@@ -13,13 +13,19 @@ class ShopController extends Controller
         $profile = $user->profile;
         $shop = $profile->shop;
 
+        //creates a shop for the user
         $shop = Shop::create([
             'profile_id' => $profile->id,
             "shopName" => $request->storeName
         ]);
-        
         $shop->save();
 
-        return redirect('/userShop');
+        //updates Shopstatus in profile table
+        $profile->update([
+            "shopStatus" => 1
+        ]);
+
+        //proceed to the newly opened shop of the user
+        return redirect('/CompactoreSeller');
     }
 }

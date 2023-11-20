@@ -55,8 +55,17 @@ Route::post('/create-updateProfilePic', [ProfileController::class, 'createUpdate
 
 //for Users Shop
 Route::post('/openStore', [ShopController::class, 'createShop']);
-Route::get('/userShop', function(){
-    return view('ecommerce.userShop');
+Route::get('/CompactoreSeller', function(){
+    $profile = auth()->user()->profile;
+    return view('seller.sellerPage', ['profile'=>$profile]);
+});
+Route::get('/addProduct', function(){
+    $profile = auth()->user()->profile;
+    return view('seller.addProducts', ['profile'=>$profile]);
+});
+Route::get('/myProduct', function(){
+    $profile = auth()->user()->profile;
+    return view('seller.myProducts', ['profile'=>$profile]);
 });
 
 Route::get('/ecommerceProfile', function(){

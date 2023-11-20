@@ -13,6 +13,7 @@ class Shop extends Model
     protected $fillable = [
         "profile_id",
         "shopName",
+        "contact",
         "shopImg",
     ];
 

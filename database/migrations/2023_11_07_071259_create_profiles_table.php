@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('phoneNumber')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('profileImg')->nullable();
-            $table->integer('shopStatus')->default(1);
-            $table->text('bio')->default('this User is rather lazy to write something about himself');
+            $table->integer('shopStatus')->default(0);
+            $table->text('bio')->nullable();
             $table->string('gender')->nullable();
             $table->timestamps();
         });
