@@ -6,6 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VoucherController;
 
 Route::get('/', function () {//nagamit
     if (Auth::check()) {
@@ -65,7 +66,15 @@ Route::get('/addProduct', function(){//nagamit
     return view('seller.addProducts', ['profile'=>$profile]);
 });
 Route::post('/addProduct-ecommerce', [ProductController::class, 'addProduct']);//nagamit
-Route::get('/myProduct', [ProductController::class, 'displaySellerProducts']);
+Route::get('/myProduct', [ProductController::class, 'displaySellerProducts']);//nagamit
+
+//for vouchers
+Route::get('/goto-addVoucher', function(){
+    $profile = auth()->user()->profile;
+    return view('seller.addVouchers',['profile'=>$profile]);
+});
+
+
 
 Route::get('/ecommerceProfile', function(){
     return view('profile.ecommerceProfile');

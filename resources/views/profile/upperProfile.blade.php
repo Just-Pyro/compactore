@@ -26,7 +26,11 @@
 @if ($profile)
     <div class="col p-2">
         <div class="rounded bg-white p-3 position-relative">
-            <button class="btn btn-sm btn-outline-warning" style="position:absolute; bottom: 10px; right: 10px;" data-bs-toggle="modal" data-bs-target="#openStore">Open Store</button>
+            @if ($profile->shopStatus == 1)
+                <a href="{{ url('/CompactoreSeller') }}" class="btn btn-sm btn-outline-success" style="position:absolute; bottom: 10px; right: 10px;">Go to Store</a>
+            @else
+                <button class="btn btn-sm btn-outline-warning" style="position:absolute; bottom: 10px; right: 10px;" data-bs-toggle="modal" data-bs-target="#openStore">Open Store</button>
+            @endif
             <div class="row">
                 <div class="col-6">
                     <form id="formBio" action="saveBio" method="post">
@@ -54,7 +58,11 @@
 @else
     <div class="col p-2">
         <div class="rounded bg-white p-3 position-relative">
-            <button class="btn btn-sm btn-outline-warning" style="position:absolute; bottom: 10px; right: 10px;" data-bs-toggle="modal" data-bs-target="#openStore">Open Store</button>
+            @if ($profile->shopStatus == 1)
+                <a href="{{ url('/CompactoreSeller') }}" class="btn btn-sm btn-outline-success" style="position:absolute; bottom: 10px; right: 10px;">Go to Store</a>
+            @else
+                <button class="btn btn-sm btn-outline-warning" style="position:absolute; bottom: 10px; right: 10px;" data-bs-toggle="modal" data-bs-target="#openStore">Open Store</button>
+            @endif
             <div class="row">
                 <div class="col-6">
                     <form id="formBio" action="saveBio" method="post">

@@ -18,15 +18,8 @@
       <div id="compactoreMenu" class="collapse navbar-collapse d-flex justify-content-end">
         <div class="" id="ulOptions">
           <ul class="navbar-nav ms-2 position-relative">
-            <li class="nav-item mx-2">
-                @if ($profile)
-                <a href="{{ url('/profile') }}" class="nav-link p-0"><img src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="userProfile" class="rounded-circle" style="height:40px; object-fit:contain;"></a>                        
-                @else
-                <a href="{{ url('/profile') }}" class="nav-link"><i class="fa-solid fa-user"></i></a>                        
-                @endif
-            </li>
             <li class="nav-item mx-2 nav-bubble">
-                <a href="#" class="nav-link">Products</a>
+                <a href="#" class="nav-link fw-medium">Products</a>
                 <div class="bubble-modal">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item" @mouseover="toggleClass" @mouseout="toggleClass">
@@ -37,6 +30,16 @@
                         </li>
                     </ul>
                 </div>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="{{ url('/goto-addVoucher') }}" class="nav-link fw-medium">Add Store Voucher</a>
+            </li>
+            <li class="nav-item mx-2">
+              @if ($profile)
+              <a href="{{ url('/profile') }}" class="nav-link p-0"><img src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="userProfile" class="rounded-circle" style="height:40px; object-fit:contain;"></a>                        
+              @else
+              <a href="{{ url('/profile') }}" class="nav-link"><i class="fa-solid fa-user"></i></a>                        
+              @endif
             </li>
           </ul>
         </div>
