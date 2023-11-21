@@ -55,20 +55,17 @@ Route::post('/create-updateProfile', [ProfileController::class, 'createUpdatePro
 Route::post('/create-updateProfilePic', [ProfileController::class, 'createUpdateProfilePic']);//nagamit
 
 //for Users Shop
-Route::post('/openStore', [ShopController::class, 'createShop']);
-Route::get('/CompactoreSeller', function(){
+Route::post('/openStore', [ShopController::class, 'createShop']);//nagamit
+Route::get('/CompactoreSeller', function(){//nagamit
     $profile = auth()->user()->profile;
     return view('seller.sellerPage', ['profile'=>$profile]);
 });
-Route::get('/addProduct', function(){
+Route::get('/addProduct', function(){//nagamit
     $profile = auth()->user()->profile;
     return view('seller.addProducts', ['profile'=>$profile]);
 });
-Route::post('/addProduct-ecommerce', [ProductController::class, 'addProduct']);
-Route::get('/myProduct', function(){
-    $profile = auth()->user()->profile;
-    return view('seller.myProducts', ['profile'=>$profile]);
-});
+Route::post('/addProduct-ecommerce', [ProductController::class, 'addProduct']);//nagamit
+Route::get('/myProduct', [ProductController::class, 'displaySellerProducts']);
 
 Route::get('/ecommerceProfile', function(){
     return view('profile.ecommerceProfile');

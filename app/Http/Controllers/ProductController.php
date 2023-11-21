@@ -44,12 +44,23 @@ class ProductController extends Controller
             MediaFile::create([
                 'product_id' => $product->id,
                 'file_path' => 'uploads/store/'.$shop->shopName.'/',
-                'file_name' => $originalName,
+                'file_name' => $imageName,
                 'file_type' => $extension
             ]);
         }
 
         return redirect('/addProduct');
         
+    }
+
+    public function displaySellerProducts(){
+        $mediaFiles = MediaFile::with('product')
+        ->orderBy('product_id')
+        ->get()
+        ->groupBy('product_id');
+
+        $profile = auth()->user()->profile;
+        $products = $profile->shop->product;
+        return view('seller.myProducts', compact('mediaFiles', 'profile','products'));
     }
 }
