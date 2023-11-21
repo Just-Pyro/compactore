@@ -101,13 +101,4 @@ const app = Vue.createApp({
             }
         }
     }
-    // computed:{
-    //     fileName() {
-    //         return (index) => {
-    //           const imageSrc = this.preloadedImages[index].src;
-    //           const urlParts = imageSrc.split('/');
-    //           return urlParts[urlParts.length - 1];
-    //         };
-    //     },
-    // }
 }).mount("body");

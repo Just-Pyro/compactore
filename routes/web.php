@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {//nagamit
@@ -63,6 +64,7 @@ Route::get('/addProduct', function(){
     $profile = auth()->user()->profile;
     return view('seller.addProducts', ['profile'=>$profile]);
 });
+Route::post('/addProduct-ecommerce', [ProductController::class, 'addProduct']);
 Route::get('/myProduct', function(){
     $profile = auth()->user()->profile;
     return view('seller.myProducts', ['profile'=>$profile]);
