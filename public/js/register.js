@@ -51,6 +51,16 @@ const app = Vue.createApp({
                 }
             }
         },
+        checkPassword(){
+            const pass = document.getElementById('password').value;
+            const conpass = document.getElementById('confirmPassword').value;
+
+            if(pass != conpass){
+                alert('password and confirm password did not match!');
+            }else{
+                document.getElementById('registerForm').submit();
+            }
+        },
         validateEmail(email) {
             // Regular expression for a valid email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

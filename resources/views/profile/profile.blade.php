@@ -103,13 +103,16 @@
                             </form>
                         </div>
                         <div class="col">
-                            @if($user->profile->profileImg)
+                            @if($profile->profileImg)
                                 <div class="d-flex justify-content-center align-items-center mt-4">
                                     <img v-if="imagePreview" :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
                                     <img v-else src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
                                 </div>
                             @else
-                                <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
+                                <div v-if="imagePreview" class="d-flex justify-content-center align-items-center mt-4">
+                                    <img :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                                </div>
+                                <div v-else class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
                             @endif
                             <form action="/create-updateProfilePic" method="POST" enctype="multipart/form-data" class="mt-3">
                                 @csrf
@@ -127,7 +130,7 @@
                             <form action="/create-updateProfile" method="post" class="mt-4">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" disabled>
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ auth()->user()->username }}" disabled>
                                     <label for="username">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -135,7 +138,7 @@
                                     <label for="fullname">FullName</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input name="email" type="email" class="form-control" id="email" placeholder="user@email.com" disabled>
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="user@email.com" value="{{ auth()->user()->email }}" disabled>
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -161,7 +164,9 @@
                             </form>
                         </div>
                         <div class="col">
-                            <img v-if="imagePreview" :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                            <div v-if="imagePreview" class="d-flex justify-content-center align-items-center mt-4">
+                                <img :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                            </div>
                             <div v-else class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
                             <form action="/create-updateProfilePic" method="POST" enctype="multipart/form-data" class="mt-3">
                                 @csrf

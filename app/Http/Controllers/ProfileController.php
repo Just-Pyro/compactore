@@ -70,14 +70,14 @@ class ProfileController extends Controller
         // Handle file upload and store the file in the public disk under the 'uploads/userprofile' directory
         // $imageName = $request->file('profilePic')->getClientOriginalName();
         // $request->file('profilePic')->move(public_path('uploads/userprofile'), $imageName);
-        $originalName = pathinfo($request->file('profilePic')->getClientOriginalName(), PATHINFO_FILENAME);
-        $extension = $request->file('profilePic')->getClientOriginalExtension();
+        $originalName = pathinfo($request->file('profilePic')->getClientOriginalName(), PATHINFO_FILENAME);//first gikuha ang original name sa file
+        $extension = $request->file('profilePic')->getClientOriginalExtension();//then gikuha ang iyang extension (e.g. jpg, png, jpeg, gif, ...)
 
-        $timestampCounter = time();
+        $timestampCounter = time();//then gikuha ang current time
 
-        $imageName = "{$user->id}_{$originalName}_{$timestampCounter}.{$extension}";
+        $imageName = "{$user->id}_{$originalName}_{$timestampCounter}.{$extension}";//then gisumpay nimo tanan
 
-        $request->file('profilePic')->move(public_path('uploads/userprofile'), $imageName);
+        $request->file('profilePic')->move(public_path('uploads/userprofile'), $imageName);//lastly, gi move ang file sa designated nga butanganan
 
         if (!$profile) {
             // If the user doesn't have a profile, create a new one

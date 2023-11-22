@@ -3,7 +3,8 @@ const app = Vue.createApp({
         return {
             // for Profile
             isDisabled: true,
-            imagePreview: null
+            imagePreview: null,
+            preloadedImages:[]
         }
     },
     methods: {
@@ -69,6 +70,34 @@ const app = Vue.createApp({
                 };
 
                 reader.readAsDataURL(file);
+            }
+        },
+        openStore(){
+            document.getElementById('formOpenStore').submit();
+        },
+        //for seller
+        toggleClass(event) {
+            const el = event.target;
+
+            if (el.classList.contains('link-dark')) {
+                el.classList.toggle('active');
+                el.classList.toggle('link-dark');
+            }else{
+                el.classList.toggle('link-dark');
+                el.classList.toggle('active');
+            }
+        },
+        loadImages(event) {
+            const files = event.target.files;
+      
+            if (files.length > 0) {
+              for (let i = 0; i < files.length; i++) {
+                const image = new Image();
+                image.src = URL.createObjectURL(files[i]);
+
+                this.preloadedImages.push(image);
+      
+              }
             }
         }
     }

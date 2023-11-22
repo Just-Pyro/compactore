@@ -1,0 +1,33 @@
+.nav-bubble {
+    position: relative;
+}
+
+.nav-bubble .bubble-modal {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    width: auto;
+    white-space: nowrap;
+    background-color: #fff;
+    padding: .5em .5em;
+    border-radius: 1rem;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.nav-bubble .bubble-modal:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 100%;
+    left: 1.5em;
+    border: .75rem solid transparent;
+    border-top: none;
+
+    border-bottom-color: #fff;
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}
+
+.nav-bubble:hover .bubble-modal {
+    display: block;
+}

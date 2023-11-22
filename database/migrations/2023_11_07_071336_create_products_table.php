@@ -21,7 +21,6 @@ return new class extends Migration
             $table->text('description');
             $table->integer('stock');
             $table->float('price');
-            $table->string('productImg');
             $table->timestamps();
         });
     }
