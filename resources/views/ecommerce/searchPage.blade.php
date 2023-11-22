@@ -32,19 +32,25 @@
             </div>
             <div class="sidebar-divider"></div>
             <div class="col-9 py-3">
-                <h5 style="display: inline-block;">Search Results for: </h5>
-                <h5 id="searched_input" style="display:inline-block;">Product Name</h5>
-                <div class="row align-items-center product">
-                    <div class="col-sm-6 col-lg-4 col-xl-3 my-5" @click="seeProduct">
-                        <div class="card mx-auto shadow" style="width: 16rem; height: 18rem;">
-                            <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
-                            <div class="card-body bg-light" style="height: 10rem;">
-                                <p class="card-title productname">SAMPLE PRODUCT NAME</p>
-                                <p class="card-text text-danger price">156126.00</p>
+                @if(isset($results))
+                    <h5>Search Results for "{{ $query }}"</h5>
+                    @foreach($results as $result)
+                        {{-- Display your search results here --}}
+                        {{-- Example: --}}
+                        <div class="row align-items-center product">
+                            <div class="col-sm-6 col-lg-4 col-xl-3 my-5" @click="seeProduct">
+                                <div class="card mx-auto shadow" style="width: 16rem; height: 18rem;">
+                                    <img sr="{{ asset($result->)}}" style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                                    <div class="card-body bg-light" style="height: 10rem;">
+                                        <p class="card-title productname">{{ $result->productName }}</p>
+                                        <p class="card-text text-danger price">{{$result->price}}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        {{-- <p>{{ $result->name }}</p> --}}
+                    @endforeach
+                @endif
             </div>
             <div class="col"></div>
         </div>

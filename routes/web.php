@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoucherController;
@@ -24,13 +25,16 @@ Route::get('/ecommerce', function() {
     return view('ecommerce.ecommerce');
 });
 
+//forSearchin Ecomerce
+Route::get('/search',[SearchController::class,'search'])->name('search');
+
 Route::get('/cart', function(){
     return view('ecommerce.cart');
 });
 
-Route::get('/searchPage', function(){
-    return view('ecommerce.searchPage');
-})->name('searchPage');
+// Route::get('/searchPage', function(){
+//     return view('ecommerce.searchPage');
+// })->name('searchPage');
 
 Route::get('/productPage', function(){
     return view('ecommerce.productPage');
@@ -77,15 +81,17 @@ Route::post('/addVoucher',[VoucherController::class, 'addVoucher']);
 
 
 //adminn
-Route::get('/adminLogin', function(){
+Route::get('/adminLogin', function(){//nagamit
     return view('admin.adminLogin');
 });
-Route::get('/adminDashboard', function(){
+Route::get('/adminDashboard', function(){//nagamit
     return view('admin.adminDashboard');
 });
-Route::get('/addVoucher-admin',function(){
+Route::get('/addVoucher-admin',function(){//nagamit
     return view('admin.addVoucher');
 });
+
+
 
 Route::get('/ecommerceProfile', function(){
     return view('profile.ecommerceProfile');
