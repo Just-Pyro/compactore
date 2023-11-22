@@ -71,10 +71,21 @@ Route::get('/myProduct', [ProductController::class, 'displaySellerProducts']);//
 //for vouchers
 Route::get('/goto-addVoucher', function(){
     $profile = auth()->user()->profile;
-    return view('seller.addVouchers',['profile'=>$profile]);
+    return view('seller.addVouchers',['profile'=>$profile]);//nagamit
 });
+Route::post('/addVoucher',[VoucherController::class, 'addVoucher']);
 
 
+//adminn
+Route::get('/adminLogin', function(){
+    return view('admin.adminLogin');
+});
+Route::get('/adminDashboard', function(){
+    return view('admin.adminDashboard');
+});
+Route::get('/addVoucher-admin',function(){
+    return view('admin.addVoucher');
+});
 
 Route::get('/ecommerceProfile', function(){
     return view('profile.ecommerceProfile');

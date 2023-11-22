@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id')->nullable();
+            $table->foreign('shop_id')->references('id')->on('shops');
+            $table->index('shop_id');
             $table->string('code');
             $table->string('type');
             $table->decimal('discount_amount');

@@ -25,4 +25,8 @@ class Shop extends Model
     public function product(){
         return $this->hasMany(Product::class, "shop_id");
     }
+
+    public function voucher(){
+        return $this->hasMany(Voucher::class);
+    }
 }

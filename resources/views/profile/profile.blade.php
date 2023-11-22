@@ -164,14 +164,10 @@
                             </form>
                         </div>
                         <div class="col">
-                            @if($profile->profileImg)
-                            <div class="d-flex justify-content-center align-items-center mt-4">
-                                <img v-if="imagePreview" :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
-                                <img v-else src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                            <div v-if="imagePreview" class="d-flex justify-content-center align-items-center mt-4">
+                                <img :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
                             </div>
-                            @else
-                            <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
-                            @endif
+                            <div v-else class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
                             <form action="/create-updateProfilePic" method="POST" enctype="multipart/form-data" class="mt-3">
                                 @csrf
                                 <div class="mb-3">
