@@ -47,6 +47,8 @@
                             <label>Applicable to:</label>
                             <select name="applicable_to"class="form-select mb-3" required>
                                 <option hidden selected>Choose Category or Product</option>
+                                {{-- kung c shop ang maghimo og voucher. mawala ni ang kaning applicable_to sa html. pero i set cya daan sa controller
+                                    as if all products cya. since dapat ang voucher nga hinimo ni shop is para sa iyang shop. --}}
                                 <option value="all_products">All Products</option>
                                 <option value="Electronics">Electronics</option>
                                 <option value="Clothing and Accessories">Clothing and Accessories</option>
