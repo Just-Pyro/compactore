@@ -14,7 +14,7 @@ Route::get('/', function () {//nagamit
         return redirect('/ecommerce');
     }
     return view('register');
-})->name('register');
+});
 
 Route::post('/register', [UserController::class, 'register']);//nagamit
 Route::post('/logout', [UserController::class,'logout']);//nagamit
