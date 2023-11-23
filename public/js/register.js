@@ -80,18 +80,47 @@ const app = Vue.createApp({
             return emailRegex.test(email);
         },
         passToggle() {
-            var eyeicon = document.getElementById("eyeicon");
-            var x = document.getElementById("loginPassword");
-            if (x.type === "password") {
-              x.type = "text";
-              eyeicon.classList.remove("fa-regular", "fa-eye-slash"); 
-              eyeicon.classList.add("fa-regular", "fa-eye");
-            } else {
-              x.type = "password";
-              eyeicon.classList.remove("fa-regular", "fa-eye");
-              eyeicon.classList.add("fa-regular", "fa-eye-slash"); 
+
+            var loginPass = document.getElementById('loginPassword');
+            var regPass = document.getElementById('password');
+            var conPass = document.getElementById('confirmPassword');
+
+            var icon1 = document.getElementById('eyeicon1');
+            var icon2 = document.getElementById('eyeicon2');
+            var icon3 = document.getElementById('eyeicon3');
+
+            console.log(conPass.type)
+
+            if(loginPass.type === "password"){
+                loginPass.type = "text";
+                icon1.classList.remove('fa-eye-slash');
+                icon1.classList.add('fa-eye');
+            }else{
+                loginPass.type = "password";
+                icon1.classList.remove('fa-eye');
+                icon1.classList.add('fa-eye-slash');
             }
-          }
+
+            if(regPass.type === "password"){
+                regPass.type = "text";
+                icon2.classList.remove('fa-eye-slash');
+                icon2.classList.add('fa-eye');
+            }else{
+                regPass.type = "password";
+                icon2.classList.remove('fa-eye');
+                icon2.classList.add('fa-eye-slash');
+            }
+
+            if(conPass.type === "password"){
+                conPass.type = "text";
+                icon3.classList.remove('fa-eye-slash');
+                icon3.classList.add('fa-eye');
+            }else{
+                conPass.type = "password";
+                icon3.classList.remove('fa-eye');
+                icon3.classList.add('fa-eye-slash');
+            }
+        }
           
     }
 }).mount("#app");
