@@ -47,7 +47,6 @@
                   </div>
 
                 </div>
-                <div id="passFeedback" class="invalid-feedback mb-2">
                   Please provide a valid password (at least 8 characters).
                 </div>
                 <div class="d-grid">
