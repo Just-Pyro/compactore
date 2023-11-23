@@ -76,7 +76,7 @@
                 <input type="text" name="email" class="form-control mb-3" placeholder="Email">
                 <div class="position-relative">
                   <input type="password" id="password" name="password" class="form-control mb-3 respass" placeholder="Password">
-                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle"> //hello 
                     <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
                   </div>
                 </div>
