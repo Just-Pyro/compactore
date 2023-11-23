@@ -36,3 +36,8 @@
 #passWarning .form-control.is-invalid:focus {
   box-shadow: 2px 2px rgb(236, 108, 108);
 }
+
+#loginBtn{
+  outline: none;
+  box-shadow: 2px 2px rgb(143, 140, 140)
+}

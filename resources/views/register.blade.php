@@ -40,8 +40,8 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <div id="passWarning" class="position-relative border rounded-3 mb-4 inputsize">
-                  <input id="loginPassword" type="password" name="loginPassword" class="form-control py-2 " :class="{'is-valid':okPass, 'is-invalid':conPassword, 'mb-5':mbp }" placeholder="Password" required>
+                <div id="passWarning" class="position-relative border rounded-3 inputsize" :class="{'mb-4':mbp}">
+                  <input id="loginPassword" type="password" name="loginPassword" class="form-control py-2 " :class="{'is-valid':okPass, 'is-invalid':conPassword}" placeholder="Password" required>
                   <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
                     <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
                   </div>
@@ -51,7 +51,7 @@
                   Please provide a valid password (at least 8 characters).
                 </div>
                 <div class="d-grid">
-                  <button class="btn btn-dark mb-3" type="submit" @click="checkInputs($event)">LOGIN</button>
+                  <button id="loginBtn" class="btn btn-dark mb-3" type="submit" @click="checkInputs($event)">LOGIN</button>
                 </div>
               </form>
 
