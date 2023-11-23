@@ -21,8 +21,12 @@ class UserController extends Controller
 
         if(auth()->attempt(['email'=> $loginData['loginEmail'],'password'=> $loginData['loginPassword']])){
             $request->session()->regenerate();
-            return redirect('/');
+            // return response()->json(['redirect' => '/ecommerce'], 200);?
+            return redirect('/ecommerce');
         }
+
+        // return response()->json(['message' => 'Login attempt failed'], 401);
+        return redirect('/');
     }
     public function register(Request $request){
         $dataforUser = $request->validate([
