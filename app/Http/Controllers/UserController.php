@@ -23,6 +23,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect('/');
         }
+        return redirect("/");
     }
     public function register(Request $request){
         $dataforUser = $request->validate([
