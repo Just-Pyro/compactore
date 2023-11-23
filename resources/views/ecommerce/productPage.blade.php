@@ -39,15 +39,17 @@
                         <div class="p-2" style="height: 200px;">
                             shipping Info
                         </div>
-                        <div class="p-2">
-                            <label>Quantity:</label>
-                            <div style="width:70px">
-                                <input name="qty" min="1" max="100" type="number" class="form-control" value="1">
+                        <form action="/add-to-cart" method="post">
+                            <div class="p-2">
+                                <label>Quantity:</label>
+                                <div style="width:70px">
+                                    <input name="qty" min="1" max="100" type="number" class="form-control" value="1">
+                                </div>
                             </div>
-                        </div>
-                        <div class="p-2">
-                            <button class="btn btn-outline-dark me-2">Add to Cart</button><button class="btn btn-dark">Buy Now</button>
-                        </div>
+                            <div class="p-2">
+                                <button type="submit" class="btn btn-outline-dark me-2">Add to Cart</button><button class="btn btn-dark">Buy Now</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

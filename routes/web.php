@@ -8,6 +8,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\ShopCartController;
 
 Route::get('/', function () {//nagamit
     if (Auth::check()) {
@@ -32,7 +33,8 @@ Route::get('/cart', function(){
     return view('ecommerce.cart');
 });
 
-Route::get('/productPage/{id}', [ProductController::class, 'productPage']);
+Route::get('/productPage/{id}', [ProductController::class, 'productPage']);//nagamit
+Route::post('/add-to-cart', [ShopCartController::class, 'add']);
 // Route::get('/searchPage', function(){
 //     return view('ecommerce.searchPage');
 // })->name('searchPage');
