@@ -42,10 +42,6 @@ class UserController extends Controller
         if (auth()->check()) {
             $user_id = auth()->user()->id;
         
-            $userName = $request->validate([
-                'username' => ['required', 'min:5', 'max:12']
-            ]);
-        
             $createProfile = new Profile();
             $createProfile->user_id = $user_id;
             $createProfile->username = $request->username;
