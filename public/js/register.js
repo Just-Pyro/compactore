@@ -77,7 +77,20 @@ const app = Vue.createApp({
           
             // Test the email against the regex
             return emailRegex.test(email);
-        }
+        },
+        passToggle() {
+            var eyeicon = document.getElementById("eyeicon");
+            var x = document.getElementById("loginPassword");
+            if (x.type === "password") {
+              x.type = "text";
+              eyeicon.classList.remove("fa-regular", "fa-eye-slash"); 
+              eyeicon.classList.add("fa-regular", "fa-eye");
+            } else {
+              x.type = "password";
+              eyeicon.classList.remove("fa-regular", "fa-eye");
+              eyeicon.classList.add("fa-regular", "fa-eye-slash"); 
+            }
+          }
           
     }
 }).mount("#app");
