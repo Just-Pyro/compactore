@@ -36,7 +36,7 @@
                     <h5>Search Results for "{{ $query }}"</h5>
                     @foreach($results as $result)
                         <div class="row align-items-center product">
-                            <div class="col-sm-6 col-lg-4 col-xl-3 my-5" @click="seeProduct">
+                            <div class="col-sm-6 col-lg-4 col-xl-3 my-5" @click="seeProduct({{ $result->id }})">
                                 <div class="card mx-auto shadow" style="width: 16rem; height: 18rem;">
                                     @if($result->mediaFile->isNotEmpty())
                                         <img src="{{ asset($result->mediaFile->first()->file_path . $result->mediaFile->first()->file_name) }}" style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">

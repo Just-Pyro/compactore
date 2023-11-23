@@ -25,20 +25,19 @@ Route::get('/ecommerce', function() {
     return view('ecommerce.ecommerce');
 });
 
-//forSearchin Ecomerce
-Route::get('/search',[SearchController::class,'search'])->name('search');
+//forSearching Ecomerce
+Route::get('/search',[SearchController::class,'search'])->name('search');//nagamit
 
 Route::get('/cart', function(){
     return view('ecommerce.cart');
 });
 
+Route::get('/productPage/{id}', [ProductController::class, 'productPage']);
 // Route::get('/searchPage', function(){
 //     return view('ecommerce.searchPage');
 // })->name('searchPage');
 
-Route::get('/productPage', function(){
-    return view('ecommerce.productPage');
-});
+
 
 Route::get('/category', function(){
     return view('ecommerce.category');

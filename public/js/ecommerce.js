@@ -33,8 +33,8 @@ const app = Vue.createApp({
             }
         },
         //searchResult
-        seeProduct(){
-            window.location.href = "/productPage";
+        seeProduct(id){
+            window.location.href = "/productPage/"+id;
         },
         //checkOut
         showCheckOut(){
