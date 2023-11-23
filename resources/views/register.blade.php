@@ -47,6 +47,7 @@
                   </div>
 
                 </div>
+                <div id="passwordFeedback" class="invalid-feedback mb-2">
                   Please provide a valid password (at least 8 characters).
                 </div>
                 <div class="d-grid">
@@ -75,13 +76,13 @@
                 <input type="text" name="username" class="form-control mb-3" placeholder="Username">
                 <input type="text" name="email" class="form-control mb-3" placeholder="Email">
                 <div class="position-relative">
-                  <input type="password" id="password" name="password" class="form-control mb-3 respass" placeholder="Password">
-                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle"> //hello 
+                  <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password">
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
                     <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
                   </div>
                 </div>
                 <div class="position-relative">
-                  <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3 conpass" placeholder="Confirm Password">
+                  <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3 " placeholder="Confirm Password">
                   <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
                     <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
                   </div>
