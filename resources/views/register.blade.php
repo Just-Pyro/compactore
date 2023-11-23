@@ -40,7 +40,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
-                <div id="passWarning" class="position-relative border rounded-3 inputsize" :class="{'mb-4':mbp}">
+                <div id="passWarning" class="position-relative border rounded-3 inputsize" :class="{'mb-5':mbp}">
                   <input id="loginPassword" type="password" name="loginPassword" class="form-control py-2 " :class="{'is-valid':okPass, 'is-invalid':conPassword}" placeholder="Password" required>
                   <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
                     <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
@@ -58,8 +58,9 @@
                 <div class="col"><p class="fs-7"><a href="#">Forgot Password</a></p></div>
                 <div class="col"><p class="fs-7"><a href="#">Login with Phone Number</a></p></div>
               </div>
-
-              <p class="mx-auto" style="width:150px">New User? <a href="#" @click="change">Sign up</a></p>
+              <div class="d-flex justify-content-center">
+                <p class="text-center" style="width:150px">New User? <a href="#" @click="change">Sign up</a></p>
+              </div>
             </div>
           </div>
         </div>
@@ -67,20 +68,31 @@
           <div class="card mt-6">
             <div class="card-body shadow" style="height: 430px">
 
-              <h3 class="mb-4 mt-3 mx-3 fw-normal">Sign Up</h3>
+              <h3 class="mb-4 mt-3 mx-3 fw-normal d-flex justify-content-center">Sign Up</h3>
 
               <form action="/register" method="POST" class="mx-3" id="registerForm">
                 @csrf
                 <input type="text" name="username" class="form-control mb-3" placeholder="Username">
                 <input type="text" name="email" class="form-control mb-3" placeholder="Email">
-                <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password">
-                <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3" placeholder="Confirm Password">
+                <div class="position-relative">
+                  <input type="password" id="password" name="password" class="form-control mb-3 respass" placeholder="Password">
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
+                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
+                  </div>
+                </div>
+                <div class="position-relative">
+                  <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3 conpass" placeholder="Confirm Password">
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
+                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
+                  </div>
+                </div>
                 <div class="d-grid">
                   <button class="btn btn-dark mb-3" type="button" @click="checkPassword">SIGN UP</button>
                 </div>
               </form>
-
-              <p class="mx-auto" style="width:150px">Old User? <a href="#" @click="change">Log in</a></p>
+              <div class="d-flex justify-content-center">
+                <p class="text-center" style="width:150px">Old User? <a href="#" @click="change">Log in</a></p>
+              </div>
             </div>
           </div>
         </div>
