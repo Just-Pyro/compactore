@@ -82,14 +82,17 @@ const app = Vue.createApp({
         passToggle() {
             var eyeicon = document.getElementById("eyeicon");
             var x = document.getElementById("loginPassword");
+            var respass = document.getElementsByClassName({"respass","conpass");
             if (x.type === "password") {
               x.type = "text";
               eyeicon.classList.remove("fa-regular", "fa-eye-slash"); 
               eyeicon.classList.add("fa-regular", "fa-eye");
-            } else {
+            } else if {
               x.type = "password";
               eyeicon.classList.remove("fa-regular", "fa-eye");
               eyeicon.classList.add("fa-regular", "fa-eye-slash"); 
+            } else if {
+
             }
           }
           
