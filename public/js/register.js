@@ -14,12 +14,12 @@ const app = Vue.createApp({
         change() {
             this.isShown = !this.isShown;
         },
-        checkInputs(event){
+        async checkInputs(event){
+            
             this.conEmail = false;
             this.conPassword = false;;
-            this.mbe = true;
-            // this.mbp = true;
-
+            // this.mbe = true;
+            
             var email = document.getElementById('loginEmail').value;
             var pass = document.getElementById('loginPassword').value;
             var passfeedback = document.getElementById('passFeedback');
@@ -27,27 +27,37 @@ const app = Vue.createApp({
 
             if(email === ""){
                 event.preventDefault();
+
                 this.conEmail = true;
                 this.mbe = false;
                 passfeedback.style.display = "none";
+                emailfeedback.style.display = "block";
             }else{
                 if(this.validateEmail(email)){
                     this.okEmail = true;
+                    this.mbe = true;
                     
                     if(pass === ""){
                         event.preventDefault();
-                        passfeedback.style.display = "block";
                         this.conPassword = true;
                         this.mbp = false;
+                        passfeedback.style.display = "block";
                         emailfeedback.style.display = "none";
+                    }else{
+                        this.okPass = true;
                     }
 
-                    this.okPass = true;
+
                 }else{
                     event.preventDefault();
-                    this.conEmail = true;
+                    if(this.okEmail){
+                        this.okEmail = false;
+                    }
+                    this.mbp = true;
                     this.mbe = false;
+                    this.conEmail = true;
                     passfeedback.style.display = "none";
+                    emailfeedback.style.display = "block";
                 }
             }
         },
@@ -67,20 +77,8 @@ const app = Vue.createApp({
           
             // Test the email against the regex
             return emailRegex.test(email);
-        },
-        passToggle() {
-            var eyeicon = document.getElementById("eyeicon");
-            var x = document.getElementById("loginPassword");
-            if (x.type === "password") {
-              x.type = "text";
-              eyeicon.classList.remove("fa-regular", "fa-eye-slash"); 
-              eyeicon.classList.add("fa-regular", "fa-eye");
-            } else {
-              x.type = "password";
-              eyeicon.classList.remove("fa-regular", "fa-eye");
-              eyeicon.classList.add("fa-regular", "fa-eye-slash"); 
-            }
-          }
+        }
+          
     }
 }).mount("#app");
 
