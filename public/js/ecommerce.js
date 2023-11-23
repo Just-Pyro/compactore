@@ -73,7 +73,33 @@ const app = Vue.createApp({
             }
         },
         openStore(){
-            document.getElementById('formOpenStore').submit();
+            // const bio = document.getElementById('bio_input').value;
+            // const fullName = document.getElementById('fullname').value;
+            // const phoneNumber = document.getElementById('phoneNumber').value;
+            // const genderMale = document.getElementById('genderMale').value;
+            // const genderFemale = document.getElementById('genderFemale').value;
+            // const bday = document.getElementById('bday').value;
+            // const profileImg = document.querySelector('#profileImg');
+
+            // if(profileImg){
+            //     const prof = true;
+            // }else{
+            //     const prof = false;
+            // }
+
+            // if(bio != "" || fullName != "" || phoneNumber != "" || genderMale != "" || genderFemale != "" || bday != "" || prof == true){
+                document.getElementById('formOpenStore').submit();
+            //     console.log('here')
+            //     console.log(bio)
+            //     console.log(fullName)
+            //     console.log(phoneNumber)
+            //     console.log(genderMale)
+            //     console.log(genderFemale)
+            //     console.log(bday)
+            //     console.log(profileImg)
+            // }else{
+            //     alert('no profile yet');
+            // }
         },
         //for seller
         toggleClass(event) {

@@ -18,7 +18,6 @@ const app = Vue.createApp({
             
             this.conEmail = false;
             this.conPassword = false;;
-            // this.mbe = true;
             
             var email = document.getElementById('loginEmail').value;
             var pass = document.getElementById('loginPassword').value;
