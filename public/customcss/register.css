@@ -14,7 +14,6 @@
   background-position: right calc(0.375em + 0.1875rem) center;
 }
 #emailWarning .form-control.is-invalid:focus {
-  /* outline: none; */
   box-shadow: 2px 2px rgb(236, 108, 108);
 }
 
@@ -23,7 +22,6 @@
   background-position: right calc(0.375em + 0.1875rem) center;
 }
 #emailWarning .form-control:valid, .form-control.is-valid:focus {
-  /* outline: none; */
   box-shadow: 2px 2px rgb(108, 236, 123);
 }
 
@@ -31,7 +29,6 @@
   background-position: right calc(1.99em + 0.1875rem) center;
 }
 #passWarning .form-control.is-invalid:focus {
-  /* outline: none; */
   box-shadow: 2px 2px rgb(236, 108, 108);
 }
 
@@ -40,6 +37,5 @@
   background-position: right calc(1.99em + 0.1875rem) center;
 }
 #passWarning .form-control:valid, .form-control.is-valid:focus {
-  /* outline: none; */
   box-shadow: 2px 2px rgb(108, 236, 123);
 }

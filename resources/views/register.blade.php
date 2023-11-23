@@ -30,7 +30,7 @@
               <form action="/login" method="POST" class="mx-3">
                 @csrf
                 <div id="emailWarning" class="border rounded-3 mb-4 inputsize">
-                  <input id="loginEmail" type="text" name="loginEmail" class="form-control py-2" :class="{'is-valid':okEmail, 'is-invalid':conEmail, 'mb-4':mbe}" placeholder="Email" required>
+                  <input id="loginEmail" type="text" name="loginEmail" class="form-control py-2" :class="{'is-valid':okEmail, 'is-invalid':conEmail, 'mb-5':mbe}" placeholder="Email" required>
                   <div id="emailFeedback" class="invalid-feedback mb-2">
                     Please provide a valid email.
                   </div>
@@ -41,7 +41,7 @@
                 @enderror
 
                 <div id="passWarning" class="position-relative border rounded-3 mb-4 inputsize">
-                  <input id="loginPassword" type="password" name="loginPassword" class="form-control py-2 " :class="{'is-valid':okPass, 'is-invalid':conPassword, 'mb-4':mbp }" placeholder="Password" required>
+                  <input id="loginPassword" type="password" name="loginPassword" class="form-control py-2 " :class="{'is-valid':okPass, 'is-invalid':conPassword, 'mb-5':mbp }" placeholder="Password" required>
                   <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
                     <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
                   </div>
