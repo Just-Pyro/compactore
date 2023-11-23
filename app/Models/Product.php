@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Shop;
+use App\Models\ShopCart;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,5 +26,9 @@ class Product extends Model
 
     public function mediaFile(){
         return $this->hasMany(MediaFile::class, "product_id");
+    }
+
+    public function shopCart(){
+        return $this->belongsToMany(ShopCart::class);
     }
 }

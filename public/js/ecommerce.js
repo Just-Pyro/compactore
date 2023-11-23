@@ -4,7 +4,10 @@ const app = Vue.createApp({
             // for Profile
             isDisabled: true,
             imagePreview: null,
-            preloadedImages:[]
+            preloadedImages:[],
+            //for Add to Cart
+            // quantity: 1,
+            // productId: '{{ $product->id }}'
         }
     },
     methods: {
@@ -36,6 +39,26 @@ const app = Vue.createApp({
         seeProduct(id){
             window.location.href = "/productPage/"+id;
         },
+        // addToCart(){
+        //     fetch('/add-to-cart', {
+        //         method:'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'X-CSRF-TOKEN': '{{ csrf_token() }}',
+        //         },
+        //         body: JSON.stringify({
+        //             qty: this.quantity,
+        //             product_id: this.productId
+        //         })
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         alert('success');
+        //     })
+        //     .catch(error => {
+        //         console.error('Error adding product to cart', error);
+        //     })
+        // },
         //checkOut
         showCheckOut(){
             window.location.href='checkOut';
@@ -73,33 +96,7 @@ const app = Vue.createApp({
             }
         },
         openStore(){
-            // const bio = document.getElementById('bio_input').value;
-            // const fullName = document.getElementById('fullname').value;
-            // const phoneNumber = document.getElementById('phoneNumber').value;
-            // const genderMale = document.getElementById('genderMale').value;
-            // const genderFemale = document.getElementById('genderFemale').value;
-            // const bday = document.getElementById('bday').value;
-            // const profileImg = document.querySelector('#profileImg');
-
-            // if(profileImg){
-            //     const prof = true;
-            // }else{
-            //     const prof = false;
-            // }
-
-            // if(bio != "" || fullName != "" || phoneNumber != "" || genderMale != "" || genderFemale != "" || bday != "" || prof == true){
-                document.getElementById('formOpenStore').submit();
-            //     console.log('here')
-            //     console.log(bio)
-            //     console.log(fullName)
-            //     console.log(phoneNumber)
-            //     console.log(genderMale)
-            //     console.log(genderFemale)
-            //     console.log(bday)
-            //     console.log(profileImg)
-            // }else{
-            //     alert('no profile yet');
-            // }
+            document.getElementById('formOpenStore').submit();
         },
         //for seller
         toggleClass(event) {

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
             $table->index('product_id');
+            $table->string('productName');
             $table->integer('quantity');
             $table->float('price');
             $table->float('totalPrice');

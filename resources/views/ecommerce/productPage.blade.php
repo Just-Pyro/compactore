@@ -39,15 +39,23 @@
                         <div class="p-2" style="height: 200px;">
                             shipping Info
                         </div>
+                        
+                        {{-- <form @submit.prevent="addToCart"> --}}
                         <form action="/add-to-cart" method="post">
+                            @csrf
                             <div class="p-2">
                                 <label>Quantity:</label>
                                 <div style="width:70px">
+                                    {{-- <input v-model="quantity" name="qty" min="1" max="100" type="number" class="form-control" value="1"> --}}
+
                                     <input name="qty" min="1" max="100" type="number" class="form-control" value="1">
                                 </div>
                             </div>
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            {{-- <input type="hidden" v-model="productId" name="product_id" :value="product.id"> --}}
                             <div class="p-2">
-                                <button type="submit" class="btn btn-outline-dark me-2">Add to Cart</button><button class="btn btn-dark">Buy Now</button>
+                                <button type="submit" class="btn btn-outline-dark me-2">Add to Cart</button>
+                                <button class="btn btn-dark">Buy Now</button>
                             </div>
                         </form>
                     </div>
