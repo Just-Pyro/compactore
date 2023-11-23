@@ -30,6 +30,7 @@ const app = Vue.createApp({
 
                 this.conEmail = true;
                 this.mbe = false;
+                this.mbp = true;
                 passfeedback.style.display = "none";
                 emailfeedback.style.display = "block";
             }else{
