@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AddtoCart;
+use App\Models\Shop;
 use App\Models\Product;
 use App\Models\ShopCart;
+use App\Models\AddtoCart;
+use App\Models\MediaFile;
 use Illuminate\Http\Request;
 
 class ShopCartController extends Controller
@@ -64,8 +66,27 @@ class ShopCartController extends Controller
     }
 
     public function displayUserCart(){
-        
+        $user = auth()->user();
+        $cart = $user->cart;
 
-        return view('ecommerce.cart');
+        //this will return a collection
+        $addtoCart = AddtoCart::where('shopCart_id', $cart->id)->get();
+
+        $cartProducts = [];
+        $productImages = [];
+        $shop = null;
+        
+        //mo loop ka sa collection and then i store nimo sa $cartProducts
+        foreach ($addtoCart as $key => $value) {
+            $cartProducts[$key] = $value->toArray();
+
+            $images = MediaFile::where('product_id', $value['product_id'])->first();
+            $product = Product::find($value['product_id']);
+            $shop = Shop::find($product->shop_id);
+
+            $productImages[$key] = $images;
+        }
+
+        return view('ecommerce.cart', ["cartProducts"=>$cartProducts, "productImages" => $productImages, "shop" => $shop]);
     }
 }
