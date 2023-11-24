@@ -29,9 +29,7 @@ Route::get('/ecommerce', function() {
 //forSearching Ecomerce
 Route::get('/search',[SearchController::class,'search'])->name('search');//nagamit
 
-Route::get('/cart', function(){
-    return view('ecommerce.cart');
-});
+Route::get('/cart', [ShopCartController::class,'displayUserCart']);
 
 Route::get('/productPage/{id}', [ProductController::class, 'productPage']);//nagamit
 Route::post('/add-to-cart', [ShopCartController::class, 'add']);

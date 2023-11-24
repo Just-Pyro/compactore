@@ -11,18 +11,17 @@ class ShopCart extends Model
     use HasFactory;
 
     protected $fillable = [
-        "user_id",
-        "product_id",
-        "productName",
-        "quantity",
-        "price",
-        "totalPrice"
+        "user_id"
     ];
 
     protected $table = "shopcarts";
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function addtoCart(){
+        return $this->hasMany(AddtoCart::class);
     }
 
     public function products(){
