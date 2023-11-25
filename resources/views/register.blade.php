@@ -61,10 +61,10 @@
 
               <form action="/register" method="POST" class="mx-3" id="registerForm">
                 @csrf
-                <input type="text" name="username" class="form-control mb-3" placeholder="Username">
-                <input type="text" name="email" class="form-control mb-3" placeholder="Email">
-                <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password">
-                <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3" placeholder="Confirm Password">
+                <input type="text" name="username" class="form-control mb-3" placeholder="Username" required>
+                <input type="text" name="email" class="form-control mb-3" placeholder="Email" required>
+                <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password" required>
+                <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3" placeholder="Confirm Password" required>
                 <div class="d-grid">
                   <button class="btn btn-dark mb-3" type="button" @click="checkPassword">SIGN UP</button>
                 </div>

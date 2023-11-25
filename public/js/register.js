@@ -64,10 +64,13 @@ const app = Vue.createApp({
         checkPassword(){
             const pass = document.getElementById('password').value;
             const conpass = document.getElementById('confirmPassword').value;
+            // var email = document.getElementById('loginEmail').value;
+            // var loginpass = document.getElementById('loginPassword').value;
 
             if(pass != conpass){
                 alert('password and confirm password did not match!');
             }else{
+                // if(email )
                 document.getElementById('registerForm').submit();
             }
         },

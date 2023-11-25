@@ -31,8 +31,8 @@ class UserController extends Controller
     }
     public function register(Request $request){
         $dataforUser = $request->validate([
-            'password'=> ['required', 'min:8','max:200'],
-            'email'=> ['required','email']
+            'password'=> 'required|min:8|max:200',
+            'email'=> 'required|email'
         ]);
         
         $dataforUser['password'] = Hash::make($dataforUser['password']);
