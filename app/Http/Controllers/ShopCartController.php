@@ -69,24 +69,30 @@ class ShopCartController extends Controller
         $user = auth()->user();
         $cart = $user->cart;
 
-        //this will return a collection
-        $addtoCart = AddtoCart::where('shopCart_id', $cart->id)->get();
+        if($cart){
+            //this will return a collection
+            $addtoCart = AddtoCart::where('shopCart_id', $cart->id)->get();
 
-        $cartProducts = [];
-        $productImages = [];
-        $shop = null;
-        
-        //mo loop ka sa collection and then i store nimo sa $cartProducts
-        foreach ($addtoCart as $key => $value) {
-            $cartProducts[$key] = $value->toArray();
+            $cartProducts = [];
+            $productImages = [];
+            $shop = null;
+            
+            //mo loop ka sa collection and then i store nimo sa $cartProducts
+            foreach ($addtoCart as $key => $value) {
+                $cartProducts[$key] = $value->toArray();
 
-            $images = MediaFile::where('product_id', $value['product_id'])->first();
-            $product = Product::find($value['product_id']);
-            $shop = Shop::find($product->shop_id);
+                $images = MediaFile::where('product_id', $value['product_id'])->first();
+                $product = Product::find($value['product_id']);
+                $shop = Shop::find($product->shop_id);
 
-            $productImages[$key] = $images;
+                $productImages[$key] = $images;
+            }
+
+            return view('ecommerce.cart', ["cartProducts"=>$cartProducts, "productImages" => $productImages, "shop" => $shop]);
         }
 
-        return view('ecommerce.cart', ["cartProducts"=>$cartProducts, "productImages" => $productImages, "shop" => $shop]);
+        $cartProducts = null;
+
+        return view('ecommerce.cart', ["cartProducts"=>$cartProducts]);
     }
 }

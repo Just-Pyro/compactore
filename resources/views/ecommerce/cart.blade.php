@@ -29,6 +29,9 @@
                 @foreach ($cartProducts as $key => $innerArray)
                     <div class="row mt-2" style="background: white;">
                         {{-- 1 item --}}
+                        {{-- @php
+                            dump($innerArray['id']);
+                        @endphp --}}
                         <div class="col p-2 d-flex flex-column">
                             <div class="pt-2 px-0">
                                 <div class="form-check">
@@ -47,7 +50,7 @@
                                         @else
                                             <img src="{{ asset('/compactoreCircleFav.png') }}" class="ms-5" style="border: solid 1px; display: inline-block; height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                                         @endif
-                                        <span class="align-self-start fw-medium mx-3 productName" @click="seeProduct">{{ $innerArray['productName'] }}</span>
+                                        <span class="align-self-start fw-medium mx-3 productName {{ $innerArray['id'] }}" @click="seeProduct({{ $innerArray['id'] }})">{{ $innerArray['productName'] }}</span>
                                     </div>
                                 </div>
                                 <div class="col-1 p-2 d-flex">
@@ -69,7 +72,9 @@
                     </div>
                 @endforeach
             @else
-                <p>No product added yet</p>
+                <div class="row mt-2 bg-white rounded">
+                    <p class="my-5 text-center fw-medium">No product added yet</p>
+                </div>
             @endif
             <div class="mb-5 pb-5"></div>
         </div>

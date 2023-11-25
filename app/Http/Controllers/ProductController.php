@@ -65,12 +65,17 @@ class ProductController extends Controller
         return view('seller.myProducts', compact('mediaFiles', 'profile','products'));
     }
 
-    public function productPage(Request $request, $id){
+    public function productPage($id){
         $product = Product::find($id);
 
-        $shop = Shop::find($product->shop_id);
+        if($product){
+            $shop = Shop::find($product->shop_id);
 
-        $images = $product->mediaFile;
-        return view('ecommerce.productPage',compact('product', 'images', 'shop'));
+            $images = $product->mediaFile;
+
+            return view('ecommerce.productPage',compact('product', 'images', 'shop'));
+        }
+        return back();
+        
     }
 }
