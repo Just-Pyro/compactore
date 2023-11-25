@@ -84,6 +84,19 @@ const app = Vue.createApp({
                 }
             }
         },
+        checkAll(){
+            const allProduct = document.getElementById('allProduct');
+            const all = document.getElementsByClassName('all');
+
+            for(var i = 0; i < all.length; i++){
+                if(allProduct.checked == true){
+                    all[i].checked = true;
+                }
+                else{
+                    all[i].checked = false;
+                }
+            }
+        },
         //checkOut
         showCheckOut(){
             window.location.href='checkOut';
