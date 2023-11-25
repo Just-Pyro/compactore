@@ -39,26 +39,51 @@ const app = Vue.createApp({
         seeProduct(id){
             window.location.href = "/productPage/"+id;
         },
-        // addToCart(){
-        //     fetch('/add-to-cart', {
-        //         method:'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'X-CSRF-TOKEN': '{{ csrf_token() }}',
-        //         },
-        //         body: JSON.stringify({
-        //             qty: this.quantity,
-        //             product_id: this.productId
-        //         })
-        //     })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         alert('success');
-        //     })
-        //     .catch(error => {
-        //         console.error('Error adding product to cart', error);
-        //     })
-        // },
+        // for userCart
+        check(id){
+            const text = 'product';
+            const text2 = 'shop'
+            const shop = document.getElementsByClassName(text2.concat("-",id));
+            const product = document.getElementsByClassName(text.concat("-",id));
+
+            console.log(text.concat(id));
+
+            for(var i = 0; i < product.length; i++){
+                if(shop[i].checked == true){
+                    product[i].checked = true;
+                }else{
+                    product[i].checked = false;
+                }
+
+                // if(product[i].checked == true){
+                //     shop[i].checked = true;
+                // }else{
+                //     shop[i].checked = false;
+                // }
+            }
+        },
+        checkProduct(id){
+            const text = 'product';
+            const text2 = 'shop'
+            const shop = document.getElementsByClassName(text2.concat("-",id));
+            const product = document.getElementsByClassName(text.concat("-",id));
+
+            console.log(text.concat(id));
+
+            for(var i = 0; i < product.length; i++){
+                // if(shop[i].checked == true){
+                //     product[i].checked = true;
+                // }else{
+                //     product[i].checked = false;
+                // }
+
+                if(product[i].checked == true){
+                    shop[i].checked = true;
+                }else{
+                    shop[i].checked = false;
+                }
+            }
+        },
         //checkOut
         showCheckOut(){
             window.location.href='checkOut';

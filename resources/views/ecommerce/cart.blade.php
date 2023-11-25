@@ -32,7 +32,7 @@
                         <div class="col p-2 d-flex flex-column">
                             <div class="pt-2 px-0">
                                 <div class="form-check">
-                                    <input type="checkbox" id="shop" class="form-control-check">
+                                    <input type="checkbox" class="form-control-check shop-{{ $shop->id }}" @click="check({{ $shop->id }})">
                                     <label class="form-check-label ms-5" for="shop">{{ $shop->shopName }}</label>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="row pt-2">
                                 <div class="col p-2">
                                     <div class="form-check m-1 d-flex">
-                                        <input type="checkbox" id="product" class="form-control-check">
+                                        <input type="checkbox" id="product" class="form-control-check product-{{ $shop->id }}" value="{{ $innerArray['id'] }}" @click="checkProduct({{ $shop->id }})">
                                         @if(isset($productImages[$key]))
                                             <img src="{{ asset($productImages[$key]->file_path . $productImages[$key]->file_name) }}" class="ms-5" style="border: solid 1px; display: inline-block; height:12rem; width: 12rem; object-fit:cover;" class="card-img-top" :alt="">
                                         @else
