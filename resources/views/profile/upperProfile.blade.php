@@ -39,7 +39,7 @@
                         @csrf
                         <span class="float-end" id="bioEdit" @click="enableEdit"><i class="fa-regular fa-pen-to-square"></i> Edit</span>
                         <span class="float-end mx-2" id="saveBio" @click="submitBio"><i class="fa-regular fa-circle-check"></i></span>
-                        <span class="float-end" id="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span>
+                        <span class="float-end" id="cancelBio" @click="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span>
                         <p class="fw-normal">Bio</p>
                         <hr>
                         <textarea id="bio_input" ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" :disabled="isDisabled">{{ $profile->bio }}</textarea>
@@ -71,7 +71,7 @@
                         @csrf
                         <span class="float-end" id="bioEdit" @click="enableEdit"><i class="fa-regular fa-pen-to-square"></i> Edit</span>
                         <span class="float-end mx-2" id="saveBio" @click="submitBio"><i class="fa-regular fa-circle-check"></i></span>
-                        <span class="float-end" id="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span>
+                        <span class="float-end" id="cancelBio" @click="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span>
                         <p class="fw-normal">Bio</p>
                         <hr>
                         <textarea id="bio_input" ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" :disabled="isDisabled"></textarea>
