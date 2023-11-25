@@ -41,9 +41,9 @@
                 @enderror
 
                 <div id="passWarning" class="position-relative border rounded-3 inputsize" :class="{'mb-5':mbp}">
-                  <input id="loginPassword" type="password" name="loginPassword" class="form-control py-2 " :class="{'is-valid':okPass, 'is-invalid':conPassword}" placeholder="Password" required>
-                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
-                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
+                  <input id="loginPassword" type="password" name="loginPassword" class="form-control py-2 pass" :class="{'is-valid':okPass, 'is-invalid':conPassword}" placeholder="Password" required>
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle()">
+                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon1"></i>
                   </div>
 
                 </div>
@@ -76,15 +76,15 @@
                 <input type="text" name="username" class="form-control mb-3" placeholder="Username">
                 <input type="text" name="email" class="form-control mb-3" placeholder="Email">
                 <div class="position-relative">
-                  <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password">
-                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
-                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
+                  <input type="password" id="password" name="password" class="form-control mb-3 pass" placeholder="Password">
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle()">
+                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon2"></i>
                   </div>
                 </div>
                 <div class="position-relative">
-                  <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3 " placeholder="Confirm Password">
-                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
-                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
+                  <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3 pass" placeholder="Confirm Password">
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle()">
+                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon3"></i>
                   </div>
                 </div>
                 <div class="d-grid">
