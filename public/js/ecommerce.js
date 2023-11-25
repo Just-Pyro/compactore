@@ -4,7 +4,10 @@ const app = Vue.createApp({
             // for Profile
             isDisabled: true,
             imagePreview: null,
-            preloadedImages:[]
+            preloadedImages:[],
+            //for Add to Cart
+            // quantity: 1,
+            // productId: '{{ $product->id }}'
         }
     },
     methods: {
@@ -33,12 +36,76 @@ const app = Vue.createApp({
             }
         },
         //searchResult
-        seeProduct(){
-            window.location.href = "/productPage";
+        seeProduct(id){
+            window.location.href = "/productPage/"+id;
+        },
+        // for userCart
+        check(id){
+            const text = 'product';
+            const text2 = 'shop'
+            const shop = document.getElementsByClassName(text2.concat("-",id));
+            const product = document.getElementsByClassName(text.concat("-",id));
+
+            console.log(text.concat(id));
+
+            for(var i = 0; i < product.length; i++){
+                if(shop[i].checked == true){
+                    product[i].checked = true;
+                }else{
+                    product[i].checked = false;
+                }
+            }
+        },
+        checkProduct(id){
+            const text = 'product';
+            const text2 = 'shop'
+            const shop = document.getElementsByClassName(text2.concat("-",id));
+            const product = document.getElementsByClassName(text.concat("-",id));
+
+            console.log(text.concat(id));
+
+            for(var i = 0; i < product.length; i++){
+                if(product[i].checked == true){
+                    shop[i].checked = true;
+                }else{
+                    shop[i].checked = false;
+                }
+            }
+        },
+        checkAll(){
+            const allProduct = document.getElementById('allProduct');
+            const all = document.getElementsByClassName('all');
+
+            for(var i = 0; i < all.length; i++){
+                if(allProduct.checked == true){
+                    all[i].checked = true;
+                }
+                else{
+                    all[i].checked = false;
+                }
+            }
         },
         //checkOut
         showCheckOut(){
-            window.location.href='checkOut';
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var counter = 0;
+            for(var i = 0; i < checkboxes.length; i++){
+                if(checkboxes[i].checked == true){
+                    counter = i;
+                    // console.log(checkboxes[i]);
+                }
+            }
+
+            // console.log(counter);
+
+            if(counter > 0){
+                window.location.href='checkOut';
+            }else{
+                // alert("select a product");
+                
+                var modalInstance = new bootstrap.Modal(document.getElementById('selectProductModal'));
+                modalInstance.show();
+            }
         },
         // profile
         enableEdit() {

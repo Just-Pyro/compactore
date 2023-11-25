@@ -17,8 +17,7 @@ const app = Vue.createApp({
         async checkInputs(event){
             
             this.conEmail = false;
-            this.conPassword = false;;
-            // this.mbe = true;
+            this.conPassword = false;
             
             var email = document.getElementById('loginEmail').value;
             var pass = document.getElementById('loginPassword').value;

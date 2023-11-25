@@ -35,20 +35,21 @@
                 @if(isset($results))
                     <h5>Search Results for "{{ $query }}"</h5>
                     @foreach($results as $result)
-                        {{-- Display your search results here --}}
-                        {{-- Example: --}}
                         <div class="row align-items-center product">
-                            <div class="col-sm-6 col-lg-4 col-xl-3 my-5" @click="seeProduct">
+                            <div class="col-sm-6 col-lg-4 col-xl-3 my-5" @click="seeProduct({{ $result->id }})">
                                 <div class="card mx-auto shadow" style="width: 16rem; height: 18rem;">
-                                    <img sr="{{ asset($result->)}}" style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                                    @if($result->mediaFile->isNotEmpty())
+                                        <img src="{{ asset($result->mediaFile->first()->file_path . $result->mediaFile->first()->file_name) }}" style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                                    @else
+                                        <img src="{{ asset('/compactoreCircleFav.png') }}" style="height:12rem; object-fit:cover;" class="card-img-top" alt="">
+                                    @endif
                                     <div class="card-body bg-light" style="height: 10rem;">
-                                        <p class="card-title productname">{{ $result->productName }}</p>
+                                        <p class="card-title productname" style="white-space:nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $result->productName }}</p>
                                         <p class="card-text text-danger price">{{$result->price}}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{-- <p>{{ $result->name }}</p> --}}
                     @endforeach
                 @endif
             </div>

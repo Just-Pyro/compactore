@@ -1,17 +1,19 @@
-@if ($user)
+@if($user)
 <div class="row">
     <div class="col-3 p-2">
+        @if($profile)
         <div class="rounded bg-white p-3 text-center">
-            @if($profile && $profile->profileImg)
+            @if($profile->profileImg)
                 <div class="d-flex justify-content-center align-items-center mt-4">
-                    <img src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                    <img id="profileImg" src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
                 </div>
             @else
                 <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
             @endif
-            <p class="fw-medium m-0">{{ $user->username }}</p>
+            <p class="fw-medium m-0">{{ $profile->username }}</p>
             <p class="fw-normal">{{ auth()->user()->email }}</p>
         </div>
+        @endif
     </div>
 @else
 <div class="row">
@@ -40,7 +42,7 @@
                         <span class="float-end" id="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span>
                         <p class="fw-normal">Bio</p>
                         <hr>
-                        <textarea ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" :disabled="isDisabled">{{ $profile->bio }}</textarea>
+                        <textarea id="bio_input" ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" :disabled="isDisabled">{{ $profile->bio }}</textarea>
                     </form>
                 </div>
                 <div class="col">
@@ -72,7 +74,7 @@
                         <span class="float-end" id="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span>
                         <p class="fw-normal">Bio</p>
                         <hr>
-                        <textarea ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" :disabled="isDisabled"></textarea>
+                        <textarea id="bio_input" ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" :disabled="isDisabled"></textarea>
                     </form>
                 </div>
                 <div class="col">

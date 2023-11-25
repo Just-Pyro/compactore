@@ -69,7 +69,7 @@
                             <form action="/create-updateProfile" method="post" class="mt-4">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ auth()->user()->username }}" disabled>
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ $profile->username }}" disabled>
                                     <label for="username">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -130,7 +130,7 @@
                             <form action="/create-updateProfile" method="post" class="mt-4">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ auth()->user()->username }}" disabled>
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" disabled>
                                     <label for="username">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">

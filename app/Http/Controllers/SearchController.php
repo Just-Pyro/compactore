@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\MediaFile;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -15,7 +16,7 @@ class SearchController extends Controller
     public function search()
     {
         $query = request('query');
-        $results = Product::where('productName', 'LIKE', '%' . $query . '%')->get();
+        $results = Product::with('mediaFile')->where('productName', 'LIKE', '%' . $query . '%')->get();
 
         return view('ecommerce.searchPage', compact('results', 'query'));
     }

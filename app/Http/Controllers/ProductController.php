@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Shop;
 use App\Models\Product;
 use App\Models\MediaFile;
 use Illuminate\Http\Request;
@@ -62,5 +63,14 @@ class ProductController extends Controller
         $profile = auth()->user()->profile;
         $products = $profile->shop->product;
         return view('seller.myProducts', compact('mediaFiles', 'profile','products'));
+    }
+
+    public function productPage(Request $request, $id){
+        $product = Product::find($id);
+
+        $shop = Shop::find($product->shop_id);
+
+        $images = $product->mediaFile;
+        return view('ecommerce.productPage',compact('product', 'images', 'shop'));
     }
 }
