@@ -34,9 +34,9 @@ class ProductController extends Controller
     
             $imageName = "{$shop->id}_{$originalName}_{$timestampCounter}.{$extension}";//then gisumpay nimo tanan
 
-            $destinationPath = public_path('uploads/store/'.$shop->shopName.'/');
+            $destinationPath = public_path('uploads/store/'.$shop->shopName.'/');//ang name sa folder nga sudlan sa media is ang name pud sa Shop
 
-            if (!File::isDirectory($destinationPath)) {
+            if (!File::isDirectory($destinationPath)) {//i check if nag exist ang folder, kung wala iya i create
                 File::makeDirectory($destinationPath, $mode = 0755, true, true);
             }
     

@@ -105,8 +105,8 @@
                         <div class="col">
                             @if($profile->profileImg)
                                 <div class="d-flex justify-content-center align-items-center mt-4">
-                                    <img v-if="imagePreview" :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
-                                    <img v-else src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                                    <img v-if="imagePreview" :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px; object-fit: cover;">
+                                    <img v-else src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px; object-fit: cover;">
                                 </div>
                             @else
                                 <div v-if="imagePreview" class="d-flex justify-content-center align-items-center mt-4">

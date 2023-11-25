@@ -5,7 +5,7 @@
         <div class="rounded bg-white p-3 text-center">
             @if($profile->profileImg)
                 <div class="d-flex justify-content-center align-items-center mt-4">
-                    <img id="profileImg" src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                    <img id="profileImg" src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px; object-fit: cover;">
                 </div>
             @else
                 <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
