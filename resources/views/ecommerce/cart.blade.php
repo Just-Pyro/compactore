@@ -86,12 +86,13 @@
                 <span id="selectVoucher" data-bs-toggle="modal" data-bs-target="#selectVoucherModal">Select Voucher</span>
             </div>
             <div class="d-grid">
-                <button class="btn btn-outline-warning" @click="showCheckOut">Check Out</button>
+                <button class="btn btn-outline-warning" data-toggle="modal" data-target="#selectProductModal" @click="showCheckOut">Check Out</button>
             </div>
         </div>
     </div>
     <!-- Modals -->
     {{-- Modal for Compactore Voucher --}}
+    @include('modals/selectProductEcommerce')
     @include('modals/compactoreVoucher')
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>

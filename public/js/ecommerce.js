@@ -54,12 +54,6 @@ const app = Vue.createApp({
                 }else{
                     product[i].checked = false;
                 }
-
-                // if(product[i].checked == true){
-                //     shop[i].checked = true;
-                // }else{
-                //     shop[i].checked = false;
-                // }
             }
         },
         checkProduct(id){
@@ -71,12 +65,6 @@ const app = Vue.createApp({
             console.log(text.concat(id));
 
             for(var i = 0; i < product.length; i++){
-                // if(shop[i].checked == true){
-                //     product[i].checked = true;
-                // }else{
-                //     product[i].checked = false;
-                // }
-
                 if(product[i].checked == true){
                     shop[i].checked = true;
                 }else{
@@ -99,7 +87,25 @@ const app = Vue.createApp({
         },
         //checkOut
         showCheckOut(){
-            window.location.href='checkOut';
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var counter = 0;
+            for(var i = 0; i < checkboxes.length; i++){
+                if(checkboxes[i].checked == true){
+                    counter = i;
+                    // console.log(checkboxes[i]);
+                }
+            }
+
+            // console.log(counter);
+
+            if(counter > 0){
+                window.location.href='checkOut';
+            }else{
+                // alert("select a product");
+                
+                var modalInstance = new bootstrap.Modal(document.getElementById('selectProductModal'));
+                modalInstance.show();
+            }
         },
         // profile
         enableEdit() {
