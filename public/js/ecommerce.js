@@ -6,8 +6,6 @@ const app = Vue.createApp({
             imagePreview: null,
             preloadedImages:[],
             //for Add to Cart
-            // quantity: 1,
-            // productId: '{{ $product->id }}'
         }
     },
     methods: {
@@ -57,15 +55,15 @@ const app = Vue.createApp({
             }
         },
         checkProduct(id){
-            const text = 'product';
+            const text = 'input';
             const text2 = 'shop'
-            const shop = document.getElementsByClassName(text2.concat("-",id));
-            const product = document.getElementsByClassName(text.concat("-",id));
+            const shop = document.getElementsByClassName(text2.concat("-",id));//shop check input 
+            const input = document.getElementsByClassName(text.concat("-",id));//product check input
 
             console.log(text.concat(id));
 
-            for(var i = 0; i < product.length; i++){
-                if(product[i].checked == true){
+            for(var i = 0; i < input.length; i++){
+                if(input[i].checked == true){
                     shop[i].checked = true;
                 }else{
                     shop[i].checked = false;
@@ -92,17 +90,30 @@ const app = Vue.createApp({
             for(var i = 0; i < checkboxes.length; i++){
                 if(checkboxes[i].checked == true){
                     counter = i;
-                    // console.log(checkboxes[i]);
                 }
             }
 
-            // console.log(counter);
-
             if(counter > 0){
-                window.location.href='checkOut';
+                // window.location.href='checkOut';
+                var product = document.getElementsByClassName('forProduct');
+                var classIds = [];
+                for(var i = 0; i < product.length; i++){
+                    console.log(product[i].checked);
+                    if(product[i].checked == true){
+                        // console.log(product[i].classList);
+                        var classList = product[i].classList;
+
+                        for(var j = 0; j < classList.length; j++){
+                            console.log(classList[j]);
+                            if(classList[j].includes('addtoCart-') || classList[j].includes('product-')){
+                                classIds.push(classList[j]);
+                            }
+                        }
+                    }
+                }
+
+                window.location.href = '/checkOut/' + classIds;
             }else{
-                // alert("select a product");
-                
                 var modalInstance = new bootstrap.Modal(document.getElementById('selectProductModal'));
                 modalInstance.show();
             }

@@ -43,9 +43,7 @@ Route::get('/category', function(){
     return view('ecommerce.category');
 });
 
-Route::get('/checkOut', function(){
-    return view('ecommerce.checkOut');
-});
+Route::get('/checkOut/{ids}',[ShopCartController::class, 'checkout']);//
 
 // all Profile
 Route::get('/profile', function(){//nagamit

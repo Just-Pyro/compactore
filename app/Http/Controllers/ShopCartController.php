@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\ShopCart;
 use App\Models\AddtoCart;
 use App\Models\MediaFile;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ShopCartController extends Controller
@@ -94,5 +95,16 @@ class ShopCartController extends Controller
         $cartProducts = null;
 
         return view('ecommerce.cart', ["cartProducts"=>$cartProducts]);
+    }
+
+    public function checkout($ids){
+        dump($ids);
+
+        $ids = explode(',', $ids);
+        $idArray = [];
+
+        foreach($ids as $id){
+            $idArray = Str::after($id, "-");
+        }
     }
 }
