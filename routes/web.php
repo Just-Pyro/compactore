@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SwapPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
@@ -22,17 +23,17 @@ Route::post('/logout', [UserController::class,'logout']);//nagamit
 Route::post('/login', [UserController::class,'login']);//nagamit
 
 //ecommerce
-Route::get('/ecommerce', function() {
+Route::get('/ecommerce', function() {//nagamit
     return view('ecommerce.ecommerce');
 });
 
 //forSearching Ecomerce
 Route::get('/search',[SearchController::class,'search'])->name('search');//nagamit
 
-Route::get('/cart', [ShopCartController::class,'displayUserCart']);
+Route::get('/cart', [ShopCartController::class,'displayUserCart']);//nagamit
 
 Route::get('/productPage/{id}', [ProductController::class, 'productPage']);//nagamit
-Route::post('/add-to-cart', [ShopCartController::class, 'add']);
+Route::post('/add-to-cart', [ShopCartController::class, 'add']);//nagamit
 // Route::get('/searchPage', function(){
 //     return view('ecommerce.searchPage');
 // })->name('searchPage');
@@ -43,7 +44,7 @@ Route::get('/category', function(){
     return view('ecommerce.category');
 });
 
-Route::get('/checkOut/{ids}',[ShopCartController::class, 'checkout']);//
+Route::get('/checkOut/{ids}',[ShopCartController::class, 'checkout']);//nagamit
 
 // all Profile
 Route::get('/profile', function(){//nagamit
@@ -74,7 +75,7 @@ Route::get('/goto-addVoucher', function(){
     $profile = auth()->user()->profile;
     return view('seller.addVouchers',['profile'=>$profile]);//nagamit
 });
-Route::post('/addVoucher',[VoucherController::class, 'addVoucher']);
+Route::post('/addVoucher',[VoucherController::class, 'addVoucher']);//nagamit
 
 
 //adminn
@@ -121,6 +122,7 @@ Route::get('/surplusProductPage', function(){
 });
 
 //swapme
-Route::get('/swapme', function(){
+Route::get('/swapme', function(){//nagamit
     return view('trading.swapme');
 });
+Route::post('/addPost', [SwapPostController::class, 'addPost']);//nagamit

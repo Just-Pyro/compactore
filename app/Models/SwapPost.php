@@ -13,6 +13,7 @@ class SwapPost extends Model
     protected $fillable = [
         "user_id",
         "title",
+        "category",
         "description"
     ];
 
@@ -20,5 +21,9 @@ class SwapPost extends Model
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function swapMedia(){
+        return $this->hasMany(SwapmeMedia::class, "swapPost_id");
     }
 }
