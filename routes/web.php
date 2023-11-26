@@ -122,7 +122,5 @@ Route::get('/surplusProductPage', function(){
 });
 
 //swapme
-Route::get('/swapme', function(){//nagamit
-    return view('trading.swapme');
-});
+Route::get('/swapme', [SwapPostController::class, 'getallPost']);//nagamit
 Route::post('/addPost', [SwapPostController::class, 'addPost']);//nagamit

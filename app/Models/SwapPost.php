@@ -12,6 +12,7 @@ class SwapPost extends Model
 
     protected $fillable = [
         "user_id",
+        "author",
         "title",
         "category",
         "description"
