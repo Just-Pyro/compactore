@@ -98,13 +98,32 @@ class ShopCartController extends Controller
     }
 
     public function checkout($ids){
-        dump($ids);
+        // dump($ids);
 
         $ids = explode(',', $ids);
         $idArray = [];
 
         foreach($ids as $id){
-            $idArray = Str::after($id, "-");
+            $idArray[] = Str::after($id, "-");
+            // dump($idArray);
         }
+
+        // dump(count($idArray));
+
+        $forCheckout = [];
+        $images = [];
+        foreach($idArray as $i => $id){
+            $addtoCart = AddtoCart::find($id);
+            // dump($addtoCart->product_id);
+            $product = Product::find($addtoCart->product_id);
+            // ->where('product_id', $addtoCart->product_id)
+            $images[] = $product->mediaFile->first();
+            // dump($images);
+
+            $forCheckout[] = $addtoCart;
+        }
+
+        $Subtotal = null;
+        return view('ecommerce.checkOut', compact('forCheckout', 'images', 'Subtotal'));
     }
 }

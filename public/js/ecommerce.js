@@ -105,7 +105,7 @@ const app = Vue.createApp({
 
                         for(var j = 0; j < classList.length; j++){
                             console.log(classList[j]);
-                            if(classList[j].includes('addtoCart-') || classList[j].includes('product-')){
+                            if(classList[j].includes('addtoCart-')){
                                 classIds.push(classList[j]);
                             }
                         }
