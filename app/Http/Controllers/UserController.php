@@ -22,14 +22,16 @@ class UserController extends Controller
 
         if(auth()->attempt(['email'=> $loginData['loginEmail'],'password'=> $loginData['loginPassword']])){
             $request->session()->regenerate();
-            return redirect('/');
+            // return response()->json(['redirect' => '/ecommerce'], 200);?
+            return redirect('/ecommerce');
         }
-        return redirect("/");
+        // return response()->json(['message' => 'Login attempt failed'], 401);
+        return redirect('/');
     }
     public function register(Request $request){
         $dataforUser = $request->validate([
-            'password'=> ['required', 'min:8','max:200'],
-            'email'=> ['required','email']
+            'password'=> 'required|min:8|max:200',
+            'email'=> 'required|email'
         ]);
         
         $dataforUser['password'] = Hash::make($dataforUser['password']);

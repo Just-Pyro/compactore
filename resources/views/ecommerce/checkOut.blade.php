@@ -39,32 +39,43 @@
             </div>
         </div>
         {{-- for one product different store --}}
-        <div class="p-3 bg-white border-bottom">
-            {{-- same store different product --}}
-            <div class="row">
-                <div class="col">
-                    <div class="d-flex">
-                        <div style="width: 80px; height: 80px; border: solid 1px; display: inline-block;">product Image</div>
-                        <span class="align-self-start fw-medium mx-3 productName" @click="seeProduct">Product Name blablabla...</span>
+        @if($forCheckout)
+            @foreach ($forCheckout as $item => $innerItem)
+                <div class="p-3 bg-white border-bottom">
+                    {{-- same store different product --}}
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex">
+                                @foreach ($images as $image => $innerImage)
+                                    @if ($innerImage['product_id'] == $innerItem['product_id'])
+                                        <img src="{{ asset($innerImage['file_path'] . $innerImage['file_name']) }}" class="ms-5" style="width: 80px; height: 80px; border: solid 1px; display: inline-block; object-fit:cover;" class="card-img-top" :alt="">
+                                    @endif
+                                @endforeach
+                                <span class="align-self-start fw-medium mx-3 productName" @click="seeProduct">{{ $innerItem['productName'] }}</span>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="p-2 d-flex">
+                                <span class="align-self-center">{{ $innerItem['price'] }}</span>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="col-1 p-2 d-flex">
+                                <span class="align-self-center">{{ $innerItem['quantity'] }}</span>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="col-1 p-2 d-flex">
+                                <span class="align-self-center">{{ $innerItem['totalPrice'] }}</span>
+                                @php
+                                    $Subtotal += $innerItem['totalPrice'];
+                                @endphp
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-2">
-                    <div class="p-2 d-flex">
-                        <span class="align-self-center">P102.98</span>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="col-1 p-2 d-flex">
-                        <span class="align-self-center">2</span>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="col-1 p-2 d-flex">
-                        <span class="align-self-center">P205.96</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
         {{-- Shop Voucher --}}
         <div class="p-3 py-1 bg-white border-bottom">
             <div class="row">
@@ -108,6 +119,7 @@
                 </div>
             </div>
         </div>
+        {{-- total details --}}
         <div class="p-3 bg-light border-top">
             <div class="row">
                 <div class="col"></div>
@@ -118,13 +130,14 @@
                     <p>Total:</p>
                 </div>
                 <div class="col-1">
-                    <p class="text-end">P205.96</p>
+                    <p class="text-end">{{ $Subtotal }}</p>
                     <p class="text-end">P120</p>
                     <p class="text-end">-P40</p>
                     <p class="fw-bold fs-5 text-end">P285.96</p>
                 </div>
             </div>
         </div>
+        {{-- place order button --}}
         <div class="p-3 mb-3 bg-white border-top">
             <div class="row">
                 <div class="col"></div>

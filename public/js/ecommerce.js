@@ -4,7 +4,8 @@ const app = Vue.createApp({
             // for Profile
             isDisabled: true,
             imagePreview: null,
-            preloadedImages:[]
+            preloadedImages:[],
+            //for Add to Cart
         }
     },
     methods: {
@@ -33,15 +34,108 @@ const app = Vue.createApp({
             }
         },
         //searchResult
-        seeProduct(){
-            window.location.href = "/productPage";
+        seeProduct(id){
+            window.location.href = "/productPage/"+id;
+        },
+        // for userCart
+        check(id){
+            const text = 'product';
+            const text2 = 'shop'
+            const shop = document.getElementsByClassName(text2.concat("-",id));
+            const product = document.getElementsByClassName(text.concat("-",id));
+
+            console.log(text.concat(id));
+
+            for(var i = 0; i < product.length; i++){
+                if(shop[i].checked == true){
+                    product[i].checked = true;
+                }else{
+                    product[i].checked = false;
+                }
+            }
+        },
+        checkProduct(id){
+            const text = 'input';
+            const text2 = 'shop'
+            const shop = document.getElementsByClassName(text2.concat("-",id));//shop check input 
+            const input = document.getElementsByClassName(text.concat("-",id));//product check input
+
+            console.log(text.concat(id));
+
+            for(var i = 0; i < input.length; i++){
+                if(input[i].checked == true){
+                    shop[i].checked = true;
+                }else{
+                    shop[i].checked = false;
+                }
+            }
+        },
+        checkAll(){
+            const allProduct = document.getElementById('allProduct');
+            const all = document.getElementsByClassName('all');
+
+            for(var i = 0; i < all.length; i++){
+                if(allProduct.checked == true){
+                    all[i].checked = true;
+                }
+                else{
+                    all[i].checked = false;
+                }
+            }
         },
         //checkOut
         showCheckOut(){
-            window.location.href='checkOut';
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var counter = 0;
+            for(var i = 0; i < checkboxes.length; i++){
+                if(checkboxes[i].checked == true){
+                    counter = i;
+                }
+            }
+
+            if(counter > 0){
+                // window.location.href='checkOut';
+                var product = document.getElementsByClassName('forProduct');
+                var classIds = [];
+                for(var i = 0; i < product.length; i++){
+                    console.log(product[i].checked);
+                    if(product[i].checked == true){
+                        // console.log(product[i].classList);
+                        var classList = product[i].classList;
+
+                        for(var j = 0; j < classList.length; j++){
+                            console.log(classList[j]);
+                            if(classList[j].includes('addtoCart-')){
+                                classIds.push(classList[j]);
+                            }
+                        }
+                    }
+                }
+
+                window.location.href = '/checkOut/' + classIds;
+            }else{
+                var modalInstance = new bootstrap.Modal(document.getElementById('selectProductModal'));
+                modalInstance.show();
+            }
         },
         // profile
         enableEdit() {
+            var check = document.getElementById('saveBio');
+            var xmark = document.getElementById('cancelBio');
+
+            this.isDisabled = !this.isDisabled;
+            this.$nextTick(() => {
+                if (!this.isDisabled) {
+                    this.$refs.bioTextarea.focus();
+                    check.style.display = 'inline-block';
+                    xmark.style.display = 'inline-block';
+                }else{
+                    check.style.display = 'none';
+                    xmark.style.display = 'none';
+                }
+            });
+        },
+        cancelBio(){
             var check = document.getElementById('saveBio');
             var xmark = document.getElementById('cancelBio');
 

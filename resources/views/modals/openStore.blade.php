@@ -11,11 +11,11 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-floating mb-2">
-                                <input name="storeName" type="text" class="form-control" id="forStoreName" placeholder="Store Name">
+                                <input name="storeName" type="text" class="form-control" id="forStoreName" placeholder="Store Name" required>
                                 <label for="forStoreName">Store Name</label>
                             </div>
                             <div class="form-floating mb-2">
-                                <input name="contact" type="number" class="form-control" id="forContactNumber" placeholder="Contact">
+                                <input name="contact" type="number" class="form-control" id="forContactNumber" placeholder="Contact" required>
                                 <label for="forContactNumber">Contact Number</label>
                             </div>
                         </div>

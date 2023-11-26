@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -77,7 +78,13 @@ class ProfileController extends Controller
 
         $imageName = "{$user->id}_{$originalName}_{$timestampCounter}.{$extension}";//then gisumpay nimo tanan
 
-        $request->file('profilePic')->move(public_path('uploads/userprofile'), $imageName);//lastly, gi move ang file sa designated nga butanganan
+        $destinationPath = public_path('uploads/userprofile/');
+
+        if (!File::isDirectory($destinationPath)) {//i check if nag exist ang folder, kung wala iya i create
+            File::makeDirectory($destinationPath, $mode = 0755, true, true);
+        }
+        
+        $request->file('profilePic')->move($destinationPath, $imageName);//lastly, gi move ang file sa designated nga butanganan
 
         if (!$profile) {
             // If the user doesn't have a profile, create a new one

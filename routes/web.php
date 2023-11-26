@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SwapPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
@@ -8,45 +9,42 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\ShopCartController;
 
 Route::get('/', function () {//nagamit
     if (Auth::check()) {
         return redirect('/ecommerce');
     }
     return view('register');
-})->name('register');
+});
 
 Route::post('/register', [UserController::class, 'register']);//nagamit
 Route::post('/logout', [UserController::class,'logout']);//nagamit
 Route::post('/login', [UserController::class,'login']);//nagamit
 
 //ecommerce
-Route::get('/ecommerce', function() {
+Route::get('/ecommerce', function() {//nagamit
     return view('ecommerce.ecommerce');
 });
 
-//forSearchin Ecomerce
-Route::get('/search',[SearchController::class,'search'])->name('search');
+//forSearching Ecomerce
+Route::get('/search',[SearchController::class,'search'])->name('search');//nagamit
 
-Route::get('/cart', function(){
-    return view('ecommerce.cart');
-});
+Route::get('/cart', [ShopCartController::class,'displayUserCart']);//nagamit
 
+Route::get('/productPage/{id}', [ProductController::class, 'productPage']);//nagamit
+Route::post('/add-to-cart', [ShopCartController::class, 'add']);//nagamit
 // Route::get('/searchPage', function(){
 //     return view('ecommerce.searchPage');
 // })->name('searchPage');
 
-Route::get('/productPage', function(){
-    return view('ecommerce.productPage');
-});
+
 
 Route::get('/category', function(){
     return view('ecommerce.category');
 });
 
-Route::get('/checkOut', function(){
-    return view('ecommerce.checkOut');
-});
+Route::get('/checkOut/{ids}',[ShopCartController::class, 'checkout']);//nagamit
 
 // all Profile
 Route::get('/profile', function(){//nagamit
@@ -77,7 +75,7 @@ Route::get('/goto-addVoucher', function(){
     $profile = auth()->user()->profile;
     return view('seller.addVouchers',['profile'=>$profile]);//nagamit
 });
-Route::post('/addVoucher',[VoucherController::class, 'addVoucher']);
+Route::post('/addVoucher',[VoucherController::class, 'addVoucher']);//nagamit
 
 
 //adminn
@@ -124,6 +122,5 @@ Route::get('/surplusProductPage', function(){
 });
 
 //swapme
-Route::get('/swapme', function(){
-    return view('trading.swapme');
-});
+Route::get('/swapme', [SwapPostController::class, 'getallPost']);//nagamit
+Route::post('/addPost', [SwapPostController::class, 'addPost']);//nagamit

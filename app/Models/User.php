@@ -46,4 +46,12 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne(Profile::class, 'user_id');
     }
+
+    public function cart(){
+        return $this->hasOne(ShopCart::class, 'user_id');
+    }
+
+    public function swapPost(){
+        return $this->hasMany(SwapPost::class, 'user_id');
+    }
 }

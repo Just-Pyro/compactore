@@ -69,7 +69,7 @@
                             <form action="/create-updateProfile" method="post" class="mt-4">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ auth()->user()->username }}" disabled>
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ $profile->username }}" disabled>
                                     <label for="username">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -105,8 +105,8 @@
                         <div class="col">
                             @if($profile->profileImg)
                                 <div class="d-flex justify-content-center align-items-center mt-4">
-                                    <img v-if="imagePreview" :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
-                                    <img v-else src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px;">
+                                    <img v-if="imagePreview" :src="imagePreview" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px; object-fit: cover;">
+                                    <img v-else src="{{ asset('uploads/userprofile/' . $user->profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px; object-fit: cover;">
                                 </div>
                             @else
                                 <div v-if="imagePreview" class="d-flex justify-content-center align-items-center mt-4">
@@ -130,7 +130,7 @@
                             <form action="/create-updateProfile" method="post" class="mt-4">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" value="{{ auth()->user()->username }}" disabled>
+                                    <input name="username" type="text" class="form-control" id="username" placeholder="BrandonUser" disabled>
                                     <label for="username">Username</label>
                                 </div>
                                 <div class="form-floating mb-3">

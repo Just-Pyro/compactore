@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Shop;
 use App\Models\Product;
 use App\Models\MediaFile;
 use Illuminate\Http\Request;
@@ -33,9 +34,9 @@ class ProductController extends Controller
     
             $imageName = "{$shop->id}_{$originalName}_{$timestampCounter}.{$extension}";//then gisumpay nimo tanan
 
-            $destinationPath = public_path('uploads/store/'.$shop->shopName.'/');
+            $destinationPath = public_path('uploads/store/'.$shop->shopName.'/');//ang name sa folder nga sudlan sa media is ang name pud sa Shop
 
-            if (!File::isDirectory($destinationPath)) {
+            if (!File::isDirectory($destinationPath)) {//i check if nag exist ang folder, kung wala iya i create
                 File::makeDirectory($destinationPath, $mode = 0755, true, true);
             }
     
@@ -62,5 +63,19 @@ class ProductController extends Controller
         $profile = auth()->user()->profile;
         $products = $profile->shop->product;
         return view('seller.myProducts', compact('mediaFiles', 'profile','products'));
+    }
+
+    public function productPage($id){
+        $product = Product::find($id);
+
+        if($product){
+            $shop = Shop::find($product->shop_id);
+
+            $images = $product->mediaFile;
+
+            return view('ecommerce.productPage',compact('product', 'images', 'shop'));
+        }
+        return back();
+        
     }
 }

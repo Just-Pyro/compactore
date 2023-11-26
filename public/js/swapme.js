@@ -23,6 +23,9 @@ const app = Vue.createApp({
                 element[i].style.opacity = "0";
                 element[i].style.zIndex = "-1";
             }
+        },
+        submitPost(){
+            document.getElementById('addPostForm').submit();
         }
     }
 }).mount("body");

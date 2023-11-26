@@ -16,40 +16,31 @@
         {{-- display post per row --}}
         <div class="row">
             {{-- per single post --}}
-            <div class="col">
-                <div class="card border rounded mt-3 shadow-sm">
-                    <div class="card-body px-2">
-                        <div class="flex-column py-1">
-                            <button class="btn btn-outline-info float-end">Offer</button>
-                            <h5 class="fw-medium m-0">
-                                poster's name
-                            </h5>
-                            <p class="fw-normal">date</p>
-                            <p class="fw-medium m-0">Product Name</p>
-                            <p class="fw-normal">post description</p>
-                            <div class="border" style="height: 400px;">image</div>
-                            {{-- <img src="" alt=""> --}}
+            @if ($swapPosts)
+                @foreach ($swapPosts as $post)
+                    <div class="col-6">
+                        <div class="card border rounded mt-3 shadow-sm">
+                            <div class="card-body px-2">
+                                <div class="flex-column py-1">
+                                    <button class="btn btn-outline-info float-end">Offer</button>
+                                    <h5 class="fw-medium m-0">
+                                        {{ $post['author']}}
+                                    </h5>
+                                    <p class="fw-normal">{{ $post['updated_at']->timezone('Asia/Manila')->format('M j, Y h:i a')}}</p>
+                                    <p class="fw-medium m-0">{{ $post['title'] }}</p>
+                                    <p class="fw-normal">{{ $post['description'] }}</p>
+                                    @foreach ($swapMedia as $media)
+                                        @if ($media['swapPost_id'] == $post['id'])
+                                            <img src="{{ asset($media['file_path'].$media['file_name']) }}" alt="Image post" style="height: 400px; width: 618px; object-fit:contain; border: 1px solid lightgray; overflow-x: auto;">
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card border rounded mt-3 shadow-sm">
-                    <div class="card-body px-2">
-                        <div class="flex-column py-1">
-                            <button class="btn btn-outline-info float-end">Offer</button>
-                            <h5 class="fw-medium m-0">
-                                poster's name
-                            </h5>
-                            <p class="fw-normal">date</p>
-                            <p class="fw-medium m-0">Product Name</p>
-                            <p class="fw-normal">post description</p>
-                            <div class="border" style="height: 400px;">image</div>
-                            {{-- <img src="" alt=""> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
+            
         </div>
 
 
