@@ -8,7 +8,7 @@
     </form>
   </div>
 </header>
-<nav id="head1" class="navbar navbar-expand-lg bg-light navbar-light shadow">
+<nav id="head1" class="navbar navbar-expand-lg bg-light navbar-light">
   <div class="container">
     <a id="title" href="{{ url('/ecommerce') }}" class="navbar-brand">COMPACTORE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compactoreMenu" aria-controls="#compactoreMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,9 +16,12 @@
     </button>
 
     <div id="compactoreMenu" class="collapse navbar-collapse d-flex justify-content-end">
-      <div class="flex-grow-1">
+      <div class="flex-grow-1 position-relative">
         <form class="flex-grow-1 mx-2" method="GET" action="{{ route('search') }}">
           <input name="query" class="form-control" type="search" placeholder="Search products">
+            <div class="position-absolute top-50 end-0 translate-middle-y me-4">
+              <i class="fa-solid fa-magnifying-glass" style="color: #4e5155;"></i>
+            </div>
         </form>
       </div>
       <div class="" id="ulOptions">

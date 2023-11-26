@@ -17,7 +17,7 @@ const app = Vue.createApp({
         async checkInputs(event){
             
             this.conEmail = false;
-            this.conPassword = false;;
+            this.conPassword = false;
             
             var email = document.getElementById('loginEmail').value;
             var pass = document.getElementById('loginPassword').value;
@@ -80,6 +80,20 @@ const app = Vue.createApp({
           
             // Test the email against the regex
             return emailRegex.test(email);
+        },
+        passToggle(event, index) {
+            var el = event.currentTarget.firstElementChild;
+            var inputElement = this.$refs['passwordInputs'+index];
+
+            if(el.classList.contains('fa-eye-slash')){
+                el.classList.remove('fa-eye-slash');
+                el.classList.add('fa-eye');
+                inputElement.type = 'text';
+            }else{
+                el.classList.remove('fa-eye');
+                el.classList.add('fa-eye-slash');
+                inputElement.type = 'password';
+            }
         }
           
     }

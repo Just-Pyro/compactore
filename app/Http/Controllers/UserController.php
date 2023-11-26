@@ -25,7 +25,6 @@ class UserController extends Controller
             // return response()->json(['redirect' => '/ecommerce'], 200);?
             return redirect('/ecommerce');
         }
-
         // return response()->json(['message' => 'Login attempt failed'], 401);
         return redirect('/');
     }
@@ -50,5 +49,6 @@ class UserController extends Controller
         }
         
         return redirect('/ecommerce');
+    
     }
 }

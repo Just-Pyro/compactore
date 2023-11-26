@@ -1,0 +1,48 @@
+/* login */
+.inputsize{
+  height: 42px;
+}
+
+.form-control:focus{
+  outline: none;
+  box-shadow: 2px 2px rgb(178, 165, 165);
+  border-color: rgb(200, 190, 190);
+}
+
+#emailWarning .form-control:valid, .form-control.is-valid {
+  background-position: right calc(0.375em + 0.1875rem) center;
+}
+#emailWarning .form-control:valid:focus, .form-control.is-valid:focus {
+  box-shadow: 2px 2px rgb(108, 236, 123);
+}
+
+#emailWarning .form-control:invalid, .form-control.is-invalid {
+  background-position: right calc(0.375em + 0.1875rem) center;
+}
+#emailWarning .form-control.is-invalid:focus {
+  box-shadow: 2px 2px rgb(236, 108, 108);
+}
+
+
+#passWarning .form-control:valid, .form-control.is-valid {
+  background-position: right calc(1.99em + 0.1875rem) center;
+}
+#passWarning .form-control:valid:focus, .form-control.is-valid:focus {
+  box-shadow: 2px 2px rgb(108, 236, 123);
+}
+
+#passWarning .form-control:invalid, .form-control.is-invalid {
+  background-position: right calc(1.99em + 0.1875rem) center;
+}
+#passWarning .form-control.is-invalid:focus {
+  box-shadow: 2px 2px rgb(236, 108, 108);
+}
+
+#formBtn{
+  outline: none;
+  box-shadow: 2px 2px rgb(143, 140, 140)
+}
+
+a{
+  text-decoration: none;
+}
