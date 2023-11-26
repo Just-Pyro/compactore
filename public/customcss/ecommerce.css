@@ -1,5 +1,5 @@
 .carousel-item {
-    height: 400px;
+    height: 300px;
     object-fit: cover;
 }
 
@@ -12,10 +12,27 @@
     /* width: 18px; */
     height: 18px;
 }
-
-#category-title, .navCat {
-    background: white;
+#category-title{
+    pointer-events: none;
 }
+
+.navCat {
+    width: 190px;
+    padding: 1px 0px 1px 0px;
+    margin-bottom: 5px;
+}
+
+.navCat:hover{
+    border-radius: 5px;
+    background-color: rgba(92, 90, 90, 0.274);
+}
+
+.container-fluid .nav-item .active{
+    color: white !important;
+    background-color: #4e5155b0 !important;
+    
+}
+
 
 #switch {
     transition: transform 0.3s;

@@ -41,9 +41,9 @@
                 @enderror
 
                 <div id="passWarning" class="position-relative border rounded-3 inputsize" :class="{'mb-5':mbp}">
-                  <input id="loginPassword" type="password" name="loginPassword" class="form-control py-2 " :class="{'is-valid':okPass, 'is-invalid':conPassword}" placeholder="Password" required>
-                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
-                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
+                  <input id="loginPassword" type="password" ref="passwordInputs0" name="loginPassword" class="form-control py-2" :class="{'is-valid':okPass, 'is-invalid':conPassword}" placeholder="Password" required>
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle($event,0)">
+                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;"></i>
                   </div>
 
                 </div>
@@ -51,7 +51,7 @@
                   Please provide a valid password (at least 8 characters).
                 </div>
                 <div class="d-grid">
-                  <button id="loginBtn" class="btn btn-dark mb-3" type="submit" @click="checkInputs($event)">LOGIN</button>
+                  <button id="formBtn" class="btn btn-dark mb-3" type="submit" @click="checkInputs($event)">LOGIN</button>
                 </div>
               </form>
 
@@ -76,19 +76,19 @@
                 <input type="text" name="username" class="form-control mb-3" placeholder="Username">
                 <input type="text" name="email" class="form-control mb-3" placeholder="Email">
                 <div class="position-relative">
-                  <input type="password" id="password" name="password" class="form-control mb-3" placeholder="Password">
-                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
-                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
+                  <input type="password" id="password" ref="passwordInputs1" name="password" class="form-control mb-3" placeholder="Password">
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle($event,1)">
+                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;"></i>
                   </div>
                 </div>
                 <div class="position-relative">
-                  <input type="password" id="confirmPassword" name="confirmpassword" class="form-control mb-3 " placeholder="Confirm Password">
-                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle">
-                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;" id="eyeicon"></i>
+                  <input type="password" id="confirmPassword" ref="passwordInputs2" name="confirmpassword" class="form-control mb-3" placeholder="Confirm Password">
+                  <div class="position-absolute top-50 end-0 translate-middle-y me-2 " @click="passToggle($event,2)">
+                    <i class="fa-regular fa-eye-slash" style="color: #4e5155;"></i>
                   </div>
                 </div>
                 <div class="d-grid">
-                  <button class="btn btn-dark mb-3" type="button" @click="checkPassword">SIGN UP</button>
+                  <button id="formBtn" class="btn btn-dark mb-3" type="button" @click="checkPassword">SIGN UP</button>
                 </div>
               </form>
               <div class="d-flex justify-content-center">

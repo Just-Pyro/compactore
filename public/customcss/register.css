@@ -6,6 +6,7 @@
 .form-control:focus{
   outline: none;
   box-shadow: 2px 2px rgb(178, 165, 165);
+  border-color: rgb(200, 190, 190);
 }
 
 #emailWarning .form-control:valid, .form-control.is-valid {
@@ -37,7 +38,7 @@
   box-shadow: 2px 2px rgb(236, 108, 108);
 }
 
-#loginBtn{
+#formBtn{
   outline: none;
   box-shadow: 2px 2px rgb(143, 140, 140)
 }

@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="/bootstrap-5.3.1-dist/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+<link rel="stylesheet" href="/customcss/header.css">
+
 {{-- google fonts (caesar-400) --}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

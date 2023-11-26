@@ -1,0 +1,10 @@
+#head1{
+  box-shadow: 0px 3px 10px 0px rgba(97,96,97,0.15);
+}
+
+.form-control:focus{
+  outline: none;
+  box-shadow: 2px 2px rgb(178, 165, 165);
+  border-color: rgb(200, 190, 190);
+}
+

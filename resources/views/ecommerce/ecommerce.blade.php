@@ -12,12 +12,12 @@
     @include('includes/header2')
     <div class="container-fluid" id="contentBody">
         <div class="row">
-            <div class="col-2 p-4">
-              <div class="d-flex flex-column flex-shrink-0 bg-light">
-                <h4 id="category-title">Categories</h4>
-                <ul class="nav nav-pills flex-column mb-auto">
+            <div class="col-2 p-4 ">
+              <div class="d-flex flex-column flex-shrink-0">
+                <h4 id="category-title" class="m-auto mb-3">Categories</h4>
+                <ul class="nav nav-pills flex-column mb-auto ">
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link active">
+                    <a href="{{ url('category') }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/smartphone.png') }}" alt="smartphone" class="catIcon"> Smartphones
                     </a>
                   </li>
