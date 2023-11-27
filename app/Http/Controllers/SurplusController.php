@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\Surplus;
+use Illuminate\Support\Str;
 use App\Models\SurplusMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -61,10 +63,12 @@ class SurplusController extends Controller
     }
 
     public function displayProduct($id){
-        $product = Surplus::find($id);
+
+
+        $product = Surplus::find($id); // pangitaon ang row sa surplus nga item
+        $user = Profile::find($product->user_id);
 
         if($product){
-            // $shop = Shop::find($product->shop_id);
 
             $images = $product->surplusMedia;
             $conditionDesc = null;
@@ -87,7 +91,7 @@ class SurplusController extends Controller
                     break;
             }
 
-            return view('surplus.surplusProductPage',compact('product', 'images', 'conditionDesc'));
+            return view('surplus.surplusProductPage',compact('product', 'images', 'conditionDesc', 'user'));
         }
         return back();
     }

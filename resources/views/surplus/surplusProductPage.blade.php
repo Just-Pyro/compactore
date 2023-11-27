@@ -73,12 +73,14 @@
                 <div class="card rounded mt-3 mx-3 shadow-sm">
                     <div class="card-body p-4">
                         <div class="row">
-                            <div class="rounded-circle col-3" style="height:70px; width:70px; border: solid 1px;">user Profile</div>
+                            <div class="col-3">
+                                <img class="rounded-circle" src="{{ asset('/uploads/userprofile/'.$user->profileImg)}}" alt="userProfile" style="height:70px; width:70px; border: solid 1px; object-fit:contain;">
+                            </div>
+                            {{-- <div class="rounded-circle col-3" style="height:70px; width:70px; border: solid 1px;">user Profile</div> --}}
                             <div class="col">
                                 <a href="{{ url('/surplusProfile') }}" class="userNameSurplus">
-                                    UserName
+                                    {{ $user->username }}
                                 </a>
-                                {{-- <span class="userNameSurplus" @click="seeUserSurplus">user Name</span> --}}
                             </div>
                             <div class="d-grid my-3">
                                 <button class="btn btn-outline-dark">Chat with Seller</button>

@@ -58,10 +58,6 @@ const app = Vue.createApp({
                 element[i].style.zIndex = "-1";
             }
         },
-        // toggleShadow(card){
-        //     console.log(card)
-        //     card.isOn = !card.isOn;
-        // },
         seeProduct(id){
             window.location.href = "surplusProductPage/"+id;
         },
