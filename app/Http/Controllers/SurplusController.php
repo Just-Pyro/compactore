@@ -52,4 +52,43 @@ class SurplusController extends Controller
 
         return back();
     }
+
+    public function search(){
+        $query = request('query');
+        $results = Surplus::with('surplusMedia')->where('productName', 'LIKE', '%' . $query . '%')->get();
+
+        return view('surplus.surplusSearchResult', compact('results', 'query'));
+    }
+
+    public function displayProduct($id){
+        $product = Surplus::find($id);
+
+        if($product){
+            // $shop = Shop::find($product->shop_id);
+
+            $images = $product->surplusMedia;
+            $conditionDesc = null;
+
+            switch($product->condition){
+                case 'Like new':
+                    $conditionDesc = "Used once or twice. As good as new.";
+                    break;
+                
+                case 'Lightly used':
+                    $conditionDesc = "Used with care. Flaws, if any, are barely noticeable.";
+                    break;
+
+                case 'Well used':
+                    $conditionDesc = "Has minor flaws or defects.";
+                    break;
+
+                case 'Heavily Used':
+                    $conditionDesc = "Has obvious signs of use or defects.";
+                    break;
+            }
+
+            return view('surplus.surplusProductPage',compact('product', 'images', 'conditionDesc'));
+        }
+        return back();
+    }
 }

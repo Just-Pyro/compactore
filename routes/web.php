@@ -35,10 +35,6 @@ Route::get('/cart', [ShopCartController::class,'displayUserCart']);//nagamit
 
 Route::get('/productPage/{id}', [ProductController::class, 'productPage']);//nagamit
 Route::post('/add-to-cart', [ShopCartController::class, 'add']);//nagamit
-// Route::get('/searchPage', function(){
-//     return view('ecommerce.searchPage');
-// })->name('searchPage');
-
 
 
 Route::get('/category', function(){
@@ -113,12 +109,8 @@ Route::get('/changePassword', function(){
 Route::get('/surplus', function(){
     return view('surplus.surplus');
 });
-Route::get('/searchResult', function(){
-    return view('surplus.surplusSearchResult');
-})->name('surplusSearchResult');
-Route::get('/surplusProductPage', function(){
-    return view('surplus.surplusProductPage');
-});
+Route::get('/searchResult', [SurplusController::class, 'search'])->name('surplusSearchResult');
+Route::get('/surplusProductPage/{id}', [SurplusController::class, 'displayProduct']);
 Route::post('/postSurplus', [SurplusController::class, 'postSurplus']);
 
 //swapme

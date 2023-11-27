@@ -8,25 +8,45 @@
     <link rel="stylesheet" href="/customcss/ecommerce.css">
     <link rel="stylesheet" href="/customcss/surplus.css">
     @include('includes/header1')
+
+    <style>
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     @include('includes/header3')
 
     <div class="container mt-5">
-        <h3>blabla search Result for productNameHere</h3>
+        <h3>blabla search Result for "{{ $query }}"</h3>
     </div>    
 
     <div class="container mt-5 rounded shadow px-5">
         <div class="row align-items-center product">
-            <div v-for="card in cards" :key="card.id" class="p-0 col-sm-6 col-lg-4 col-xl-3 my-5 rounded" @click="seeProduct">
-                <div class="card mx-2 rounded" :class="{ shadow: card.isOn }" @mouseover="toggleShadow(card)" @mouseout="toggleShadow(card)" style="width: 16rem; height: 18rem; cursor: pointer;">
-                    <img style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border" :alt="card.categoryName">
-                    <div class="card-body bg-light rounded-bottom" style="height: 10rem;">
-                        <p class="card-title productname">@{{card.categoryName}}</p>
-                        <p class="card-text text-danger price">@{{card.totalListings}}</p>
+            {{-- each items in search result --}}
+            @if (isset($results))
+                @foreach($results as $result)
+                
+                <div class="p-0 col-sm-6 col-lg-4 col-xl-3 my-5 rounded" @click="seeProduct({{ $result->id }})">
+                    <div class="card mx-2 rounded" style="width: 16rem; height: 18rem;">
+                        @if($result->surplusMedia->isNotEmpty())
+                            <img src="{{ asset($result->surplusMedia->first()->file_path . $result->surplusMedia->first()->file_name) }}" style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border" :alt="">
+                        @else
+                            <img src="{{ asset('/compactoreCircleFav.png') }}" style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border" alt="">
+                        @endif
+                        <div class="card-body bg-light rounded-bottom" style="height: 10rem;">
+                            <p class="card-title productname">{{ $result->productName }}</p>
+                            <p class="card-text text-danger price">{{ $result->price }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                @endforeach
+            @endif
         </div>
     </div>
 

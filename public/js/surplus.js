@@ -58,16 +58,16 @@ const app = Vue.createApp({
                 element[i].style.zIndex = "-1";
             }
         },
-        toggleShadow(card){
-            console.log(card)
-            card.isOn = !card.isOn;
-        },
-        seeProduct(){
-            window.location.href = "surplusProductPage";
+        // toggleShadow(card){
+        //     console.log(card)
+        //     card.isOn = !card.isOn;
+        // },
+        seeProduct(id){
+            window.location.href = "surplusProductPage/"+id;
         },
         seeCategory(){
             console.log("thisis category");
-            window.location.href = "searchResult"; //surplusSearchResult --> route name
+            window.location.href = "searchResult";
         },
         submitPost(){
             document.getElementById('postSurplusForm').submit();

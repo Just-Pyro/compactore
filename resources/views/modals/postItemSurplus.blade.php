@@ -18,8 +18,7 @@
                         <div class="col">
                             <select name="condition" class="form-select mb-2" style="height: 58px;" id="condition" required>
                                 <option selected hidden>Product Condition</option>
-                                <option value="Brand new">Brand new</option>
-                                <option value="Like New">Like New</option>
+                                <option value="Like new">Like new</option>
                                 <option value="Lightly used">Lightly used</option>
                                 <option value="Well used">Well used</option>
                                 <option value="Heavily Used">Heavily Used</option>

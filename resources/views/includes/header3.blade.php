@@ -30,7 +30,7 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">then there's cordova</a></li>
               </ul>
-              <input type="search" class="form-control" aria-label="Text input with dropdown button" placeholder="Search surplus products">
+              <input name="query" type="search" class="form-control" aria-label="Text input with dropdown button" placeholder="Search surplus products">
             </div>
           </form>
         </div>

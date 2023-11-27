@@ -11,43 +11,40 @@
 </head>
 <body>
     @include('includes/header3')
+    @if ($product)
+        
     <div class="container mt-3 shadow-lg rounded">
         <div class="d-flex flex-column">
-            <div class="row flex-nowrap py-3 overflow-x-auto">
-                <div class="col-4 p-1" style=" background: white">
-                    <div class="m-3" style="width: 400px; height: 400px; border: solid 1px;">sampleImage</div>
-                    {{-- <img src="" alt="sampleImage" style="width: 450px; height: 450px"> --}}
-                </div>
-                <div class="col-4 p-1" style=" background: white">
-                    <div class="m-3" style="width: 400px; height: 400px; border: solid 1px;">sampleImage</div>
-                    {{-- <img src="" alt="sampleImage" style="width: 450px; height: 450px"> --}}
-                </div>
-                <div class="col-4 p-1" style=" background: white">
-                    <div class="m-3" style="width: 400px; height: 400px; border: solid 1px;">sampleImage</div>
-                    {{-- <img src="" alt="sampleImage" style="width: 450px; height: 450px"> --}}
-                </div>
-                <div class="col-4 p-1" style=" background: white">
-                    <div class="m-3" style="width: 400px; height: 400px; border: solid 1px;">sampleImage</div>
-                    {{-- <img src="" alt="sampleImage" style="width: 450px; height: 450px"> --}}
-                </div>
+            <div class="row flex-nowrap py-3 px-2 overflow-x-auto">
+                @foreach ($images as $image)
+                    @if($image)
+                        <div class="col-4 p-1" style=" background: white">
+                            <img src="{{ asset($image->file_path.$image->file_name) }}" alt="sampleImage" class="border" style="width: 400px; height: 400px; object-fit: contain;border: solid 1px;">
+                        </div>
+                    @else
+                        <div class="col-4 p-1" style=" background: white">
+                            <img src="{{ asset('/compactoreCircleFav.png') }}" alt="sampleImage" class="border" style="width: 400px; height: 400px; object-fit: contain;border: solid 1px;">
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
         <div class="row mb-3" style="background: white;">
             <div class="col-8 p-1" style=" background: white">
                 <div class="d-flex flex-column">
                     <div class="p-3">
-                        <h5 class="fw-normal mb-0">This is the Product Name</h5>
+                        <h5 class="fw-normal mb-0">{{ $product->productName }}</h5>
                     </div>
                     <div class="p-3">
-                        <h4 class="fw-semibold mb-0">Price P1000.00</h4>
+                        <h4 class="fw-semibold mb-0">{{ $product->price }}.00</h4>
                         <hr>
                     </div>
                     <div class="row p-2">
                         <div class="d-flex flex-column mb-3" style="background: white;">
                             <div class="p-2">
                                 <h5 class="fw-medium">Product Condition</h5>
-                                <p class="fw-medium mb-1">Lightly used</p>
-                                <p class="fw-normal">Used with care. Flaws, if any, are barely noticeable</p>
+                                <p class="fw-medium mb-1">{{ $product->condition }}</p>
+                                <p class="fw-normal">{{ $conditionDesc }}</p>
 
                             </div>
                             <div class="p-2">
@@ -58,11 +55,11 @@
                                         <p class="fw-normal d-block mb-3 text-body-secondary">Date</p>
                                     </div>
                                     <div class="col-4">
-                                        <p class="fw-normal d-block mb-1 text-body-secondary">Model</p>
-                                        <p class="fw-normal d-block mb-3 text-body-secondary">DSi</p>
+                                        <p class="fw-normal d-block mb-1 text-body-secondary">Brand/Model</p>
+                                        <p class="fw-normal d-block mb-3 text-body-secondary">{{ $product->brand }}</p>
                                     </div>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quae minima facere laboriosam, deserunt aliquam laudantium repellendus ipsam dolorem quisquam ullam ea. Fugiat vitae culpa corporis numquam odio inventore veniam.</p>
+                                <p>{{ $product->description }}</p>
                             </div>
                             <div class="p-2">
                                 <h5 class="fw-medium">Meet-up</h5>
@@ -104,6 +101,7 @@
     {{-- Modal for posting item form in surplus --}}
     @include('modals/postItemSurplus')
 
+    @endif
     @include('includes/footer1')
     <script src="js/surplus.js"></script>
 </body>
