@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\SwapPostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
@@ -8,8 +7,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SurplusController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\ShopCartController;
+use App\Http\Controllers\SwapPostController;
 
 Route::get('/', function () {//nagamit
     if (Auth::check()) {
@@ -112,14 +113,13 @@ Route::get('/changePassword', function(){
 Route::get('/surplus', function(){
     return view('surplus.surplus');
 });
-
 Route::get('/searchResult', function(){
     return view('surplus.surplusSearchResult');
 })->name('surplusSearchResult');
-
 Route::get('/surplusProductPage', function(){
     return view('surplus.surplusProductPage');
 });
+Route::post('/postSurplus', [SurplusController::class, 'postSurplus']);
 
 //swapme
 Route::get('/swapme', [SwapPostController::class, 'getallPost']);//nagamit

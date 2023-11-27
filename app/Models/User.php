@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function swapPost(){
         return $this->hasMany(SwapPost::class, 'user_id');
     }
+
+    public function surplus(){
+        return $this->hasMany(Surplus::class, 'user_id');
+    }
 }

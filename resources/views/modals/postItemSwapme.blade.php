@@ -31,7 +31,7 @@
                         <textarea name="description" class="form-control" placeholder="description of product" id="floatingTextarea" style="height: 160px;"></textarea>
                         <label for="floatingTextarea">Description</label>
                     </div>
-                    <input type="file" name="postImg[]" id="postImg" class="form-control form-control-sm">
+                    <input type="file" name="postImg[]" id="postImg" class="form-control form-control-sm" multiple>
                 </form>
             </div>
             <div class="modal-footer">

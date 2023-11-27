@@ -7,3 +7,22 @@
 .userNameSurplus:hover{
     text-decoration: underline;
 }
+
+
+/* for post Button */
+#postBtn{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#postIcon {
+    height: 20px;
+    object-fit: contain;
+}
+
+#postBtn:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}

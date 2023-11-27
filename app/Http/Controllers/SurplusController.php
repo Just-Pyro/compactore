@@ -2,36 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
-use App\Models\SwapPost;
-use App\Models\SwapmeMedia;
+use App\Models\Surplus;
+use App\Models\SurplusMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class SwapPostController extends Controller
+class SurplusController extends Controller
 {
-    public function getallPost(){
-        
-        $swapMedia = SwapmeMedia::all();
-
-        $swapPosts = SwapPost::latest()->get();
-
-        return view('trading.swapme', compact('swapPosts', 'swapMedia'));
-    }
-
-    public function addPost(Request $request){
+    public function postSurplus(Request $request){
         $user = auth()->user();
         $profile = $user->profile;
-        $swapPost = $user->swapPost;
 
-        $swapPost = SwapPost::create([
+        $surplus = Surplus::create([
             'user_id' => $user->id,
-            'author' => $profile->username,
-            'title' => $request->title,
-            'category' => $request->category,
-            'description' => $request->description
+            'productName' => $request->productName,
+            'condition' => $request->condition,
+            'price' => $request->price,
+            'brand' => $request->brand,
+            'description' => $request->description,
         ]);
-
 
         $postImages = $request->file('postImg');
 
@@ -45,7 +34,7 @@ class SwapPostController extends Controller
     
             $imageName = "{$user->id}_{$originalName}_{$timestampCounter}.{$extension}";//then gisumpay nimo tanan
 
-            $destinationPath = public_path('uploads/users/swapme/'.$profile->username.'/');//ang name sa folder nga sudlan sa media is ang name pud sa Shop
+            $destinationPath = public_path('uploads/users/surplus/'.$profile->username.'/');//ang name sa folder nga sudlan sa media is ang name pud sa Shop
 
             if (!File::isDirectory($destinationPath)) {//i check if nag exist ang folder, kung wala iya i create
                 File::makeDirectory($destinationPath, $mode = 0755, true, true);
@@ -53,9 +42,9 @@ class SwapPostController extends Controller
     
             $postImage->move($destinationPath, $imageName);//lastly, gi move ang file sa designated nga butanganan
 
-            SwapmeMedia::create([
-                'swapPost_id' => $swapPost->id,
-                'file_path' => 'uploads/users/swapme/'.$profile->username.'/',
+            SurplusMedia::create([
+                'surplus_id' => $surplus->id,
+                'file_path' => 'uploads/users/surplus/'.$profile->username.'/',
                 'file_name' => $imageName,
                 'file_type' => $extension
             ]);
