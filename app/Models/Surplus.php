@@ -14,6 +14,7 @@ class Surplus extends Model
         'productName',
         'condition',
         'price',
+        'location',
         'brand',
         'description',
     ];

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('condition');
             $table->float('price');
             $table->string('brand')->nullable();
+            $table->string('location');
             $table->text('description');
             $table->timestamps();
         });

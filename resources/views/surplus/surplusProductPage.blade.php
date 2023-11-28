@@ -63,7 +63,7 @@
                             </div>
                             <div class="p-2">
                                 <h5 class="fw-medium">Meet-up</h5>
-                                <h5 class="fw-normal"><i class="fa-solid fa-location-dot"></i> location</h5>
+                                <h5 class="fw-normal"><i class="fa-solid fa-location-dot"></i> {{ $product->location }}</h5>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,6 @@
                             <div class="col-3">
                                 <img class="rounded-circle" src="{{ asset('/uploads/userprofile/'.$user->profileImg)}}" alt="userProfile" style="height:70px; width:70px; border: solid 1px; object-fit:contain;">
                             </div>
-                            {{-- <div class="rounded-circle col-3" style="height:70px; width:70px; border: solid 1px;">user Profile</div> --}}
                             <div class="col">
                                 <a href="{{ url('/surplusProfile') }}" class="userNameSurplus">
                                     {{ $user->username }}
@@ -85,7 +84,7 @@
                             <div class="d-grid my-3">
                                 <button class="btn btn-outline-dark">Chat with Seller</button>
                             </div>
-                            <p class="fw-normal text-center mt-3">0987654321 <i class="fa-solid fa-phone"></i><span class="fw-medium"> call number</span></p>
+                            <p class="fw-normal text-center mt-3">{{ $user->phoneNumber }} <i class="fa-solid fa-phone"></i><span class="fw-medium"> call number</span></p>
                         </div>
                     </div>
                 </div>

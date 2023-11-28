@@ -1,36 +1,8 @@
 const app = Vue.createApp({
     data(){
         return {
-            cards: [
-                {id: 1, isOn: false, categoryName: "Property", totalListings: "100,000+"},
-                {id: 2, isOn: false, categoryName: "Autos", totalListings: "10,000+"},
-                {id: 3, isOn: false, categoryName: "Mobile Phones & Gadgets", totalListings: "100,000+"},
-                {id: 4, isOn: false, categoryName: "Fashion", totalListings: "100,000+"}
-            ],
-            houses: [
-                {id: 1, isOn: false, price: "P5,000,002", detailName: "house # 1"},
-                {id: 2, isOn: false, price: "P4,030,102", detailName: "house # 2"},
-                {id: 3, isOn: false, price: "P6,503,702", detailName: "house # 3"},
-                {id: 4, isOn: false, price: "P3,150,432", detailName: "house # 4"}
-            ],
-            cars: [
-                {id: 1, isOn: false, price: "P334,900", detailName: "car # 1"},
-                {id: 2, isOn: false, price: "P400,121", detailName: "car # 2"},
-                {id: 3, isOn: false, price: "P540,098", detailName: "car # 3"},
-                {id: 4, isOn: false, price: "P890,299", detailName: "car # 4"}
-            ],
-            gadgets: [
-                {id: 1, isOn: false, price: "P5,900", detailName: "mobile phone # 1"},
-                {id: 2, isOn: false, price: "P2,000", detailName: "bluetooth Controller"},
-                {id: 3, isOn: false, price: "P1,100", detailName: "PSP 3000"},
-                {id: 4, isOn: false, price: "P10,200", detailName: "new nintendo 2ds xl"}
-            ],
-            clothings: [
-                {id: 1, isOn: false, price: "60", detailName: "Hoodie supreme"},
-                {id: 2, isOn: false, price: "100", detailName: "sleeveless hoodie - white"},
-                {id: 3, isOn: false, price: "120", detailName: "Polo shirt emerald green size L"},
-                {id: 4, isOn: false, price: "200", detailName: "turquoise blue"}
-            ]
+            location: "",
+            placeholder: "Choose Location",
         }
     },
     methods: {
@@ -67,6 +39,59 @@ const app = Vue.createApp({
         },
         submitPost(){
             document.getElementById('postSurplusForm').submit();
+        },
+        chooseLocation(place){
+            // console.log('im here')
+            // console.log(place)
+            switch(place){
+                case 'All':
+                    this.location = '';
+                    this.placeholder = 'All Philippines';
+                    break;
+                case 'Manila':
+                    this.location = 'Manila';
+                    this.placeholder = 'Manila City';
+                    break;
+                case 'Quezon':
+                    this.location = 'Quezon';
+                    this.placeholder = 'Quezon City';
+                    break;
+                case 'Makati':
+                    this.location = 'Makati';
+                    this.placeholder = 'Makati City';
+                    break;
+                case 'Pasig':
+                    this.location = 'Pasig';
+                    this.placeholder = 'Pasig City';
+                    break;
+                case 'Mandaluyong':
+                    this.location = 'Mandaluyong';
+                    this.placeholder = 'Mandaluyong City';
+                    break;
+                case 'Cebu':
+                    this.location = 'Cebu';
+                    this.placeholder = 'Cebu City';
+                    break;
+                case 'Paranaque':
+                    this.location = 'Paranaque';
+                    this.placeholder = 'Paranaque City';
+                    break;
+                case 'Taguig':
+                    this.location = 'Taguig';
+                    this.placeholder = 'Taguig City';
+                    break;
+                case 'Las_Pinas':
+                    this.location = 'Las Pinas';
+                    this.placeholder = 'Las Pinas City';
+                    break;
+                case 'Cavite':
+                    this.location = 'Cavite';
+                    this.placeholder = 'Cavite City';
+                    break;
+            }
+        },
+        submitForm(){
+            document.querySelector('#surplusSearchForm').submit();
         }
     }
 }).mount("body");

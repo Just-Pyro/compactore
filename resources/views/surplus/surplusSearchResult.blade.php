@@ -29,9 +29,12 @@
     <div class="container mt-5 rounded shadow px-5">
         <div class="row align-items-center product">
             {{-- each items in search result --}}
-            @if (isset($results))
+            @if (!$results)
+                <div class="row mt-2 bg-white rounded">
+                    <p class="my-5 text-center fw-medium">No product found.</p>
+                </div>
+            @else
                 @foreach($results as $result)
-                
                 <div class="p-0 col-sm-6 col-lg-4 col-xl-3 my-5 rounded" @click="seeProduct({{ $result->id }})">
                     <div class="card mx-2 rounded" style="width: 16rem; height: 18rem;">
                         @if($result->surplusMedia->isNotEmpty())

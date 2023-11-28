@@ -38,12 +38,18 @@
                                 <input name="brand" type="text" class="form-control">
                             </div>
                         </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <p class="fw-normal">Location:</p>
+                                <input name="location" type="text" class="form-control" required>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-floating mb-2">
                         <textarea name="description" class="form-control" placeholder="description of product" id="floatingTextarea" style="height: 160px;" required></textarea>
                         <label for="floatingTextarea">Description</label>
                     </div>
-                    <input type="file" name="postImg[]" id="postImg" class="form-control form-control-sm" multiple>
+                    <input type="file" name="postImg[]" id="postImg" class="form-control form-control-sm" multiple required>
                 </form>
             </div>
             <div class="modal-footer">

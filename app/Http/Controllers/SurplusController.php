@@ -20,6 +20,7 @@ class SurplusController extends Controller
             'productName' => $request->productName,
             'condition' => $request->condition,
             'price' => $request->price,
+            'location' => $request->location,
             'brand' => $request->brand,
             'description' => $request->description,
         ]);
@@ -57,8 +58,21 @@ class SurplusController extends Controller
 
     public function search(){
         $query = request('query');
-        $results = Surplus::with('surplusMedia')->where('productName', 'LIKE', '%' . $query . '%')->get();
-
+        $location = request('location');
+        $location = strtolower($location);
+        if($query){
+            if($location == ""){
+                $results = Surplus::with('surplusMedia')->whereRaw('LOWER(productName) LIKE ?', ['%' . strtolower($query) . '%'])->get();
+            }else{
+                $results = Surplus::with('surplusMedia')
+                ->whereRaw('LOWER(productName) LIKE ?', ['%' . strtolower($query) . '%'])
+                ->whereRaw('LOWER(location) LIKE ?', ['%' . $location . '%'])
+                ->get();
+            }
+        }else{
+            $results = null;
+        }
+        
         return view('surplus.surplusSearchResult', compact('results', 'query'));
     }
 
