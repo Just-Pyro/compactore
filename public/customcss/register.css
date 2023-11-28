@@ -3,6 +3,10 @@
   height: 42px;
 }
 
+.navbar{
+  box-shadow: none;
+}
+
 .form-control:focus{
   outline: none;
   box-shadow: 2px 2px rgb(178, 165, 165);
@@ -45,4 +49,19 @@
 
 a{
   text-decoration: none;
+}
+
+/* media */
+@media (max-width: 767.98px) {
+  .pcview{
+   display: none; 
+  }
+  .mobileview{
+   display: block; 
+  }
+ }
+ @media (min-width: 767.98px){
+  .mobileview{
+    display: none; 
+   }
 }

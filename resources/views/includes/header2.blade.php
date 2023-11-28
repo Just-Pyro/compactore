@@ -8,7 +8,7 @@
     </form>
   </div>
 </header>
-<nav id="head1" class="navbar navbar-expand-lg bg-light navbar-light">
+<nav id="head1" class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <a id="title" href="{{ url('/ecommerce') }}" class="navbar-brand">COMPACTORE</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compactoreMenu" aria-controls="#compactoreMenu" aria-expanded="false" aria-label="Toggle navigation">
