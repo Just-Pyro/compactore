@@ -8,6 +8,7 @@
 </head>
 <body>
     adminLogin
+    
     <a href="{{ url('/adminDashboard') }}">login</a>
 </body>
 </html>

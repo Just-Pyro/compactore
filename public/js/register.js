@@ -14,65 +14,65 @@ const app = Vue.createApp({
         change() {
             this.isShown = !this.isShown;
         },
-        async checkInputs(event){
+        checkInputs(){
             
-            this.conEmail = false;
-            this.conPassword = false;;
+            // this.conEmail = false;
+            // this.conPassword = false;;
             
-            var email = document.getElementById('loginEmail').value;
-            var pass = document.getElementById('loginPassword').value;
-            var passfeedback = document.getElementById('passFeedback');
-            var emailfeedback = document.getElementById('emailFeedback');
+            // var email = document.getElementById('loginEmail').value;
+            // var pass = document.getElementById('loginPassword').value;
+            // var passfeedback = document.getElementById('passFeedback');
+            // var emailfeedback = document.getElementById('emailFeedback');
 
-            if(email === ""){
-                event.preventDefault();
+            // if(email === ""){
+            //     event.preventDefault();
 
-                this.conEmail = true;
-                this.mbe = false;
-                this.mbp = true;
-                passfeedback.style.display = "none";
-                emailfeedback.style.display = "block";
-            }else{
-                if(this.validateEmail(email)){
-                    this.okEmail = true;
-                    this.mbe = true;
+            //     this.conEmail = true;
+            //     this.mbe = false;
+            //     this.mbp = true;
+            //     passfeedback.style.display = "none";
+            //     emailfeedback.style.display = "block";
+            // }else{
+            //     if(this.validateEmail(email)){
+            //         this.okEmail = true;
+            //         this.mbe = true;
                     
-                    if(pass === ""){
-                        event.preventDefault();
-                        this.conPassword = true;
-                        this.mbp = false;
-                        passfeedback.style.display = "block";
-                        emailfeedback.style.display = "none";
-                    }else{
-                        this.okPass = true;
-                    }
+            //         if(pass === ""){
+            //             event.preventDefault();
+            //             this.conPassword = true;
+            //             this.mbp = false;
+            //             passfeedback.style.display = "block";
+            //             emailfeedback.style.display = "none";
+            //         }else{
+            //             this.okPass = true;
+            //         }
 
 
-                }else{
-                    event.preventDefault();
-                    if(this.okEmail){
-                        this.okEmail = false;
-                    }
-                    this.mbp = true;
-                    this.mbe = false;
-                    this.conEmail = true;
-                    passfeedback.style.display = "none";
-                    emailfeedback.style.display = "block";
-                }
-            }
+            //     }else{
+            //         event.preventDefault();
+            //         if(this.okEmail){
+            //             this.okEmail = false;
+            //         }
+            //         this.mbp = true;
+            //         this.mbe = false;
+            //         this.conEmail = true;
+            //         passfeedback.style.display = "none";
+            //         emailfeedback.style.display = "block";
+            //     }
+            // }
         },
         checkPassword(){
-            const pass = document.getElementById('password').value;
-            const conpass = document.getElementById('confirmPassword').value;
-            // var email = document.getElementById('loginEmail').value;
-            // var loginpass = document.getElementById('loginPassword').value;
+            // const pass = document.getElementById('password').value;
+            // const conpass = document.getElementById('confirmPassword').value;
+            // // var email = document.getElementById('loginEmail').value;
+            // // var loginpass = document.getElementById('loginPassword').value;
 
-            if(pass != conpass){
-                alert('password and confirm password did not match!');
-            }else{
-                // if(email )
-                document.getElementById('registerForm').submit();
-            }
+            // if(pass != conpass){
+            //     alert('password and confirm password did not match!');
+            // }else{
+            //     // if(email )
+            //     document.getElementById('registerForm').submit();
+            // }
         },
         validateEmail(email) {
             // Regular expression for a valid email format
@@ -80,8 +80,23 @@ const app = Vue.createApp({
           
             // Test the email against the regex
             return emailRegex.test(email);
+        },
+        showRegister(){
+            console.log("showRegister");
+            this.isShown = false;
         }
-          
+    },
+    mounted(){
+        var logEmailEl = document.getElementById('errorLoginEmail');
+        var logPassEl = document.getElementById('errorLoginPassword');
+
+        if(logEmailEl !== null){
+            this.mbe = false;
+        }
+
+        if(logPassEl !== null){
+            this.mbp = false;
+        }
     }
 }).mount("#app");
 

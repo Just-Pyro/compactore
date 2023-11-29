@@ -22,33 +22,41 @@ class UserController extends Controller
 
         if(auth()->attempt(['email'=> $loginData['loginEmail'],'password'=> $loginData['loginPassword']])){
             $request->session()->regenerate();
-            // return response()->json(['redirect' => '/ecommerce'], 200);?
             return redirect('/ecommerce');
         }
 
-        // return response()->json(['message' => 'Login attempt failed'], 401);
         return redirect('/');
     }
     public function register(Request $request){
         $dataforUser = $request->validate([
-            'password'=> 'required|min:8|max:200',
-            'email'=> 'required|email'
+            'password'=> 'required|confirmed|min:8',
+            'email'=> 'required|email|unique:users',
+            'username' => 'required|unique:profiles'
         ]);
-        
+
         $dataforUser['password'] = Hash::make($dataforUser['password']);
-        $user = User::create($dataforUser);
-        auth()->login($user);
+        $username = $dataforUser['username'];
 
-        if (auth()->check()) {
-            $user_id = auth()->user()->id;
-        
-            $createProfile = new Profile();
-            $createProfile->user_id = $user_id;
-            $createProfile->username = $request->username;
-            $createProfile->save();
 
+        if($dataforUser){
+            $user = User::create([
+                'email' => $dataforUser['email'],
+                'password' => $dataforUser['password']
+            ]);
+            auth()->login($user);
+
+            if (auth()->check()) {
+                $user_id = auth()->user()->id;
+            
+                $createProfile = new Profile();
+                $createProfile->user_id = $user_id;
+                $createProfile->username = $username;
+                $createProfile->save();
+                return redirect('/ecommerce');
+            }
         }
         
-        return redirect('/ecommerce');
+        return redirect('/');
+        
     }
 }
