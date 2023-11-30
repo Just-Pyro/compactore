@@ -8,10 +8,9 @@
     <title>COMPACTORE | Login</title>
 </head>
 <body>
-    <nav id="head1" class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav id="head1" class="navbar navbar-expand-lg bg-light navbar-light shadow-sm">
       <div class="container">
         <a id="title" href="#" @click="reloadPage" class="navbar-brand">COMPACTORE</a>
-        <button type="button" class="btn btn-lg btn-danger error" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
       </div>
     </nav>
 
@@ -34,7 +33,6 @@
                 <input type="text" name="username" class="form-control mb-3" placeholder="Username">
                 
                 @if($errors->has('username'))
-                  {{-- <span style="cursor:pointer" tabindex="0" class="fs-7 text-danger border" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-title="Error" data-bs-content="{{ $errors->first('username') }}"><i class="fa-solid fa-circle-info"></i></span> --}}
                   <div class="alert alert-danger py-1 px-2 mt-2 mb-1">{{ $errors->first('username') }}</div>
                 @endif
                 
@@ -111,11 +109,19 @@
                 @if($errors->has('loginEmail'))
                   <div id="errorLoginEmail" class="alert alert-danger py-1 px-2 mt-2 mb-1">{{ $errors->first('loginEmail') }}</div>
                 @endif
+
+                @if($incorrect)
+                  <div id="errorLoginEmail" class="alert alert-danger py-1 px-2 mt-2 mb-1">{{ $incorrect }}</div>
+                @endif
                 
                 <input id="loginPassword" type="password" name="loginPassword" class="form-control" :class="{'mb-5':mbe}" placeholder="Password">
                 
                 @if($errors->has('loginPassword'))
                   <div id="errorLoginPassword" class="alert alert-danger py-1 px-2 mt-2 mb-2">{{ $errors->first('loginPassword') }}</div>
+                @endif
+
+                @if($incorrect)
+                  <div id="errorLoginEmail" class="alert alert-danger py-1 px-2 mt-2 mb-1">{{ $incorrect }}</div>
                 @endif
                 
                 <div class="d-grid">

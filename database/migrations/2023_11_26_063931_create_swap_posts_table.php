@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('category');
             $table->string('description');
+            $table->string('status');
             $table->timestamps();
         });
     }

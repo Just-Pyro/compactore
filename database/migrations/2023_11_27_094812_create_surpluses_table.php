@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('brand')->nullable();
             $table->string('location');
             $table->text('description');
+            $table->string('status');
             $table->timestamps();
         });
     }

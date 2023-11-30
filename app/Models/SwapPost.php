@@ -15,7 +15,8 @@ class SwapPost extends Model
         "author",
         "title",
         "category",
-        "description"
+        "description",
+        "status"
     ];
 
     protected $table = "swap_posts";

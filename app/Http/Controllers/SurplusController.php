@@ -23,6 +23,7 @@ class SurplusController extends Controller
             'location' => $request->location,
             'brand' => $request->brand,
             'description' => $request->description,
+            'status' => '1'
         ]);
 
         $postImages = $request->file('postImg');

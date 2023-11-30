@@ -17,6 +17,7 @@ class Surplus extends Model
         'location',
         'brand',
         'description',
+        "status"
     ];
 
     public function surplusMedia(){

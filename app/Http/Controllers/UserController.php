@@ -9,6 +9,36 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function check(){
+        if(User::count() === 0){
+            $user = User::create([
+                'email' => 'admin@email.com',
+                'password' => 'admin1234',
+                'role' => 'admin',
+                'status' => '1'
+            ]);
+
+        }
+
+        $incorrect = "";
+
+        if (auth()->check()) {
+            if(auth()->user()->role != 'user'){
+                if(auth()->user()->assignment == 'user'){
+                    return redirect('/adminUser');
+                } else if(auth()->user()->assignment == 'post'){
+                    return redirect('/adminPost');
+                } else if(auth()->user()->assignment == 'store'){
+                    return redirect('/adminStore');
+                } else {
+                    return redirect('/adminVoucher');
+                }
+            }
+            return redirect('/ecommerce');
+        }
+        return view('register', compact('incorrect'));
+    }
+
     public function logout(){
         auth()->logout();
         return redirect("/");
@@ -20,12 +50,45 @@ class UserController extends Controller
             "loginPassword" => "required|min:8"
         ]);
 
-        if(auth()->attempt(['email'=> $loginData['loginEmail'],'password'=> $loginData['loginPassword']])){
-            $request->session()->regenerate();
-            return redirect('/ecommerce');
-        }
+        $rolesToCheck = ['user', 'admin', 'moderator'];
+        $assignedToCheck = ['user', 'post', 'store', 'voucher'];
 
-        return redirect('/');
+        foreach ($rolesToCheck as $role) {
+                if (auth()->attempt(['email' => $loginData['loginEmail'], 'password' => $loginData['loginPassword'], 'role' => $role])) {
+                    $request->session()->regenerate();
+                    
+                    if ($role == 'user') {
+                        return redirect('/ecommerce');
+                    } else if ($role == 'admin'){
+                        return redirect('/admin');
+                    } else {
+                        $assignment = auth()->user()->assignment;
+                        foreach($assignedToCheck as $assignment){
+                            switch($assignment){
+                                case 'user':
+                                    return redirect('/adminUser');
+                                break;
+
+                                case 'post':
+                                    return redirect('/adminPost');
+                                break;
+
+                                case 'store':
+                                    return redirect('/adminStore');
+                                break;
+
+                                case 'voucher':
+                                    return redirect('/adminVoucher');
+                                break;
+                            }
+                        }
+
+                    }
+                }
+        }
+        $incorrect = "Inputs did not match in the database";
+
+        return view('register', compact('incorrect'));
     }
     public function register(Request $request){
         $dataforUser = $request->validate([
@@ -41,7 +104,9 @@ class UserController extends Controller
         if($dataforUser){
             $user = User::create([
                 'email' => $dataforUser['email'],
-                'password' => $dataforUser['password']
+                'password' => $dataforUser['password'],
+                'role' => 'user',
+                'status' => '1'
             ]);
             auth()->login($user);
 

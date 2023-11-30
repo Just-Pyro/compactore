@@ -54,7 +54,7 @@
                      <div class="row">
                         <nav class="navbar navbar-light">
                             <div class="container-fluid">
-                                <a class="navbar-brand fw-bolder fs-2">Moderator Lists</a>
+                                <a class="navbar-brand fw-bolder fs-2">Reported Posts</a>
                                 <form class="d-flex">
                                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -92,8 +92,6 @@
      
          </div>
     
-
-    
     <!-- Scrollable modal -->
     <div class="modal fade" id="add-new-admin" tabindex="-1">
         <div class="modal-dialog">
@@ -115,10 +113,10 @@
                         @endif
                         <select name="assignment" class="form-select mb-2" aria-label="Default select example">
                             <option selected hidden>Assign a Section</option>
-                            <option value="user">Reported Users</option>
-                            <option value="post">Reported Posts</option>
-                            <option value="store">Reported Stores</option>
-                            <option value="voucher">Compactore Vouchers</option>
+                            <option value="Reported Posts">Reported Posts</option>
+                            <option value="Reported Users">Reported Users</option>
+                            <option value="Product Reviews">Product Reviews</option>
+                            <option value="User Inquiries">User Inquiries</option>
                         </select>
                         <div class="d-flex justify-content-end mt-3">
                             <button type="button" class="btn btn-secondary me-4 end-0" data-bs-dismiss="modal">Close</button>

@@ -29,7 +29,8 @@ class SwapPostController extends Controller
             'author' => $profile->username,
             'title' => $request->title,
             'category' => $request->category,
-            'description' => $request->description
+            'description' => $request->description,
+            'status' => '1'
         ]);
 
 

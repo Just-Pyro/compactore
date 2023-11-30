@@ -11,17 +11,34 @@ use App\Http\Controllers\SurplusController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\ShopCartController;
 use App\Http\Controllers\SwapPostController;
+use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {//nagamit
-    if (Auth::check()) {
-        return redirect('/ecommerce');
-    }
-    return view('register');
-});
+Route::get('/', [UserController::class, 'check']);
 
 Route::post('/register', [UserController::class, 'register']);//nagamit
 Route::post('/logout', [UserController::class,'logout']);//nagamit
 Route::post('/login', [UserController::class,'login']);//nagamit
+
+//admin
+Route::get('/admin', function(){
+    return view('admin.adminDashboard');
+});
+Route::get('/adminUserList', function(){
+    return view('admin.userList');
+});
+Route::post('/addModerator', [AdminController::class, 'addModerator']);//nagamit
+Route::get('/adminUser', function(){
+    return view('admin.userReport');
+});//nagamit
+Route::get('/adminPost', function(){
+    return view('admin.postReport');
+});//nagamit
+Route::get('/adminStore', function(){
+    return view('admin.storeReport');
+});//nagamit
+Route::get('/adminVoucher', function(){
+    return view('admin.addVoucher');
+});//nagamit
 
 //ecommerce
 Route::get('/ecommerce', function() {//nagamit
