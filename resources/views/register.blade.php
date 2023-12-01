@@ -17,10 +17,11 @@
 
     <div id="app" class="container">
       <div class="row pcview">
-        <div class="col-7">
+        <div class="col-7 d-none d-lg-block">
           <img class="mt-6 mx-auto" src="{{ URL('images/woman-cart.jpg') }}" alt="woman in a cart" style="height:430px; width 430px">
         </div>
 
+        <div class="col-1 d-none d-md-block d-lg-none"></div>
         <div v-if="isShown" class="col">
           <div class="card mt-6">
             <div class="card-body shadow" style="height: 430px">
