@@ -49,13 +49,13 @@
                     {{-- head tabs --}}
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a href="" class="nav-link active">Profile</a>
+                            <a href="{{ url('/profile') }}" class="nav-link active">Profile</a>
                         </li>
                         <li class="nav-item">
                             <span data-bs-toggle="modal" data-bs-target="#changeAddressModal" class="nav-link link-dark" style="cursor: pointer;">Delivery Addresses</span>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link link-dark">Accounts</a>
+                            <a href="{{ url('/set-gcash') }}" class="nav-link link-dark">Gcash Account</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/changePassword') }}" class="nav-link link-dark">Change Password</a>

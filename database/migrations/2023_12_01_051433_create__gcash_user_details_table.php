@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('gcash_user_details', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->index('user_id');
-            $table->string('details');
-            $table->float('totalPrice');
-            $table->string('paymentMethod');
-            $table->text('shippingAddress');
+            $table->string('number');
+            $table->string('fullname');
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('_gcash_user_details');
     }
 };

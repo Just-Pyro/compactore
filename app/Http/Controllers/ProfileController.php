@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\GcashUserDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
@@ -104,5 +105,19 @@ class ProfileController extends Controller
         return back()
             ->with('success', 'Image uploaded successfully.')
             ->with('imageName', $imageName);
+    }
+
+    public function saveGcash(Request $request){
+        $user = auth()->user();
+
+        $gcash = GcashUserDetail::create([
+            'user_id' => $user->id,
+            'number' => $request->gcashNumber,
+            'fullname' => $request->gcashName,
+            'email' => $request->gcashEmail
+        ]);
+        
+
+        return back();
     }
 }

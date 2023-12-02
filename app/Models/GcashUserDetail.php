@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class GcashUserDetail extends Model
 {
     use HasFactory;
 
+    protected $table = "gcash_user_details";
+
     protected $fillable = [
         'user_id',
-        'details',
-        'totalPrice',
-        'paymentMethod',
-        'shippingAddress',
+        'number',
+        'fullname',
+        'email'
     ];
 
     public function user(){

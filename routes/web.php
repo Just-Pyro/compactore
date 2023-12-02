@@ -12,6 +12,7 @@ use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\ShopCartController;
 use App\Http\Controllers\SwapPostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', [UserController::class, 'check']);
 
@@ -70,6 +71,13 @@ Route::get('/profile', function(){//nagamit
 Route::post('/saveBio', [ProfileController::class, 'submitBio']);//nagamit
 Route::post('/create-updateProfile', [ProfileController::class, 'createUpdateProfile']);//nagamit
 Route::post('/create-updateProfilePic', [ProfileController::class, 'createUpdateProfilePic']);//nagamit
+Route::get('/set-gcash', function(){
+    $user = auth()->user();
+    $profile = $user->profile;
+    $gcash = $user->gcash;
+    return view('profile.profileGcash', ['user'=>$user, 'profile' => $profile, 'gcash' => $gcash]);
+});
+Route::post('/saveGcash', [ProfileController::class, 'saveGcash']);
 
 //for Users Shop
 Route::post('/openStore', [ShopController::class, 'createShop']);//nagamit
@@ -133,3 +141,9 @@ Route::post('/postSurplus', [SurplusController::class, 'postSurplus']);
 //swapme
 Route::get('/swapme', [SwapPostController::class, 'getallPost']);//nagamit
 Route::post('/addPost', [SwapPostController::class, 'addPost']);//nagamit
+
+//payment
+Route::get('/create-session', [CheckoutController::class, 'createSession']);
+Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+Route::get('/checkout/success', [CheckoutController::class, 'checkoutSuccess'])->name('checkout.success');
+Route::get('/checkout/failed', [CheckoutController::class, 'checkoutFailed'])->name('checkout.failed');

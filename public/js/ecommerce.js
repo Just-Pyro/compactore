@@ -5,6 +5,12 @@ const app = Vue.createApp({
             isDisabled: true,
             imagePreview: null,
             preloadedImages:[],
+            paymentMethod:"CoD",
+            paymentMethods: [
+                { value: 'CoD', label: 'Cash on Delivery' },
+                { value: 'Gcash', label: 'GCash' },
+                // Add more payment methods as needed
+            ],
             //for Add to Cart
         }
     },
@@ -117,6 +123,24 @@ const app = Vue.createApp({
                 var modalInstance = new bootstrap.Modal(document.getElementById('selectProductModal'));
                 modalInstance.show();
             }
+        },
+        placeOrder(){
+            var total = document.getElementById('totalPrice').innerText;
+
+            console.log(this.paymentMethod);
+            console.log(total);
+            axios.post(window.checkoutPlaceOrderUrl, {
+                paymentMethod: this.paymentMethod,
+                totalPrice: total,
+            })
+            .then(response => {
+                // Handle success response
+                console.log(response.data);
+            })
+            .catch(error => {
+                // Handle error response
+                console.error(error);
+            });
         },
         // profile
         enableEdit() {

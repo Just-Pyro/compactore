@@ -132,8 +132,8 @@
                 <div class="col-1">
                     <p class="text-end">{{ $Subtotal }}</p>
                     <p class="text-end">P120</p>
-                    <p class="text-end">-P40</p>
-                    <p class="fw-bold fs-5 text-end">P285.96</p>
+                    <p class="text-end">P0</p>
+                    <p class="fw-bold fs-5 text-end" id="totalPrice">{{ $Subtotal+120 }}</p>
                 </div>
             </div>
         </div>
@@ -141,9 +141,20 @@
         <div class="p-3 mb-3 bg-white border-top">
             <div class="row">
                 <div class="col"></div>
-                <div class="col"></div>
+                <div class="col">
+                    
+                </div>
                 <div class="col-2">
-                    <button class="btn btn-orange">Place Order Now</button>
+                    <form action="/checkout" id="checkOutForm" method="post">
+                        @csrf
+                        {{-- <input type="hidden" name=""> --}}
+                        @foreach ($forCheckout as $item => $innerItem)
+                        <input type="text" name="productName[]" value="{{ $innerItem['productName'] }}" style="display:none;">
+                        @endforeach
+                        <input type="hidden" name="paymentMethod" v-model="paymentMethod">
+                        <input type="number" name="totalPrice" value="{{ $Subtotal+120 }}" style="display:none;">
+                        <button class="btn btn-orange" type="submit">Place Order Now</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -154,7 +165,13 @@
     @include('modals/compactoreVoucher')
     {{-- Modal for Shop Voucher --}}
     @include('modals/shopVoucher')
+    {{-- Modal for Payment Method --}}
+    @include('modals/paymentMethod')
     @include('includes/footer1')
+    {{-- <script>
+        window.checkoutPlaceOrderUrl = '{{ route("checkout.placeOrder") }}';
+    </script> --}}
+    
     <script src="/js/ecommerce.js"></script>
 </body>
 </html>

@@ -62,4 +62,12 @@ class User extends Authenticatable
     public function surplus(){
         return $this->hasMany(Surplus::class, 'user_id');
     }
+
+    public function gcash(){
+        return $this->hasOne(GcashUserDetail::class, 'user_id');
+    }
+
+    public function order(){
+        return $this->hasMany(Order::class, 'user_id');
+    }
 }
