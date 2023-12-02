@@ -10,8 +10,9 @@
 </head>
 <body>
     @include('includes/header2')
-    <div class="container-fluid position-relative" id="contentBody">
-      <button class="btn btn-dark position-absolute top-0 start-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">></button>
+      <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">></button>
+
+    <div class="container" id="contentBody">
           <div class="row">
             <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
               <div class="offcanvas-header mt-2">
@@ -59,6 +60,7 @@
               </div>
             </div>
           </div>
+          {{-- Carousel --}}
             <div class="container">
               <div class="carouselEcom d-flex justify-content-center my-4">
                 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width: 1000px;">
@@ -88,78 +90,69 @@
                   </button>
                 </div>
               </div>
-              <div class="py-2 bg-light">
-                <h3 class="d-flex justify-content-center">Top Seller</h3>
-              <div class="row mx-auto product">
-                <div class="col-2">
-                  <div class="col-sm-6 col-lg-4 col-xl-3 my-3" @click="seeProduct">
-                    <div class="card shadow" style="width: 10rem; height: 16rem;">
-                        <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
-                        <div class="card-body bg-light" style="height: 10rem;">
-                            <p class="card-title productname">SAMPLE PRODUCT NAME</p>
-                            <p class="card-text text-danger price">156126.00</p>
+              {{-- Top Products --}}
+              <div class="p-2 bg-light">
+                <h3 class="d-flex justify-content-center py-2">Top Products</h3>
+                <div class="container d-flex cards-wrapper gx-5 product">
+                  
+                      <div @click="seeProduct">
+                        <div class="card" style="height: 18rem;">
+                            <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                            <div class="card-body bg-light" style="height: 10rem;">
+                                <p class="card-title productname">SAMPLE PRODUCT NAME</p>
+                                <p class="card-text text-danger price">156126.00</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-2">
-                  <div class="col-sm-6 col-lg-4 col-xl-3 my-3" @click="seeProduct">
-                    <div class="card shadow" style="width: 10rem; height: 16rem;">
-                        <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
-                        <div class="card-body bg-light" style="height: 10rem;">
-                            <p class="card-title productname">SAMPLE PRODUCT NAME</p>
-                            <p class="card-text text-danger price">156126.00</p>
+                      </div>
+                      <div @click="seeProduct">
+                        <div class="card" style="height: 18rem;">
+                            <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                            <div class="card-body bg-light" style="height: 10rem;">
+                                <p class="card-title productname">SAMPLE PRODUCT NAME</p>
+                                <p class="card-text text-danger price">156126.00</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-2">
-                  <div class="col-sm-6 col-lg-4 col-xl-3 my-3" @click="seeProduct">
-                    <div class="card shadow" style="width: 10rem; height: 16rem;">
-                        <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
-                        <div class="card-body bg-light" style="height: 10rem;">
-                            <p class="card-title productname">SAMPLE PRODUCT NAME</p>
-                            <p class="card-text text-danger price">156126.00</p>
+                      </div>
+                      <div @click="seeProduct">
+                        <div class="card" style="height: 18rem;">
+                            <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                            <div class="card-body bg-light" style="height: 10rem;">
+                                <p class="card-title productname">SAMPLE PRODUCT NAME</p>
+                                <p class="card-text text-danger price">156126.00</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-2">
-                  <div class="col-sm-6 col-lg-4 col-xl-3 my-3" @click="seeProduct">
-                    <div class="card shadow" style="width: 10rem; height: 16rem;">
-                        <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
-                        <div class="card-body bg-light" style="height: 10rem;">
-                            <p class="card-title productname">SAMPLE PRODUCT NAME</p>
-                            <p class="card-text text-danger price">156126.00</p>
+                      </div>
+                      <div @click="seeProduct">
+                        <div class="card" style="height: 18rem;">
+                            <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                            <div class="card-body bg-light" style="height: 10rem;">
+                                <p class="card-title productname">SAMPLE PRODUCT NAME</p>
+                                <p class="card-text text-danger price">156126.00</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-2">
-                  <div class="col-sm-6 col-lg-4 col-xl-3 my-3" @click="seeProduct">
-                    <div class="card shadow" style="width: 10rem; height: 16rem;">
-                        <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
-                        <div class="card-body bg-light" style="height: 10rem;">
-                            <p class="card-title productname">SAMPLE PRODUCT NAME</p>
-                            <p class="card-text text-danger price">156126.00</p>
+                      </div>
+                      <div @click="seeProduct">
+                        <div class="card" style="height: 18rem;">
+                            <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                            <div class="card-body bg-light" style="height: 10rem;">
+                                <p class="card-title productname">SAMPLE PRODUCT NAME</p>
+                                <p class="card-text text-danger price">156126.00</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-2">
-                  <div class="col-sm-6 col-lg-4 col-xl-3 my-3" @click="seeProduct">
-                    <div class="card shadow" style="width: 10rem; height: 16rem;">
-                        <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
-                        <div class="card-body bg-light" style="height: 10rem;">
-                            <p class="card-title productname">SAMPLE PRODUCT NAME</p>
-                            <p class="card-text text-danger price">156126.00</p>
+                      </div>
+                      <div @click="seeProduct">
+                        <div class="card" style="height: 18rem;">
+                            <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                            <div class="card-body bg-light" style="height: 10rem;">
+                                <p class="card-title productname">SAMPLE PRODUCT NAME</p>
+                                <p class="card-text text-danger price">156126.00</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                </div>
-              </div>
+                      </div>
+
               </div>
             </div>
+          </div>
     </div>
     
     @include('includes/footer1')
