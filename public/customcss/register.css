@@ -52,6 +52,7 @@ a{
 }
 
 /* media */
+/* max-width active ni siya sa kani nga pixel range: 1px-767px */
 @media (max-width: 767.98px) {
   .pcview{
    display: none; 
@@ -60,6 +61,7 @@ a{
    display: block; 
   }
  }
+/* min-width active ni siya sa kani nga pixel range: 767px+ up */
  @media (min-width: 767.98px){
   .mobileview{
     display: none; 

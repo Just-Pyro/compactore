@@ -11,11 +11,11 @@
 <nav id="head1" class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <a id="title" href="{{ url('/ecommerce') }}" class="navbar-brand">COMPACTORE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compactoreMenu" aria-controls="#compactoreMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compactoreMenu" aria-controls="compactoreMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="compactoreMenu" class="collapse navbar-collapse d-flex justify-content-end">
+    <div id="compactoreMenu" class="collapse navbar-collapse mt-10px">
       <div class="flex-grow-1 position-relative">
         <form class="flex-grow-1 mx-2" method="GET" action="{{ route('search') }}">
           <input name="query" class="form-control" type="search" placeholder="Search products">
@@ -33,7 +33,7 @@
             <a class="nav-link" href="{{ url('/profile') }}"><i class="fa-solid fa-user"></i></a>
           </li>
           <li id="forSwitch" class="nav-item mx-1" @mouseover="switchHover" @mouseout="switchUnHover">
-            <a href="" class="nav-link"><i class="fa-solid fa-rotate" id="switch"></i></a>
+            <a class="nav-link"><i class="fa-solid fa-rotate" id="switch"></i></a>
             <div class="ms-1 me-2 hiddenIcons">
               <a href="{{ url('/swapme') }}" class="mx-3" style="display:inline-block !important;">
                 <img src="{{ URL('images/swapme.png') }}" alt="trade" id="trade" style="height: 16.8px;">
@@ -46,5 +46,6 @@
         </ul>
       </div>
     </div>
+    
   </div>
 </nav>
