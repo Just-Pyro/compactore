@@ -13,6 +13,8 @@ use App\Http\Controllers\ShopCartController;
 use App\Http\Controllers\SwapPostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ShippingAddressController;
+use App\Models\ShippingAddress;
 
 Route::get('/', [UserController::class, 'check']);
 
@@ -65,9 +67,16 @@ Route::get('/checkOut/{ids}',[ShopCartController::class, 'checkout']);//nagamit
 Route::get('/profile', function(){//nagamit
     $user = auth()->user();
     $profile = $user->profile;
-    return view('profile.profile', ['user'=>$user, 'profile' => $profile]);
+    $address = ShippingAddress::all();
+    $address = ShippingAddress::latest()->get();
+    $addressId = "";
+
+    return view('profile.profile', compact('user', 'profile', 'address', "addressId"));
 });
 
+Route::post('/addDeliveryAddress', [ShippingAddressController::class, 'addDeliveryAddress']);//nagamit
+Route::get('/get-data/{id}', [ShippingAddressController::class, 'getData']);//nagamit
+Route::post('/editDeliveryAddress', [ShippingAddressController::class, 'editDeliveryAddress']);//nagamit
 Route::post('/saveBio', [ProfileController::class, 'submitBio']);//nagamit
 Route::post('/create-updateProfile', [ProfileController::class, 'createUpdateProfile']);//nagamit
 Route::post('/create-updateProfilePic', [ProfileController::class, 'createUpdateProfilePic']);//nagamit
@@ -134,9 +143,9 @@ Route::get('/changePassword', function(){
 Route::get('/surplus', function(){
     return view('surplus.surplus');
 });
-Route::get('/searchResult', [SurplusController::class, 'search'])->name('surplusSearchResult');
-Route::get('/surplusProductPage/{id}', [SurplusController::class, 'displayProduct']);
-Route::post('/postSurplus', [SurplusController::class, 'postSurplus']);
+Route::get('/searchResult', [SurplusController::class, 'search'])->name('surplusSearchResult');//nagamit
+Route::get('/surplusProductPage/{id}', [SurplusController::class, 'displayProduct']);//nagamit
+Route::post('/postSurplus', [SurplusController::class, 'postSurplus']);//nagamit
 
 //swapme
 Route::get('/swapme', [SwapPostController::class, 'getallPost']);//nagamit
@@ -144,6 +153,6 @@ Route::post('/addPost', [SwapPostController::class, 'addPost']);//nagamit
 
 //payment
 Route::get('/create-session', [CheckoutController::class, 'createSession']);
-Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
-Route::get('/checkout/success', [CheckoutController::class, 'checkoutSuccess'])->name('checkout.success');
+Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');//nagamit
+Route::get('/checkout/success', [CheckoutController::class, 'checkoutSuccess'])->name('checkout.success');//nagamit
 Route::get('/checkout/failed', [CheckoutController::class, 'checkoutFailed'])->name('checkout.failed');

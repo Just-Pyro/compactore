@@ -107,7 +107,7 @@
                 <div class="col p-2 border-end border-2 border-dark-subtle d-flex">
                     <h5 class="col fw-normal mb-3 d-inline">Payment Method</h5>
                     <div class="col-4">
-                        <h6 id="paymentMethod" class="fw-normal d-inline">Cash on Delivery</h6>
+                        <h6 id="paymentMethod" class="fw-normal d-inline">@{{ selectedPaymentMethodLabel }}</h6>
                         <span id="changePaymentMethod" data-bs-toggle="modal" data-bs-target="#changePaymentMethodModal">Change</span>
                     </div>
                 </div>
@@ -150,7 +150,13 @@
                         {{-- <input type="hidden" name=""> --}}
                         @foreach ($forCheckout as $item => $innerItem)
                         <input type="text" name="productName[]" value="{{ $innerItem['productName'] }}" style="display:none;">
+                        <input type="number" name="stock[]" value="{{ $innerItem['quantity'] }}" style="display: none;">
+                        <input type="number" name="product[]" value="{{ $innerItem['product_id'] }}" style="display: none;">
+                        <input type="number" name="id[]" value="{{ $innerItem['id'] }}" style="display: none;">
                         @endforeach
+                        {{-- @foreach ($products as $id)
+                            <input type="number" name="product[]" value="{{ $id }}" style="display: none;">
+                        @endforeach --}}
                         <input type="hidden" name="paymentMethod" v-model="paymentMethod">
                         <input type="number" name="totalPrice" value="{{ $Subtotal+120 }}" style="display:none;">
                         <button class="btn btn-orange" type="submit">Place Order Now</button>

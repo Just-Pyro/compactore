@@ -5,7 +5,7 @@ const app = Vue.createApp({
             isDisabled: true,
             imagePreview: null,
             preloadedImages:[],
-            paymentMethod:"CoD",
+            selectedPaymentMethod: 'CoD',
             paymentMethods: [
                 { value: 'CoD', label: 'Cash on Delivery' },
                 { value: 'Gcash', label: 'GCash' },
@@ -124,24 +124,24 @@ const app = Vue.createApp({
                 modalInstance.show();
             }
         },
-        placeOrder(){
-            var total = document.getElementById('totalPrice').innerText;
+        // placeOrder(){
+        //     var total = document.getElementById('totalPrice').innerText;
 
-            console.log(this.paymentMethod);
-            console.log(total);
-            axios.post(window.checkoutPlaceOrderUrl, {
-                paymentMethod: this.paymentMethod,
-                totalPrice: total,
-            })
-            .then(response => {
-                // Handle success response
-                console.log(response.data);
-            })
-            .catch(error => {
-                // Handle error response
-                console.error(error);
-            });
-        },
+        //     console.log(this.paymentMethod);
+        //     console.log(total);
+        //     axios.post(window.checkoutPlaceOrderUrl, {
+        //         paymentMethod: this.paymentMethod,
+        //         totalPrice: total,
+        //     })
+        //     .then(response => {
+        //         // Handle success response
+        //         console.log(response.data);
+        //     })
+        //     .catch(error => {
+        //         // Handle error response
+        //         console.error(error);
+        //     });
+        // },
         // profile
         enableEdit() {
             var check = document.getElementById('saveBio');
@@ -190,6 +190,32 @@ const app = Vue.createApp({
                 reader.readAsDataURL(file);
             }
         },
+        submitDeliveryAddress(){
+            document.getElementById('addAddress').submit();
+        },
+        editDeliveryAddress(){
+            console.log('im here');
+            var province = document.getElementById('province');
+            var city = document.getElementById('city');
+
+            console.log(province.value);
+            console.log(city.value);
+
+            // Check if the selected option is not the default one
+            if (province.value !== "" && city.value !== "") {
+                // If not empty, submit the form
+                try{
+                    document.getElementById('editAddressForm').submit();
+    
+                }catch(error){
+                    console.error('An error occurred:', error);
+    
+                }
+            } else {
+                // If empty, show an alert or perform other actions
+                alert('Please select province and city before submitting.');
+            }
+        },
         openStore(){
             document.getElementById('formOpenStore').submit();
         },
@@ -217,6 +243,28 @@ const app = Vue.createApp({
       
               }
             }
+        },
+
+        editAddress(addressId) {
+            window.location.href = `/get-data/${addressId}`;
+
         }
+    },
+    computed: {
+        selectedPaymentMethodLabel() {
+          const selectedMethod = this.paymentMethods.find((method) => method.value === this.selectedPaymentMethod);
+          return selectedMethod ? selectedMethod.label : '';
+        },
+    },
+    mounted(){
+        var $ = new City();
+        var add = new City();
+        $.showProvinces("#province");
+        add.showProvinces("#provinceAdd");
+        $.showCities("#city");
+        add.showCities("#cityAdd");
+
+        // const editAddressModal = new bootstrap.Modal(document.getElementById('editAddressModal'));
+        // this.$data.editAddressModal = editAddressModal;
     }
 }).mount("body");

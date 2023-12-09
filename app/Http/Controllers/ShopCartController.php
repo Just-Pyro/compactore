@@ -112,11 +112,13 @@ class ShopCartController extends Controller
 
         $forCheckout = [];
         $images = [];
+        $products = [];
         foreach($idArray as $i => $id){
             $addtoCart = AddtoCart::find($id);
             // dump($addtoCart->product_id);
             $product = Product::find($addtoCart->product_id);
             // ->where('product_id', $addtoCart->product_id)
+            // $products[] = $addtoCart->product_id;
             $images[] = $product->mediaFile->first();
             // dump($images);
 

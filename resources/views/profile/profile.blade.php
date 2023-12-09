@@ -186,6 +186,17 @@
     </div>
     @include('modals/changeDeliveryAddress')
     @include('includes/footer1')
+    @if ($addressId != "")
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get the modal element
+                var myModal = new bootstrap.Modal(document.getElementById('editAddressModal'));
+
+                // Show the modal
+                myModal.show();
+            });
+        </script>
+    @endif
     <script src="/js/ecommerce.js"></script>
     {{-- <script src="/js/profile.js"></script>s --}}
 </body>

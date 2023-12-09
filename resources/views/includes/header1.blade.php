@@ -11,9 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 
-{{-- vue 3 cdn --}}
-<script src="/js/vue.3.js"></script>
-
 {{-- font-awesome --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></script>
 

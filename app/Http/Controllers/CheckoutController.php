@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use GuzzleHttp\Client;
 use Curl;
+use GuzzleHttp\Client;
+use App\Models\Product;
+use App\Models\AddtoCart;
+use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
@@ -15,6 +17,23 @@ class CheckoutController extends Controller
             'paymentMethod' => 'required|in:CoD,Gcash',
             // Add additional validation rules if needed
         ]);
+
+        $successUrl = 'http://127.0.0.1:8000/checkout/success';
+
+        foreach($request->product as $index => $product){
+            $successUrl .= ($index == 0 ? '?' : '&') . "product[$index]=" . urlencode($product);
+        }
+
+        foreach($request->stock as $index => $stock){
+            $successUrl .= "&stock[$index]=" . urlencode($stock);
+        }
+
+        foreach($request->id as $index => $id){
+            $successUrl .= "&id[$index]=" . urlencode($id);
+        }
+        $product = $request->product;
+        $stock = $request->stock;
+        $id = $request->id;
 
         $totalAmount = $request->totalPrice*100;
         // Process the order based on the selected payment method
@@ -43,7 +62,7 @@ class CheckoutController extends Controller
                             // 'card',
                             'gcash',
                         ],
-                        'success_url' => 'http://127.0.0.1:8000/checkout/success',
+                        'success_url' => $successUrl,
                         'cancel_url' => 'http://127.0.0.1:8000/checkout',
                         // 'description' => 'text'
                     ],
@@ -63,10 +82,10 @@ class CheckoutController extends Controller
             return redirect()->to($response->data->attributes->checkout_url);
         }
 
-        return view('checkout.success');
+        return redirect()->route('checkout.success', compact('product','stock','id'));
     }
 
-    public function checkoutSuccess()
+    public function checkoutSuccess(Request $request)
     {
 
         $sessionId = \Session::get('session_id');
@@ -77,7 +96,17 @@ class CheckoutController extends Controller
                             ->withHeader('Authorization: Basic c2tfdGVzdF95ZGVVNkxhaFpOcjR6and3OU5QOWlVdzI6')
                             ->asJson()
                             ->get();
-        // dd($response);
+
+
+        for($i = 0; $i < count($request->product); $i++){
+            $product = Product::find($request->product[$i]);
+            $product->update([
+                'stock' => $product->stock - $request->stock[$i]
+            ]);
+            $addtoCart = AddtoCart::find($request->id[$i]);
+            $addtoCart->delete();            
+        }
+        
         return view('checkout.success');
     }
 
