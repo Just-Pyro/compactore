@@ -69,9 +69,10 @@ Route::get('/profile', function(){//nagamit
     $profile = $user->profile;
     $address = ShippingAddress::all();
     $address = ShippingAddress::latest()->get();
-    $addressId = "";
+    $addressId = null;
+    $addressUpdated = null;
 
-    return view('profile.profile', compact('user', 'profile', 'address', "addressId"));
+    return view('profile.profile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
 });
 
 Route::post('/addDeliveryAddress', [ShippingAddressController::class, 'addDeliveryAddress']);//nagamit

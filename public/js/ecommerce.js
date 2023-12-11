@@ -259,10 +259,10 @@ const app = Vue.createApp({
     mounted(){
         var $ = new City();
         var add = new City();
-        $.showProvinces("#province");
         add.showProvinces("#provinceAdd");
-        $.showCities("#city");
         add.showCities("#cityAdd");
+        $.showProvinces("#province");
+        $.showCities("#city");
 
         // const editAddressModal = new bootstrap.Modal(document.getElementById('editAddressModal'));
         // this.$data.editAddressModal = editAddressModal;

@@ -48,50 +48,62 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/editDeliveryAddress" method="post" id="editAddressForm">
-                    @csrf
-                    <input name="id" type="number" value="{{ $deliveryAddress['id'] }}" style="display:none;">
-                    <div class="row">
-                        <div class="col">
+                {{-- @php
+                    dump($addressId['id']);
+                @endphp --}}
+            @if ($addressId != null)
+
+                @foreach ($address as $item => $deliveryAddress)
+                    @if($addressId['id'] == $deliveryAddress['id'])
+                        <form action="/editDeliveryAddress" method="post" id="editAddressForm">
+                            @csrf
+                            <input name="id" type="number" value="{{ $deliveryAddress['id'] }}" style="display:none;">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-2">
+                                        <input name="fullname" type="text" class="form-control" id="forFullName" placeholder="Pres Nacua" value="{{ $deliveryAddress['fullname'] }}" required>
+                                        <label for="forFullName">Full Name</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-2">
+                                        <input name="contact" type="number" class="form-control" id="forContactNumber" placeholder="09159154578" value="{{ $deliveryAddress['contact'] }}" required>
+                                        <label for="forContactNumber">Contact Number</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="province">Province</label>
+                                    <select name="province" class="form-select mb-2" id="province" required>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="municipality">City/Municipality</label>
+                                    <select name="city" class="form-select mb-2" id="city" required>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <input type="text" name="barangay" class="form-control" id="barangayEdit" placeholder="barangay" value="{{ $deliveryAddress['barangay'] }}" required>
+                                        <label for="barangayEdit">Type your Barangay here</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-floating mb-2">
-                                <input name="fullname" type="text" class="form-control" id="forFullName" placeholder="Pres Nacua" value="{{ $deliveryAddress['fullname'] }}" required>
-                                <label for="forFullName">Full Name</label>
+                                <input name="postal" type="text" class="form-control" id="postalCode" placeholder="6014" value="{{ $deliveryAddress['postal'] }}" required>
+                                <label for="postalCode">Postal Code</label>
                             </div>
-                        </div>
-                        <div class="col">
                             <div class="form-floating mb-2">
-                                <input name="contact" type="number" class="form-control" id="forContactNumber" placeholder="09159154578" value="{{ $deliveryAddress['contact'] }}" required>
-                                <label for="forContactNumber">Contact Number</label>
+                                <input name="details" type="text" class="form-control" id="detailedAddress" placeholder="front of CPC" value="{{ $deliveryAddress['detailed_address'] }}" required>
+                                <label for="detailedAddress">Detailed Address Info</label>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="province">Province</label>
-                            <select name="province" class="form-select mb-2" id="province" required>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="municipality">City/Municipality</label>
-                            <select name="city" class="form-select mb-2" id="city" required>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <div class="form-floating">
-                                <input type="text" name="barangay" class="form-control" id="barangayEdit" placeholder="barangay" value="{{ $deliveryAddress['barangay'] }}" required>
-                                <label for="barangayEdit">Type your Barangay here</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-floating mb-2">
-                        <input name="postal" type="text" class="form-control" id="postalCode" placeholder="6014" value="{{ $deliveryAddress['postal'] }}" required>
-                        <label for="postalCode">Postal Code</label>
-                    </div>
-                    <div class="form-floating mb-2">
-                        <input name="details" type="text" class="form-control" id="detailedAddress" placeholder="front of CPC" value="{{ $deliveryAddress['detailed_address'] }}" required>
-                        <label for="detailedAddress">Detailed Address Info</label>
-                    </div>
-                </form>
+                        </form>
+                    @endif
+                @endforeach
+
+            @endif
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-target="#changeAddressModal" data-bs-toggle="modal">Cancel</button>

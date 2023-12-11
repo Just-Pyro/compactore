@@ -37,7 +37,14 @@ class ShippingAddressController extends Controller
             'detailed_address' => $request->details,
         ]);
 
-        return back();
+        $user = auth()->user();
+        $profile = $user->profile;
+        $address = ShippingAddress::all();
+        $address = ShippingAddress::latest()->get();
+        $addressId = null;
+        $addressUpdated = 'updated';
+
+        return view('profile.profile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
     }
 
     public function displayDeliveryAddresses(){
@@ -45,25 +52,27 @@ class ShippingAddressController extends Controller
         $profile = $user->profile;
         $address = ShippingAddress::all();
         $address = ShippingAddress::latest()->get();
-        $addressId = "";
+        $addressId = null;
+        $addressUpdated = null;
 
 
-        return view('profile.profile', compact('user', 'profile', 'address', "addressId"));
+        return view('profile.profile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
     }
 
     public function getData($id){
         $user = auth()->user();
         $profile = $user->profile;
         // dump($profile);
+        // $addressId = [];
         $address = ShippingAddress::all();
         $address = ShippingAddress::latest()->get();
         $addressId = ShippingAddress::find($id);
-
+        $addressUpdated = null;
         // Use the ID to fetch data from the database
         // Perform database query here...
 
         // Return the retrieved data as the response
         
-        return view('profile.profile', compact('user', 'profile', 'address', "addressId"));
+        return view('profile.profile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
     }
 }
