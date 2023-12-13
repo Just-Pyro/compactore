@@ -7,6 +7,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="/customcss/seller.css">
     @include('includes/header1')
+    <style>
+        .img {
+            transition: 0.3s;
+        }
+        .img:hover {
+            border:solid 1px black;
+        }
+    </style>
 </head>
 <body class="bg-dark-subtle">
     @include('includes/header5seller')
@@ -66,12 +74,11 @@
                         <div class="col-3">
                             <input type="file" name="productImg[]" class="form-control form-control-sm" multiple accept="image/*" @change="loadImages">
                             <br>
-                            <p class="fw-normal ms-3">up to 7 files:</p>
                         </div>
                         <div class="col overflow-x-auto" style="height: 150px;">
                             <div class="d-flex flex-row flex-nowrap">
                                 <div v-for="(image, index) in preloadedImages" :key="index" class="me-2">
-                                    <img :src="image.src" alt="Preloaded Image" style="height: 100px;">
+                                    <img class="img" :src="image.src" alt="Preloaded Image" style="height: 100px; cursor: pointer;">
                                 </div>
                             </div>
                         </div>

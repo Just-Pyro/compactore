@@ -36,7 +36,7 @@
             </li>
             <li class="nav-item mx-2">
               @if ($profile)
-              <a href="{{ url('/profile') }}" class="nav-link p-0"><img src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="userProfile" class="rounded-circle" style="height:40px; object-fit:contain;"></a>                        
+              <a href="{{ url('/profile') }}" class="nav-link p-0"><img src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="dp" class="rounded-circle border" style="height:40px; width:40px; object-fit:contain;"></a>                        
               @else
               <a href="{{ url('/profile') }}" class="nav-link"><i class="fa-solid fa-user"></i></a>                        
               @endif
