@@ -11,16 +11,32 @@ class ShippingAddressController extends Controller
     public function addDeliveryAddress(Request $request){
         $user = auth()->user();
 
-        $address = ShippingAddress::create([
-            'user_id' => $user->id,
-            'fullname' => $request->fullname,
-            'contact' => $request->contact,
-            'province' => $request->province,
-            'city' => $request->city,
-            'barangay' => $request->barangay,
-            'postal' => $request->postal,
-            'detailed_address' => $request->details,
-        ]);
+        if($user->address->count() == 0){
+            $address = ShippingAddress::create([
+                'user_id' => $user->id,
+                'fullname' => $request->fullname,
+                'contact' => $request->contact,
+                'province' => $request->province,
+                'city' => $request->city,
+                'barangay' => $request->barangay,
+                'postal' => $request->postal,
+                'detailed_address' => $request->details,
+                'status' => 1,
+            ]);
+        }else{
+            $address = ShippingAddress::create([
+                'user_id' => $user->id,
+                'fullname' => $request->fullname,
+                'contact' => $request->contact,
+                'province' => $request->province,
+                'city' => $request->city,
+                'barangay' => $request->barangay,
+                'postal' => $request->postal,
+                'detailed_address' => $request->details,
+                'status' => 0,
+            ]);
+        }
+        
 
         return back();
     }
@@ -39,8 +55,8 @@ class ShippingAddressController extends Controller
 
         $user = auth()->user();
         $profile = $user->profile;
-        $address = ShippingAddress::all();
-        $address = ShippingAddress::latest()->get();
+        // $address = ShippingAddress::all();
+        $address = $user->address()->latest()->get();
         $addressId = null;
         $addressUpdated = 'updated';
 
@@ -50,8 +66,8 @@ class ShippingAddressController extends Controller
     public function displayDeliveryAddresses(){
         $user = auth()->user();
         $profile = $user->profile;
-        $address = ShippingAddress::all();
-        $address = ShippingAddress::latest()->get();
+        // $address = ShippingAddress::all();
+        $address = $user->address()->latest()->get();
         $addressId = null;
         $addressUpdated = null;
 
@@ -64,8 +80,8 @@ class ShippingAddressController extends Controller
         $profile = $user->profile;
         // dump($profile);
         // $addressId = [];
-        $address = ShippingAddress::all();
-        $address = ShippingAddress::latest()->get();
+        // $address = ShippingAddress::all();
+        $address = $user->address()->latest()->get();
         $addressId = ShippingAddress::find($id);
         $addressUpdated = null;
         // Use the ID to fetch data from the database
@@ -74,5 +90,21 @@ class ShippingAddressController extends Controller
         // Return the retrieved data as the response
         
         return view('profile.profile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
+    }
+
+    public function deleteData($id){
+        $deleteAddress = ShippingAddress::find($id)->delete();
+
+        $user = auth()->user();
+        $profile = $user->profile;
+        $address = $user->address()->latest()->get();
+        $addressId = null;
+        $addressUpdated = null;
+        // Use the ID to fetch data from the database
+        // Perform database query here...
+
+        // Return the retrieved data as the response
+        
+        return back()->with(compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
     }
 }

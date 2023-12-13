@@ -18,6 +18,7 @@ class ShippingAddress extends Model
         'barangay',
         'postal',
         'detailed_address',
+        'status',
     ];
 
     public function user(){

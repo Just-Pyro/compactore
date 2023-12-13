@@ -247,7 +247,10 @@ const app = Vue.createApp({
 
         editAddress(addressId) {
             window.location.href = `/get-data/${addressId}`;
+        },
 
+        deleteAddress(addressId) {
+            window.location.href = `/delete-data/${addressId}`;
         }
     },
     computed: {

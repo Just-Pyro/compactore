@@ -67,8 +67,8 @@ Route::get('/checkOut/{ids}',[ShopCartController::class, 'checkout']);//nagamit
 Route::get('/profile', function(){//nagamit
     $user = auth()->user();
     $profile = $user->profile;
-    $address = ShippingAddress::all();
-    $address = ShippingAddress::latest()->get();
+    // $address = ShippingAddress::all();
+    $address = $user->address()->latest()->get();
     $addressId = null;
     $addressUpdated = null;
 
@@ -77,6 +77,7 @@ Route::get('/profile', function(){//nagamit
 
 Route::post('/addDeliveryAddress', [ShippingAddressController::class, 'addDeliveryAddress']);//nagamit
 Route::get('/get-data/{id}', [ShippingAddressController::class, 'getData']);//nagamit
+Route::get('/delete-data/{id}', [ShippingAddressController::class, 'deleteData']);//nagamit
 Route::post('/editDeliveryAddress', [ShippingAddressController::class, 'editDeliveryAddress']);//nagamit
 Route::post('/saveBio', [ProfileController::class, 'submitBio']);//nagamit
 Route::post('/create-updateProfile', [ProfileController::class, 'createUpdateProfile']);//nagamit

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('barangay');
             $table->string('postal');
             $table->text('detailed_address');
+            $table->integer('status');
             $table->timestamps();
         });
     }

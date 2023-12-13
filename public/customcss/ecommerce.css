@@ -47,12 +47,12 @@
 #checkOut{
     box-shadow: 0 -0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
-#bioEdit, #selectShopVoucher, #changePaymentMethod, #editAddress, #changeAddress, #selectVoucher {
+#bioEdit, #selectShopVoucher, #changePaymentMethod, #editAddress, #deleteAddress, #changeAddress, #selectVoucher {
     cursor: pointer;
     float: right;
     transform: color 0.3s;
 }
-#bioEdit:hover, #selectShopVoucher:hover, #changePaymentMethod:hover, #editAddress:hover, #changeAddress:hover, #selectVoucher:hover {
+#bioEdit:hover, #selectShopVoucher:hover, #changePaymentMethod:hover, #editAddress:hover, #deleteAddress:hover, #changeAddress:hover, #selectVoucher:hover {
     color: darkblue;
 }
 

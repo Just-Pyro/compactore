@@ -12,7 +12,11 @@
                     <div class="content m-3 p-2 row border border-info-subtle shadow-sm">
                         {{-- each address --}}
                         <div class="col-4 form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                        @if ( $deliveryAddress['status'] == 1)
+                            <input class="form-check-input" type="radio" name="flexRadioAddress" id="flexRadioDefault1" checked>
+                        @else
+                            <input class="form-check-input" type="radio" name="flexRadioAddress" id="flexRadioDefault1">
+                        @endif
                             <label class="form-check-label" for="flexRadioDefault1">
                                 {{ $deliveryAddress['fullname'] }}
                             </label>
@@ -24,6 +28,7 @@
                         </div>
                         <div class="col-1">
                             <span id="editAddress"  class="align-self-center edit-address" @click="editAddress({{ $deliveryAddress['id'] }})">Edit</span>
+                            <span id="deleteAddress"  class="align-self-center delete-address" @click="deleteAddress({{ $deliveryAddress['id'] }})">Delete</span>
                             {{-- {{ "<script>var id = '$id[]';</script>" }} --}}
                             {{-- data-bs-toggle="modal" data-bs-target="#editAddressModal" --}}
                         </div>

@@ -15,7 +15,18 @@
             <h5 class="fw-normal mb-3"><i class="fa-solid fa-location-dot"></i> Delivery Address</h5>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control me-3" value="sample, location, blablabla" disabled readonly>
+                    {{-- loops through all address of current user. if there's a default address set it will break the loop --}}
+                    @foreach ($address as $item => $deliveryAddress)
+                        @if ( $deliveryAddress['status'] == 1)
+                            <input type="text" class="form-control me-3" value="{{ $deliveryAddress['contact'] }} | {{ $deliveryAddress['fullname'] }} | {{ $deliveryAddress['province'] }}, {{ $deliveryAddress['city'] }}, {{ $deliveryAddress['barangay'] }}, {{ $deliveryAddress['postal'] }} | {{ $deliveryAddress['detailed_address'] }}" disabled readonly>
+                            @php $breakLoop = true; @endphp
+                            @break
+                        @endif
+                    @endforeach
+                    {{-- if there's no default address then show this instead --}}
+                    @if (!$breakLoop)
+                        <input type="text" class="form-control me-3" value="no delivery address set" disabled readonly>
+                    @endif
                 </div>
                 <div class="col-1 d-flex">
                     <span id="changeAddress" data-bs-toggle="modal" data-bs-target="#changeAddressModal" class="align-self-center">Edit</span>
@@ -174,9 +185,29 @@
     {{-- Modal for Payment Method --}}
     @include('modals/paymentMethod')
     @include('includes/footer1')
-    {{-- <script>
-        window.checkoutPlaceOrderUrl = '{{ route("checkout.placeOrder") }}';
-    </script> --}}
+    @if ($addressId != null)
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get the modal element
+                var myModal = new bootstrap.Modal(document.getElementById('editAddressModal'));
+
+                // Show the modal
+                myModal.show();
+            });
+        </script>
+    @endif
+    
+    @if ($addressUpdated != null)
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the modal element
+            var myModal = new bootstrap.Modal(document.getElementById('changeAddressModal'));
+
+            // Show the modal
+            myModal.show();
+        });
+    </script>
+    @endif
     
     <script src="/js/ecommerce.js"></script>
 </body>

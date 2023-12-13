@@ -89,12 +89,19 @@ class ShopCartController extends Controller
                 $productImages[$key] = $images;
             }
 
-            return view('ecommerce.cart', ["cartProducts"=>$cartProducts, "productImages" => $productImages, "shop" => $shop]);
+            $address = auth()->user()->address()->latest()->get();
+            $addressId = null;
+            $addressUpdated = null;
+
+            return view('ecommerce.cart', compact("cartProducts", "productImages", "shop", "address", 'addressId', 'addressUpdated'));
         }
 
         $cartProducts = null;
+        $address = auth()->user()->address()->latest()->get();
+        $addressId = null;
+        $addressUpdated = null;
 
-        return view('ecommerce.cart', ["cartProducts"=>$cartProducts]);
+        return view('ecommerce.cart', compact("cartProducts", 'address', 'addressId', 'addressUpdated'));
     }
 
     public function checkout($ids){
@@ -125,7 +132,11 @@ class ShopCartController extends Controller
             $forCheckout[] = $addtoCart;
         }
 
+        $address = auth()->user()->address()->latest()->get();
+        $addressId = null;
+        $addressUpdated = null;
+
         $Subtotal = null;
-        return view('ecommerce.checkOut', compact('forCheckout', 'images', 'Subtotal'));
+        return view('ecommerce.checkOut', compact('forCheckout', 'images', 'Subtotal', 'address', 'addressId', 'addressUpdated'));
     }
 }

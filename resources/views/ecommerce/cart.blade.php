@@ -97,6 +97,29 @@
     @include('modals/selectProductEcommerce')
     @include('modals/compactoreVoucher')
     @include('includes/footer1')
+    @if ($addressId != null)
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get the modal element
+                var myModal = new bootstrap.Modal(document.getElementById('editAddressModal'));
+
+                // Show the modal
+                myModal.show();
+            });
+        </script>
+    @endif
+    
+    @if ($addressUpdated != null)
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the modal element
+            var myModal = new bootstrap.Modal(document.getElementById('changeAddressModal'));
+
+            // Show the modal
+            myModal.show();
+        });
+    </script>
+    @endif
     <script src="/js/ecommerce.js"></script>
 </body>
 </html>
