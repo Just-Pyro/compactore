@@ -23,25 +23,17 @@ Route::post('/logout', [UserController::class,'logout']);//nagamit
 Route::post('/login', [UserController::class,'login']);//nagamit
 
 //admin
-Route::get('/admin', function(){
-    return view('admin.adminDashboard');
-});
-Route::get('/adminUserList', function(){
-    return view('admin.userList');
-});
+Route::get('/admin', [AdminController::class, 'displayModerators']);
+Route::get('/adminUserList', [AdminController::class, 'displayUserList']);
 Route::post('/addModerator', [AdminController::class, 'addModerator']);//nagamit
-Route::get('/adminUser', function(){
-    return view('admin.userReport');
-});//nagamit
-Route::get('/adminPost', function(){
-    return view('admin.postReport');
-});//nagamit
-Route::get('/adminStore', function(){
-    return view('admin.storeReport');
-});//nagamit
-Route::get('/adminVoucher', function(){
-    return view('admin.addVoucher');
-});//nagamit
+Route::get('/adminUser', [AdminController::class, 'displayReportedUsers']);//nagamit
+Route::get('/adminPost', [AdminController::class, 'displayReportedPosts']);//nagamit
+Route::get('/adminStore', [AdminController::class, 'displayReportedStores']);//nagamit
+Route::get('/adminVoucher', [AdminController::class, 'displayVouchers']);//nagamit
+
+// moderators
+Route::post('/deletemoderator', [AdminController::class, 'deleteModerator']);
+
 
 //ecommerce
 Route::get('/ecommerce', function() {//nagamit
@@ -155,6 +147,6 @@ Route::post('/addPost', [SwapPostController::class, 'addPost']);//nagamit
 
 //payment
 Route::get('/create-session', [CheckoutController::class, 'createSession']);
-Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');//nagamit
+Route::post('/checkoutOrder', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');//nagamit
 Route::get('/checkout/success', [CheckoutController::class, 'checkoutSuccess'])->name('checkout.success');//nagamit
 Route::get('/checkout/failed', [CheckoutController::class, 'checkoutFailed'])->name('checkout.failed');

@@ -66,24 +66,42 @@
                                 <thead class="bg-light">
                                     <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Moderator Name</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Assigned Section</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- <tr v-for="AdminUser in AdminUsers" :key="AdminUser.admin_id">
-                                    <th scope="row">{{AdminUser.number}}</th>
-                                    <td>{{AdminUser.admin_name}}</td>
-                                    <td>{{AdminUser.assigned_section}}</td>
-                                    <td><button class="btn btn-danger m-1" :disabled="AdminUser.disabled" @click="fnDisableModerator(AdminUser.admin_id)">disable</button></td>
-                                    </tr> --}}
+                                    @if ($moderators->count() > 0)
+                                        @php
+                                            $counter = 1;
+                                        @endphp
+                                        @foreach ($moderators as $item)
+                                            <tr>
+                                                <td>{{ $counter }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                <td>{{ $item->assignment }}</td>
+                                                @if ($item->status == 1)
+                                                    <td>active</td>
+                                                @else
+                                                    <td>inactive</td>
+                                                @endif
+                                                <td><button class="btn btn-danger">Disable</button><form class="m-0" style="display: inline-block;" action="/deletemoderator" method="post">@csrf <input type="number" name="id" value="{{ $item->id }}" style="display: none;"><button type="submit" class="btn btn-danger">Delete</button></form></td>
+                                            </tr>
+                                            @php
+                                                $counter++;
+                                            @endphp
+                                        @endforeach
+                                    @else
+                                        <p class="fw-normal text-center">No Moderators created.</p>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success ml-2 my-3" data-bs-toggle="modal" data-bs-target="#add-new-admin">Add Moderator</button>
+                                <button class="btn btn-success ml-2 my-3" data-bs-toggle="modal" data-bs-target="#add-new-admin">Add New Moderator Account</button>
                             </div>
                         </div>
                      </div>
@@ -122,7 +140,7 @@
                         </select>
                         <div class="d-flex justify-content-end mt-3">
                             <button type="button" class="btn btn-secondary me-4 end-0" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary end-0">Save changes</button>
+                            <button type="submit" class="btn btn-primary end-0">Add Moderator</button>
                         </div>
                     </form>
                 </div>

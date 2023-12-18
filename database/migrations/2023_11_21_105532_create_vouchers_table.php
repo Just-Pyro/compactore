@@ -24,10 +24,10 @@ return new class extends Migration
             $table->dateTime('expires_at')->nullable();
             $table->string('applicable_to');
             $table->boolean('is_claimable');
-            $table->unsignedBigInteger('claimed_by')->nullable();
-            $table->foreign('claimed_by')->references('id')->on('users');
-            $table->index('claimed_by');
-            $table->dateTime('claimed_at')->nullable();
+            // $table->unsignedBigInteger('claimed_by')->nullable();
+            // $table->foreign('claimed_by')->references('id')->on('users');
+            // $table->index('claimed_by');
+            // $table->dateTime('claimed_at')->nullable();
             $table->integer('monthly_distribution_limit')->default(0);
             $table->integer('monthly_usage_limit')->default(0);
             $table->date('last_monthly_reset')->nullable();

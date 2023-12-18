@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,6 +17,13 @@ class UserController extends Controller
                 'password' => 'admin1234',
                 'role' => 'admin',
                 'status' => '1'
+            ]);
+
+            $admin = User::first();
+
+            $shop = Shop::create([
+                'user_id' => $admin->id,
+                'shopName' => 'admin',
             ]);
 
         }
@@ -63,7 +71,7 @@ class UserController extends Controller
                         return redirect('/admin');
                     } else {
                         $assignment = auth()->user()->assignment;
-                        foreach($assignedToCheck as $assignment){
+                        // foreach($assignedToCheck as $assignment){
                             switch($assignment){
                                 case 'user':
                                     return redirect('/adminUser');
@@ -81,7 +89,7 @@ class UserController extends Controller
                                     return redirect('/adminVoucher');
                                 break;
                             }
-                        }
+                        // }
 
                     }
                 }

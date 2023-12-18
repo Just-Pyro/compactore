@@ -15,7 +15,7 @@ class ShopController extends Controller
 
         //creates a shop for the user
         $shop = Shop::create([
-            'profile_id' => $profile->id,
+            'user_id' => $user->id,
             "shopName" => $request->storeName,
             "contact" => $request->contact
         ]);

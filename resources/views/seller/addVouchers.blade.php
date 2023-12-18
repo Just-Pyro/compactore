@@ -43,12 +43,11 @@
                             <label>Expiration Date:</label>
                             <input name="expiration" type="date" class="form-control mb-3">
                         </div>
-                        <div class="col">
+                        <input type="hidden" name="applicable_to" value="shop">
+                        {{-- <div class="col">
                             <label>Applicable to:</label>
                             <select name="applicable_to"class="form-select mb-3" required>
                                 <option hidden selected>Choose Category or Product</option>
-                                {{-- kung c shop ang maghimo og voucher. mawala ni ang kaning applicable_to sa html. pero i set cya daan sa controller
-                                    as if all products cya. since dapat ang voucher nga hinimo ni shop is para sa iyang shop. --}}
                                 <option value="all_products">All Products</option>
                                 <option value="Electronics">Electronics</option>
                                 <option value="Clothing and Accessories">Clothing and Accessories</option>
@@ -66,7 +65,7 @@
                                 <option value="School Supplies">School Supplies</option>
                                 <option value="Food and Beverages">Food and Beverages</option>
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="row">
                         <div class="col">
@@ -81,11 +80,11 @@
                             <label>Monthly Reset:</label>
                             <br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="monthly_reset" id="monthlyResetTrue" value="true">
+                                <input class="form-check-input" type="radio" name="monthly_reset" id="monthlyResetTrue" value="True">
                                 <label class="form-check-label" for="monthlyResetTrue">True</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="monthly_reset" id="monthlyResetFalse" value="false">
+                                <input class="form-check-input" type="radio" name="monthly_reset" id="monthlyResetFalse" value="False">
                                 <label class="form-check-label" for="monthlyResetFalse">False</label>
                             </div>
                         </div>
@@ -93,12 +92,12 @@
                             <label>Is Claimable:</label>
                             <br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="isClaimable" id="claimableTrue" value="true" required>
-                                <label class="form-check-label" for="1">True</label>
+                                <input class="form-check-input" type="radio" name="isClaimable" id="claimableTrue" value="True" required>
+                                <label class="form-check-label" for="claimableTrue">True</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="isClaimable" id="claimableFalse" value="false" required>
-                                <label class="form-check-label" for="0">False</label>
+                                <input class="form-check-input" type="radio" name="isClaimable" id="claimableFalse" value="False" required>
+                                <label class="form-check-label" for="claimableFalse">False</label>
                             </div>
                         </div>
                     </div>

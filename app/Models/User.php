@@ -51,6 +51,10 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class, 'user_id');
     }
 
+    public function shop(){
+        return $this->hasOne(Shop::class,'user_id');
+    }
+
     public function cart(){
         return $this->hasOne(ShopCart::class, 'user_id');
     }
@@ -73,5 +77,9 @@ class User extends Authenticatable
 
     public function address(){
         return $this->hasMany(ShippingAddress::class, 'user_id');
+    }
+
+    public function claimVoucher(){
+        return $this->hasMany(ClaimVoucher::class, 'claimed_by');
     }
 }

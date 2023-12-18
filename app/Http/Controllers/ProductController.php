@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function addProduct(Request $request){
         $user = auth()->user();
-        $shop = $user->profile->shop;
+        $shop = $user->shop;
 
         $product = Product::create([
             "shop_id" => $shop->id,

@@ -12,14 +12,14 @@ class Shop extends Model
     use HasFactory;
 
     protected $fillable = [
-        "profile_id",
+        "user_id",
         "shopName",
         "contact",
         "shopImg",
     ];
 
     public function profile(){
-        return $this->belongsTo(Profile::class, "profile_id");
+        return $this->belongsTo(User::class, "user_id");
     }
 
     public function product(){

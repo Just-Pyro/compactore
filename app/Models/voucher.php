@@ -20,8 +20,8 @@ class voucher extends Model
         "expires_at",
         "applicable_to",
         "is_claimable",
-        "claimed_by",
-        "claimed_at",
+        // "claimed_by",
+        // "claimed_at",
         "monthly_distribution_limit",
         "monthly_usage_limit",
         "last_monthly_reset"
@@ -29,5 +29,9 @@ class voucher extends Model
 
     public function shop(){
         return $this->belongsTo(Shop::class);
+    }
+
+    public function claim(){
+        return $this->hasMany(ClaimVoucher::class, 'voucher_id');
     }
 }

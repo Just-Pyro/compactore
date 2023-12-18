@@ -6,10 +6,15 @@ use Curl;
 use GuzzleHttp\Client;
 use App\Models\Product;
 use App\Models\AddtoCart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
+    private $details;
+    private $totalPrice;
+    private $paymentMethod;
+    private $address;
 
     public function placeOrder(Request $request){
         // Validate the form data
@@ -36,6 +41,7 @@ class CheckoutController extends Controller
         $id = $request->id;
 
         $totalAmount = $request->totalPrice*100;
+        $this->address = $request->shippingAddress;
         // Process the order based on the selected payment method
         $paymentMethod = $request->paymentMethod;
         $itemName = "";
@@ -43,6 +49,10 @@ class CheckoutController extends Controller
         foreach($productName as $name){
             $itemName .= $name." || ";
         }
+
+        $this->details = $itemName;
+        $this->totalPrice = $totalAmount;
+        $this->paymentMethod = $paymentMethod;
 
         if ($paymentMethod === 'Gcash') {
             $data = [
@@ -71,16 +81,19 @@ class CheckoutController extends Controller
             $response = Curl::to('https://api.paymongo.com/v1/checkout_sessions')
                                 ->withHeader('Content-Type: application/json')
                                 ->withHeader('accept: application/json')
-                                ->withHeader('Authorization: Basic c2tfdGVzdF95ZGVVNkxhaFpOcjR6and3OU5QOWlVdzI6')
+                                ->withHeader('authorization: Basic c2tfdGVzdF95ZGVVNkxhaFpOcjR6and3OU5QOWlVdzI6')
                                 ->withData($data)
                                 ->asJson()
                                 ->post();
     
-            // dd($response);
+            dd($response);
             \Session::put('session_id', $response->data->id);
+
+            // dump($response);
     
             return redirect()->to($response->data->attributes->checkout_url);
         }
+        dump($id);
 
         return redirect()->route('checkout.success', compact('product','stock','id'));
     }
@@ -93,21 +106,35 @@ class CheckoutController extends Controller
         
         $response = Curl::to('https://api.paymongo.com/v1/checkout_sessions/'.$sessionId)
                             ->withHeader('accept: application/json')
-                            ->withHeader('Authorization: Basic c2tfdGVzdF95ZGVVNkxhaFpOcjR6and3OU5QOWlVdzI6')
+                            ->withHeader('authorization: Basic c2tfdGVzdF95ZGVVNkxhaFpOcjR6and3OU5QOWlVdzI6')
                             ->asJson()
                             ->get();
 
-
+        $user = auth()->user();
         for($i = 0; $i < count($request->product); $i++){
             $product = Product::find($request->product[$i]);
             $product->update([
                 'stock' => $product->stock - $request->stock[$i]
             ]);
+
             $addtoCart = AddtoCart::find($request->id[$i]);
-            $addtoCart->delete();            
+            $addtoCart->delete();
+
+            $order = Order::create([
+                "user_id" => $user->id,
+                "details" => $this->details,
+                "totalPrice" => $this->totalPrice,
+                "paymentMethod" => $this->paymentMethod,
+                "shippingAddress" => $this->address,
+            ]);
+            $details = $this->details;        
+            $totalPrice = $this->totalPrice;        
+            $paymentMethod = $this->paymentMethod;        
+            $shippingAddress = $this->address;        
         }
         
-        return view('checkout.success');
+        return view('checkout.success', compact("details", "totalPrice", "paymentMethod", "shippingAddress"));
+        // return view('checkout.success');
     }
 
     public function checkoutFailed()

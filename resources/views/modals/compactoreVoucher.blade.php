@@ -8,62 +8,21 @@
             <div class="modal-body">
                 <div class="content m-3 p-2">
                     {{-- each voucher --}}
-                    <div class="card p-3 mb-3" id="voucherCard">
-                        <div class="p-3 text-white position-relative">
-                            <h5 class="fw-medium text-center" style="display: inline-block;">Free<br>Shipping</h5> 
-                            <p class="fw-normal ms-4 text-wrap position-absolute top-0" style="display: inline-block; width: 220px;">Shipping Discount up to P500</p>
-                            <p class="fw-normal ms-4 text-wrap" style="display: inline-block; width: 220px;">Min. spend P0</p>
-                        </div>
-                        <div class="vertical"></div>
-                    </div>
-                    <div class="card p-3 mb-3" id="voucherCard">
-                        <div class="p-3 text-white position-relative">
-                            <h5 class="fw-medium text-center" style="display: inline-block;">Free<br>Shipping</h5> 
-                            <p class="fw-normal ms-4 text-wrap position-absolute top-0" style="display: inline-block; width: 220px;">Shipping Discount up to P500</p>
-                            <p class="fw-normal ms-4 text-wrap" style="display: inline-block; width: 220px;">Min. spend P0</p>
-                        </div>
-                        <div class="vertical"></div>
-                    </div>
-                    <div class="card p-3 mb-3" id="voucherCard">
-                        <div class="p-3 text-white position-relative">
-                            <h5 class="fw-medium text-center" style="display: inline-block;">Free<br>Shipping</h5> 
-                            <p class="fw-normal ms-4 text-wrap position-absolute top-0" style="display: inline-block; width: 220px;">Shipping Discount up to P500</p>
-                            <p class="fw-normal ms-4 text-wrap" style="display: inline-block; width: 220px;">Min. spend P0</p>
-                        </div>
-                        <div class="vertical"></div>
-                    </div>
-                    <div class="card p-3 mb-3" id="voucherCard">
-                        <div class="p-3 text-white position-relative">
-                            <h5 class="fw-medium text-center" style="display: inline-block;">Free<br>Shipping</h5> 
-                            <p class="fw-normal ms-4 text-wrap position-absolute top-0" style="display: inline-block; width: 220px;">Shipping Discount up to P500</p>
-                            <p class="fw-normal ms-4 text-wrap" style="display: inline-block; width: 220px;">Min. spend P0</p>
-                        </div>
-                        <div class="vertical"></div>
-                    </div>
-                    <div class="card p-3 mb-3" id="voucherCard">
-                        <div class="p-3 text-white position-relative">
-                            <h5 class="fw-medium text-center" style="display: inline-block;">Free<br>Shipping</h5> 
-                            <p class="fw-normal ms-4 text-wrap position-absolute top-0" style="display: inline-block; width: 220px;">Shipping Discount up to P500</p>
-                            <p class="fw-normal ms-4 text-wrap" style="display: inline-block; width: 220px;">Min. spend P0</p>
-                        </div>
-                        <div class="vertical"></div>
-                    </div>
-                    <div class="card p-3 mb-3" id="voucherCard">
-                        <div class="p-3 text-white position-relative">
-                            <h5 class="fw-medium text-center" style="display: inline-block;">Free<br>Shipping</h5> 
-                            <p class="fw-normal ms-4 text-wrap position-absolute top-0" style="display: inline-block; width: 220px;">Shipping Discount up to P500</p>
-                            <p class="fw-normal ms-4 text-wrap" style="display: inline-block; width: 220px;">Min. spend P0</p>
-                        </div>
-                        <div class="vertical"></div>
-                    </div>
-                    <div class="card p-3 mb-3" id="voucherCard">
-                        <div class="p-3 text-white position-relative">
-                            <h5 class="fw-medium text-center" style="display: inline-block;">Free<br>Shipping</h5> 
-                            <p class="fw-normal ms-4 text-wrap position-absolute top-0" style="display: inline-block; width: 220px;">Shipping Discount up to P500</p>
-                            <p class="fw-normal ms-4 text-wrap" style="display: inline-block; width: 220px;">Min. spend P0</p>
-                        </div>
-                        <div class="vertical"></div>
-                    </div>
+                    @if ($vouchers->count() > 0)
+                        @foreach ($vouchers as $item)
+                            <div class="card p-3 mb-3" id="voucherCard">
+                                <div class="p-3 text-white position-relative">
+                                    <h5 class="fw-medium text-center" style="display: inline-block;">Free<br>Shipping</h5> 
+                                    <p class="fw-normal ms-4 text-wrap position-absolute top-0 mb-1" style="display: inline-block; width: 220px;">Discount P{{$item->discount_amount}}</p>
+                                    <p class="fw-normal ms-4 text-wrap mb-1" style="display: inline-block; width: 220px;">{{$item->code}}</p>
+                                    <p class="fw-normal text-wrap" style="display: inline-block; width: 220px; margin-left: 105px">Min. spend P0</p>
+                                </div>
+                                <div class="vertical"></div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p class="fw-normal text-center">No vouchers created.</p>
+                    @endif
                     
                 </div>
             </div>

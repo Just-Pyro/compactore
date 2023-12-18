@@ -24,8 +24,4 @@ class Profile extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
-
-    public function shop(){
-        return $this->hasOne(Shop::class,'profile_id');
-    }
 }

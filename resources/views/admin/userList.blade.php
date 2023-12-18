@@ -66,18 +66,34 @@
                                 <thead class="bg-light">
                                     <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Moderator Name</th>
-                                    <th scope="col">Assigned Section</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- <tr v-for="AdminUser in AdminUsers" :key="AdminUser.admin_id">
-                                    <th scope="row">{{AdminUser.number}}</th>
-                                    <td>{{AdminUser.admin_name}}</td>
-                                    <td>{{AdminUser.assigned_section}}</td>
-                                    <td><button class="btn btn-danger m-1" :disabled="AdminUser.disabled" @click="fnDisableModerator(AdminUser.admin_id)">disable</button></td>
-                                    </tr> --}}
+                                    @if ($users->count() > 0)
+                                        @php
+                                            $counter = 1;
+                                        @endphp
+                                        @foreach ($users as $item)
+                                            <tr>
+                                                <td>{{ $counter }}</td>
+                                                <td>{{ $item->email }}</td>
+                                                @if ($item->status == 1)
+                                                    <td>active</td>
+                                                @else
+                                                    <td>inactive</td>
+                                                @endif
+                                                <td><button class="btn btn-danger">Disable</button> <button class="btn btn-danger">Delete</button></td>
+                                            </tr>
+                                            @php
+                                                $counter++;
+                                            @endphp
+                                        @endforeach
+                                    @else
+                                        <p class="fw-normal text-center">No Moderators created.</p>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

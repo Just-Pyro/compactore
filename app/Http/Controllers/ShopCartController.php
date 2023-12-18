@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shop;
+use App\Models\voucher;
 use App\Models\Product;
 use App\Models\ShopCart;
 use App\Models\AddtoCart;
@@ -69,6 +70,10 @@ class ShopCartController extends Controller
     public function displayUserCart(){
         $user = auth()->user();
         $cart = $user->cart;
+        $admin = Shop::first();
+
+        // $vouchers = voucher::whereNotIn('id', [$admin->id])->get();
+        $vouchers = voucher::all();
 
         if($cart){
             //this will return a collection
@@ -93,7 +98,7 @@ class ShopCartController extends Controller
             $addressId = null;
             $addressUpdated = null;
 
-            return view('ecommerce.cart', compact("cartProducts", "productImages", "shop", "address", 'addressId', 'addressUpdated'));
+            return view('ecommerce.cart', compact("cartProducts", "productImages", "shop", "address", 'addressId', 'addressUpdated', 'vouchers'));
         }
 
         $cartProducts = null;
@@ -136,7 +141,12 @@ class ShopCartController extends Controller
         $addressId = null;
         $addressUpdated = null;
 
+        $admin = Shop::first();
+
+        // $vouchers = voucher::whereNotIn('id', [$admin->id])->get();
+        $vouchers = voucher::all();
+
         $Subtotal = null;
-        return view('ecommerce.checkOut', compact('forCheckout', 'images', 'Subtotal', 'address', 'addressId', 'addressUpdated'));
+        return view('ecommerce.checkOut', compact('forCheckout', 'images', 'Subtotal', 'address', 'addressId', 'addressUpdated','vouchers'));
     }
 }

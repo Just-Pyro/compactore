@@ -124,24 +124,9 @@ const app = Vue.createApp({
                 modalInstance.show();
             }
         },
-        // placeOrder(){
-        //     var total = document.getElementById('totalPrice').innerText;
-
-        //     console.log(this.paymentMethod);
-        //     console.log(total);
-        //     axios.post(window.checkoutPlaceOrderUrl, {
-        //         paymentMethod: this.paymentMethod,
-        //         totalPrice: total,
-        //     })
-        //     .then(response => {
-        //         // Handle success response
-        //         console.log(response.data);
-        //     })
-        //     .catch(error => {
-        //         // Handle error response
-        //         console.error(error);
-        //     });
-        // },
+        placeOrder(){
+            document.getElementById('checkOutForm').submit();
+        },
         // profile
         enableEdit() {
             var check = document.getElementById('saveBio');

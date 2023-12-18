@@ -26,18 +26,22 @@
                         <a id="title" href="#" @click="location.reload()" class="navbar-brand">COMPACTORE | Admin</a>
                     </div>
                 </div>
-                <li><a href="{{ url('admin') }}">Moderator Lists</a></li>
-                <li><a href="{{ url('adminUserList') }}">User Lists</a></li>
-                <li><a href="{{ url('adminVoucher') }}">Vouchers</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"  data-bs-toggle="dropdown">Reports <span class="caret"></span></a>
-                    <ul class="dropdown-menu animated fadeInLeft" role="menu">
-                        <div class="dropdown-header">Reports</div>
-                        <li><a href="{{ url('adminUser') }}">User Reports</a></li>
-                        <li><a href="{{ url('adminPost') }}">Post Reports</a></li>
-                        <li><a href="{{ url('adminStore') }}">Store Reports</a></li>
-                    </ul>
-                </li>
+                @if ($role == 'admin')
+                    <li><a href="{{ url('admin') }}">Moderator Lists</a></li>
+                    <li><a href="{{ url('adminUserList') }}">User Lists</a></li>
+                    <li><a href="{{ url('adminVoucher') }}">Vouchers</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle"  data-bs-toggle="dropdown">Reports <span class="caret"></span></a>
+                        <ul class="dropdown-menu animated fadeInLeft" role="menu">
+                            <div class="dropdown-header">Reports</div>
+                            <li><a href="{{ url('adminUser') }}">User Reports</a></li>
+                            <li><a href="{{ url('adminPost') }}">Post Reports</a></li>
+                            <li><a href="{{ url('adminStore') }}">Store Reports</a></li>
+                        </ul>
+                    </li>
+                @else
+                    <li><a href="{{ url('adminPost') }}">Post Reports</a></li>
+                @endif
                 <li><a href="#logo-out" @click="logout">Log out</a></li>
             </ul>
         </nav>

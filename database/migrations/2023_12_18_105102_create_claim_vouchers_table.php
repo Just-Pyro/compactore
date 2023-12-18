@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shops', function (Blueprint $table) {
+        Schema::create('claim_vouchers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->index('user_id');
-            $table->string('shopName');
-            $table->string('contact')->nullable();
-            $table->string('shopImg')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shop');
+        Schema::dropIfExists('claim_vouchers');
     }
 };
