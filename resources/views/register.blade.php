@@ -36,7 +36,7 @@
                   <div class="alert alert-danger py-1 px-2 mt-2 mb-1">{{ $errors->first('username') }}</div>
                 @endif
                 
-                <input type="text" name="email" class="form-control mb-3" placeholder="Email">
+                <input type="email" name="email" class="form-control mb-3" placeholder="Email">
                 
                 @if($errors->has('email'))
                   <div class="alert alert-danger py-1 px-2 mt-2 mb-1">{{ $errors->first('email') }}</div>
@@ -67,7 +67,7 @@
 
               <form action="/login" method="POST" class="mx-3">
                 @csrf
-                <input id="loginEmail" type="text" name="loginEmail" class="form-control" :class="{'mb-5':mbe}" placeholder="Email">
+                <input id="loginEmail" type="email" name="loginEmail" class="form-control" :class="{'mb-5':mbe}" placeholder="Email">
                 
                 @if($errors->has('loginEmail'))
                   <div id="errorLoginEmail" class="alert alert-danger py-1 px-2 mt-2 mb-1">{{ $errors->first('loginEmail') }}</div>
@@ -104,7 +104,7 @@
 
               <form action="/login" method="POST" class="mx-3">
                 @csrf
-                <input id="loginEmail" type="text" name="loginEmail" class="form-control" :class="{'mb-5':mbe}" placeholder="Email">
+                <input id="loginEmail" type="email" name="loginEmail" class="form-control" :class="{'mb-5':mbe}" placeholder="Email">
                 
                 @if($errors->has('loginEmail'))
                   <div id="errorLoginEmail" class="alert alert-danger py-1 px-2 mt-2 mb-1">{{ $errors->first('loginEmail') }}</div>

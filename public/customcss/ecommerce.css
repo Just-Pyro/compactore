@@ -142,3 +142,10 @@ label.star:before {
     content: '\f006';
     font-family: FontAwesome;
 }
+
+
+/* ipa off ang input shippingAddress */
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+}

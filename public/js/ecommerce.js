@@ -124,7 +124,9 @@ const app = Vue.createApp({
                 modalInstance.show();
             }
         },
-        placeOrder(){
+        placeOrder(e){
+            // e.preventDefault();
+            // window.location.href = '/checkoutOrder';
             document.getElementById('checkOutForm').submit();
         },
         // profile

@@ -53,6 +53,7 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
+        
         $loginData = $request->validate([
             "loginEmail" => 'required|email',
             "loginPassword" => "required|min:8"

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Curl;
-use GuzzleHttp\Client;
+// use GuzzleHttp\Client;
 use App\Models\Product;
 use App\Models\AddtoCart;
 use App\Models\Order;
@@ -11,11 +11,6 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    private $details;
-    private $totalPrice;
-    private $paymentMethod;
-    private $address;
-
     public function placeOrder(Request $request){
         // Validate the form data
         $request->validate([
@@ -40,19 +35,33 @@ class CheckoutController extends Controller
         $stock = $request->stock;
         $id = $request->id;
 
+
         $totalAmount = $request->totalPrice*100;
-        $this->address = $request->shippingAddress;
+        $totalPrice = $request->totalPrice;
+
+
+        // dump($successUrl);
+        // dump($totalPrice);
+        // dump($totalAmount);
+
         // Process the order based on the selected payment method
         $paymentMethod = $request->paymentMethod;
+        $successUrl .= "&paymentMethod=".urlencode($paymentMethod);
+
+        $shippingAddress = "$request->shippingAddress";
+        $successUrl .= "&shippingAddress=" . urlencode($shippingAddress);
+
+        $successUrl .= "&totalPrice=".urlencode($totalPrice);
+        
+
+        dump($successUrl);
+        // dump("this is " . urlencode($shippingAddress));
+
         $itemName = "";
         $productName = $request->productName;
         foreach($productName as $name){
             $itemName .= $name." || ";
         }
-
-        $this->details = $itemName;
-        $this->totalPrice = $totalAmount;
-        $this->paymentMethod = $paymentMethod;
 
         if ($paymentMethod === 'Gcash') {
             $data = [
@@ -86,16 +95,18 @@ class CheckoutController extends Controller
                                 ->asJson()
                                 ->post();
     
-            dd($response);
+            // dump($response);
             \Session::put('session_id', $response->data->id);
 
             // dump($response);
     
             return redirect()->to($response->data->attributes->checkout_url);
         }
-        dump($id);
+        // dump($id);
+        // dump($shippingAddress);
+        // dump($request->shippingAddress);
 
-        return redirect()->route('checkout.success', compact('product','stock','id'));
+        return redirect()->route('checkout.success', compact('product','stock','id', 'paymentMethod', 'shippingAddress', 'totalPrice'));
     }
 
     public function checkoutSuccess(Request $request)
@@ -111,6 +122,7 @@ class CheckoutController extends Controller
                             ->get();
 
         $user = auth()->user();
+        $details = "";
         for($i = 0; $i < count($request->product); $i++){
             $product = Product::find($request->product[$i]);
             $product->update([
@@ -119,22 +131,27 @@ class CheckoutController extends Controller
 
             $addtoCart = AddtoCart::find($request->id[$i]);
             $addtoCart->delete();
-
-            $order = Order::create([
-                "user_id" => $user->id,
-                "details" => $this->details,
-                "totalPrice" => $this->totalPrice,
-                "paymentMethod" => $this->paymentMethod,
-                "shippingAddress" => $this->address,
-            ]);
-            $details = $this->details;        
-            $totalPrice = $this->totalPrice;        
-            $paymentMethod = $this->paymentMethod;        
-            $shippingAddress = $this->address;        
+            $details .= $product->productName;
         }
+
+
+        // $totalPrice = urldecode($request->query('totalPrice'));
+        $totalPrice = $request->totalPrice;
+        $paymentMethod = $request->paymentMethod;
+        $shippingAddress = $request->shippingAddress;
+
+        // dump($totalPrice);
+        // dump($request->totalPrice);
+
+        $order = Order::create([
+            "user_id" => $user->id,
+            "details" => $details,
+            "totalPrice" => $totalPrice,
+            "paymentMethod" => $paymentMethod,
+            "shippingAddress" => $shippingAddress,
+        ]);
         
         return view('checkout.success', compact("details", "totalPrice", "paymentMethod", "shippingAddress"));
-        // return view('checkout.success');
     }
 
     public function checkoutFailed()

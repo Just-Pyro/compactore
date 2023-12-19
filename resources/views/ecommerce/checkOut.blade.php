@@ -157,9 +157,7 @@
         <div class="p-3 mb-3 bg-white border-top">
             <div class="row">
                 <div class="col"></div>
-                <div class="col">
-                    
-                </div>
+                <div class="col"></div>
                 <div class="col-2">
                     {{-- <form action="/checkoutOrder" id="checkOutForm" method="POST">
                         @csrf
@@ -188,7 +186,7 @@
                         @endif
                         
                     </form> --}}
-                    <form action="/checkoutOrder" method="POST">
+                    <form action="/checkoutOrder" id="checkOutForm" method="POST">
                         @csrf
                         @foreach ($forCheckout as $item => $innerItem)
                             <input type="text" name="productName[]" value="{{ $innerItem['productName'] }}" style="display:none;">
@@ -197,8 +195,8 @@
                             <input type="number" name="id[]" value="{{ $innerItem['id'] }}" style="display: none;">
                         @endforeach
                         
-                        <input type="hidden" name="paymentMethod" v-model="paymentMethod">
-                        <input type="number" name="totalPrice" value="{{ $Subtotal+120 }}" style="display:none;">
+                        <input type="text" name="paymentMethod" v-model="selectedPaymentMethod" style="display: none;">
+                        <input type="number" name="totalPrice" step="0.01" value="{{ $Subtotal+120 }}" style="display:none;">
 
                         @foreach ($address as $item => $deliveryAddress)
                             @if ( $deliveryAddress['status'] == 1)
@@ -211,10 +209,10 @@
                         @if (isset($breakLoop))
                         <button class="btn btn-orange" type="submit">Place Order Now</button>
                         @else
-                        <button class="btn btn-orange" type="button" data-bs-toggle="modal" data-bs-target="#selectAddress">Place Order Now</button>
+                        <span class="btn btn-orange" data-bs-toggle="modal" data-bs-target="#selectAddress">Place Order Now</span>
                         @endif
-                        
                     </form>
+                    
                 </div>
             </div>
         </div>
