@@ -142,7 +142,7 @@
           <div class="d-flex cards-wrapper">
             
                 <div @click="seeProduct">
-                  <div class="card card-hover" style="height: 18rem;">
+                  <div class="card" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -151,7 +151,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card card-hover" style="height: 18rem;">
+                  <div class="card" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -160,7 +160,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card card-hover" style="height: 18rem;">
+                  <div class="card" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -169,7 +169,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card card-hover" style="height: 18rem;">
+                  <div class="card" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -178,7 +178,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card card-hover" style="height: 18rem;">
+                  <div class="card" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -187,7 +187,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card card-hover" style="height: 18rem;">
+                  <div class="card" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
