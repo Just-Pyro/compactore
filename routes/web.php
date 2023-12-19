@@ -46,6 +46,7 @@ Route::get('/search',[SearchController::class,'search'])->name('search');//nagam
 Route::get('/cart', [ShopCartController::class,'displayUserCart']);//nagamit
 
 Route::get('/productPage/{id}', [ProductController::class, 'productPage']);//nagamit
+Route::get('/showStore/{id}',[ShopController::class, 'showStore']);
 Route::post('/add-to-cart', [ShopCartController::class, 'add']);//nagamit
 
 

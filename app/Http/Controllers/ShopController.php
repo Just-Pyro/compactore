@@ -29,4 +29,11 @@ class ShopController extends Controller
         //proceed to the newly opened shop of the user
         return redirect('/CompactoreSeller');
     }
+
+    public function showStore($id){
+        $id = (int)$id;
+        $shop = Shop::find($id);
+
+        return view('ecommerce.showStore', compact('shop'));
+    }
 }

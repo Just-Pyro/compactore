@@ -111,8 +111,8 @@
                 @if ($results->count() > 0)
                   <div class="row align-items-center product">
                   @foreach($results as $result)
-                      <div class="col-sm-6 col-lg-4 col-xl-3 my-5" @click="seeProduct({{ $result->id }})">
-                          <div class="card mx-auto shadow" style="width: 16rem; height: 18rem;">
+                      <div class="w-20" style="flex-basis: 20%;" @click="seeProduct({{ $result->id }})">
+                          <div class="card mx-auto shadow" style="height: 18rem;">
                               @if($result->mediaFile->isNotEmpty())
                                   <img src="{{ asset($result->mediaFile->first()->file_path . $result->mediaFile->first()->file_name) }}" style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                               @else

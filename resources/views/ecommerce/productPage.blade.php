@@ -29,6 +29,21 @@
                             <h5>{{ $product->productName }}</h5>
                         </div>
                         <div>
+                            {{-- star rating template --}}
+                            <div class="stars">
+                                <form action="" style="width: 220px;">
+                                    <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                                    <label class="star star-1" for="star-1"></label>
+                                </form>
+                            </div>
                             <div class="d-flex">
                                 <div class="m-2">star</div>
                                 <div class="m-2">rating</div>
@@ -67,8 +82,7 @@
                 <div style="height:70px; border: solid 1px;">store Profile</div>
             </div>
             <div class="col-2 p-2 px-0">
-                <div style="height:70px;border: solid 1px;">{{ $shop->shopName }}</div>
-                
+                <div style="height:70px;"><p class="fs-6 fw-medium">{{ $shop->shopName }} </p><a href="{{ url('showStore', ['id' => $shop->id]) }}" class="btn btn-light btn-sm">View shop</a></div>
             </div>
             <div class="col-9 p-2">
                 <div style="height:70px;border: solid 1px;">store info ratings blablabla</div>
