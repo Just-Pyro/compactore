@@ -10,7 +10,7 @@
 </head>
 <body>
     @include('includes/header2')
-      <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">></button>
+      <button class="btn btn-light sticky-top" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><ion-icon name="chevron-forward-outline"></ion-icon></button>
 
     <div class="container px-lg-5" id="contentBody">
       <div class="row">
@@ -96,7 +96,7 @@
           <div class="d-flex cards-wrapper">
             
                 <div @click="seeProduct">
-                  <div class="card" style="height: 18rem;">
+                  <div class="card card-hover" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -105,7 +105,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card" style="height: 18rem;">
+                  <div class="card card-hover" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -114,7 +114,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card" style="height: 18rem;">
+                  <div class="card card-hover" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -123,7 +123,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card" style="height: 18rem;">
+                  <div class="card card-hover" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -132,7 +132,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card" style="height: 18rem;">
+                  <div class="card card-hover" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -141,7 +141,7 @@
                   </div>
                 </div>
                 <div @click="seeProduct">
-                  <div class="card" style="height: 18rem;">
+                  <div class="card card-hover" style="height: 18rem;">
                       <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                       <div class="card-body bg-light" style="height: 10rem;">
                           <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -158,7 +158,7 @@
           <h3 class="d-flex justify-content-center py-3">Discover</h3>
           <div class="cards">
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -168,7 +168,7 @@
             </div>
             
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -178,7 +178,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -188,7 +188,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -198,7 +198,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -208,7 +208,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -218,7 +218,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -228,7 +228,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -238,7 +238,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -248,7 +248,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -258,7 +258,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -268,7 +268,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -278,7 +278,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -288,7 +288,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -298,7 +298,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -308,7 +308,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -318,7 +318,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -328,7 +328,7 @@
             </div>
 
             <div @click="seeProduct">
-              <div class="card" style="height: 18rem;">
+              <div class="card card-hover" style="height: 18rem;">
                   <img style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                   <div class="card-body bg-light" style="height: 10rem;">
                       <p class="card-title productname">SAMPLE PRODUCT NAME</p>
@@ -341,7 +341,7 @@
         </div>
       </div>
     </div>
-    
+    @include('includes/footer2')
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>
 </body>

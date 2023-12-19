@@ -155,6 +155,11 @@
         height: 128px;
         width: 155px;
     }
-
-
+}
+.card-hover {
+    transition: transform 0.3s;
+}
+.card-hover:hover {
+    transform: scale(1.02);
+    cursor: pointer;
 }
