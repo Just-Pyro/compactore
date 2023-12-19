@@ -236,6 +236,14 @@ const app = Vue.createApp({
 
         deleteAddress(addressId) {
             window.location.href = `/delete-data/${addressId}`;
+        },
+
+        deleteProductImg(){
+            document.getElementById('deleteproductimg').value = 1;
+            document.getElementById('deletemessageconfirmation').innerText = 'delete product images';
+        },
+        submitEditProductForm(){
+            document.getElementById('editProductForm').submit();
         }
     },
     computed: {

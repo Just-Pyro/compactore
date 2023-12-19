@@ -32,7 +32,7 @@
                     </div>
                     <div class="col">
                         <select class="form-select mb-2" name="category" style="height: 58px;" required>
-                            <option selected>Choose Category</option>
+                            <option selected hidden disabled>Choose Category</option>
                             <option value="Electronics">Electronics</option>
                             <option value="Clothing and Accessories">Clothing and Accessories</option>
                             <option value="Home and Furniture">Home and Furniture</option>

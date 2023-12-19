@@ -16,7 +16,7 @@ class AdminController extends Controller
         ]);
 
         if($dataInput){
-            $moderator = User::create([
+            User::create([
                 'email' => $dataInput['moderatorEmail'],
                 'password' => $dataInput['moderatorPassword'],
                 'role' => 'moderator',
@@ -24,8 +24,8 @@ class AdminController extends Controller
                 'status' => '1'
             ]);
 
-
-            return view('admin.adminDashboard');
+            $moderators = User::where('role', 'moderator')->get();
+            return view('admin.adminDashboard', compact('moderators'));
         }
 
     }

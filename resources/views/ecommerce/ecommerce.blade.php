@@ -17,77 +17,77 @@
                 <h4 id="category-title">Categories</h4>
                 <ul class="nav nav-pills flex-column mb-auto">
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link active">
+                    <a href="{{ url('category', ['category' => 'Electronics']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/electronics.png') }}" alt="Electronics" class="catIcon"> Electronics
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Clothing and Accessories']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/clothing-accessories.png') }}" alt="Clothing and Accessories" class="catIcon"> Clothing and Accessories
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Home and Furniture']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/home-furniture.png') }}" alt="Home and Furniture" class="catIcon"> Home and Furniture
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Beauty and Personal Care']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/beauty-care.png') }}" alt="Beauty and Personal Care" class="catIcon"> Beauty and Personal Care
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Sports and Outdoors']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/sports-outdoors.png') }}" alt="Sports and Outdoors" class="catIcon"> Sports and Outdoors
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Books, Movies, and Music']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/books.png') }}" alt="Books, Movies, and Music" class="catIcon"> Books, Movies, and Music
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Toys and Games']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/toys.png') }}" alt="Toys and Games" class="catIcon"> Toys and Games
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Health and Wellness']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/health.png') }}" alt="Health and Wellness" class="catIcon"> Health and Wellness
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Jewelry and Watches']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/jewelry-watch.png') }}" alt="Jewelry and Watches" class="catIcon"> Jewelry and Watches
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Automotive']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/automotive.png') }}" alt="Automotive" class="catIcon"> Automotive
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Art and Collectibles']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/arts.png') }}" alt="Art and Collectibles" class="catIcon"> Art and Collectibles
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Pet Supplies']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/pet-supplies.png') }}" alt="Pet Supplies" class="catIcon"> Pet Supplies
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Office']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/office.png') }}" alt="Office" class="catIcon"> Office
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'School Supplies']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/school-supplies.png') }}" alt="School Supplies" class="catIcon"> School Supplies
                     </a>
                   </li>
                   <li class="nav-item navCat">
-                    <a href="{{ url('category') }}" class="nav-link link-dark">
+                    <a href="{{ url('category', ['category' => 'Food and Beverages']) }}" class="nav-link link-dark">
                       <img src="{{ URL('images/categoryIcons/food-drink.png') }}" alt="Food and Beverages" class="catIcon"> Food and Beverages
                     </a>
                   </li>

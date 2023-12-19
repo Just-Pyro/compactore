@@ -46,8 +46,9 @@
                                     <td>{{ $product->stock }}</td>
                                     <td>{{ $product->price }}</td>
                                     <td>
-                                        <button class="btn btn-danger m-1">disable Store</button>
-                                        <button class="btn btn-danger m-1">disable User</button>
+                                        <form action="/deleteProduct-ecommerce" method="post">@csrf <input type="number" name="id" value="{{ $product->id }}" style="display: none;"><button type="submit" class="btn btn-danger m-1">delete</button></form>
+                                        <form action="/gotoeditProduct-ecommerce" method="get">@csrf <input type="number" name="id" value="{{ $product->id }}" style="display: none;"><button type="submit" class="btn btn-info m-1">edit</button></form>
+                                        {{-- <button class="btn btn-info m-1" data-bs-toggle="modal" data-bs-target="#editProduct">edit</button> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -60,6 +61,20 @@
             </div>
         </div>
     </div>
+
+    @if ($productId != null)
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get the modal element
+                var myModal = new bootstrap.Modal(document.getElementById('editProduct'));
+
+                // Show the modal
+                myModal.show();
+            });
+        </script>
+    @endif
+
+    @include('seller/editProduct')
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>
 </body>

@@ -49,9 +49,7 @@ Route::get('/productPage/{id}', [ProductController::class, 'productPage']);//nag
 Route::post('/add-to-cart', [ShopCartController::class, 'add']);//nagamit
 
 
-Route::get('/category', function(){
-    return view('ecommerce.category');
-});
+Route::get('/category/{category}', [ProductController::class, 'categoryProduct']);
 
 Route::get('/checkOut/{ids}',[ShopCartController::class, 'checkout']);//nagamit
 
@@ -93,6 +91,9 @@ Route::get('/addProduct', function(){//nagamit
     return view('seller.addProducts', ['profile'=>$profile]);
 });
 Route::post('/addProduct-ecommerce', [ProductController::class, 'addProduct']);//nagamit
+Route::get('/gotoeditProduct-ecommerce', [ProductController::class, 'gotoeditProduct']);//nagamit
+Route::post('/editProduct-ecommerce', [ProductController::class, 'editProduct']);//nagamit
+Route::post('/deleteProduct-ecommerce', [ProductController::class, 'deleteProduct']);//nagamit
 Route::get('/myProduct', [ProductController::class, 'displaySellerProducts']);//nagamit
 
 //for vouchers
