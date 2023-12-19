@@ -15,7 +15,7 @@
     <div class="container px-lg-5" id="contentBody">
       <div class="row">
         <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-          <div class="offcanvas-header my-3">
+          <div class="offcanvas-header mt-2">
             <h4 id="category-title" class="m-auto">MENU</h4>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
