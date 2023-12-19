@@ -8,29 +8,33 @@
     </form>
   </div>
 </header>
-<nav id="head1" class="navbar navbar-expand-lg bg-light navbar-light shadow">
+<nav id="head1" class="navbar navbar-light">
   <div class="container">
-    <a id="title" href="{{ url('/ecommerce') }}" class="navbar-brand">COMPACTORE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compactoreMenu" aria-controls="#compactoreMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <a id="title" href="{{ url('/ecommerce') }}" class="navbar-brand d-none d-lg-block">COMPACTORE</a>
+    <a id="title" href="{{ url('/ecommerce') }}" class="navbar-brand d-lg-none">CO</a>
+    {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compactoreMenu" aria-controls="compactoreMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> --}}
 
-    <div id="compactoreMenu" class="collapse navbar-collapse d-flex justify-content-end">
-      <div class="flex-grow-1">
+    {{-- <div id="compactoreMenu" class=""> --}}
+      <div class="flex-grow-1 position-relative">
         <form class="flex-grow-1 mx-2" method="GET" action="{{ route('search') }}">
           <input name="query" class="form-control" type="search" placeholder="Search products">
+            <div class="position-absolute top-50 end-0 translate-middle-y me-4">
+              <i class="fa-solid fa-magnifying-glass" style="color: #4e5155;"></i>
+            </div>
         </form>
       </div>
       <div class="" id="ulOptions">
-        <ul class="navbar-nav ms-2">
-          <li class="nav-item mx-2">
+        <ul class="navbar-nav ms-2 d-flex flex-row">
+          <li class="nav-item mx-3 d-none d-lg-block">
             <a class="nav-link" href="{{ url('/cart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
           </li>
-          <li class="nav-item mx-2">
+          <li class="nav-item mx-3 d-none d-lg-block">
             <a class="nav-link" href="{{ url('/profile') }}"><i class="fa-solid fa-user"></i></a>
           </li>
-          <li id="forSwitch" class="nav-item mx-1" @mouseover="switchHover" @mouseout="switchUnHover">
-            <a href="" class="nav-link"><i class="fa-solid fa-rotate" id="switch"></i></a>
+          <li id="forSwitch" class="nav-item mx-1 d-none d-lg-block" @mouseover="switchHover" @mouseout="switchUnHover">
+            <a class="nav-link"><i class="fa-solid fa-rotate ms-2" id="switch"></i></a>
             <div class="ms-1 me-2 hiddenIcons">
               <a href="{{ url('/swapme') }}" class="mx-3" style="display:inline-block !important;">
                 <img src="{{ URL('images/swapme.png') }}" alt="trade" id="trade" style="height: 16.8px;">
@@ -41,7 +45,22 @@
             </div>
           </li>        
         </ul>
+        <div class="dropdown d-lg-none">
+          <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-rotate" id="switch"></i>
+          </a>
+        
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a href="{{ url('/swapme') }}" class="dropdown-item my-2 mb-3" style="display:inline-block !important;">
+              <img src="{{ URL('images/swapme.png') }}" alt="trade" id="trade" style="height: 16.8px; margin-left:2px;">
+            </a></li>
+            <li><a href="{{ url('/surplus') }}" class="dropdown-item mb-2" style="display:inline-block;">
+              <img src="{{ URL('images/surplus.png') }}" alt="surplus" id="surplus" style="height: 16.8px;">
+            </a></li>
+          </ul>
+        </div>
       </div>
-    </div>
+    {{-- </div> --}}
+    
   </div>
 </nav>

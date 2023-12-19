@@ -12,18 +12,26 @@
             transition: transform 0.3s;
         }
         .card:hover {
-            transform: scale(1.1);
+            transform: scale(1.01);
             cursor: pointer;
         }
     </style>
 </head>
 <body>
     @include('includes/header2')
-    <div class="container-fluid">
+    <button class="btn btn-light sticky-top" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+    
+    <div class="container" id="contentBody">
         <div class="row">
-            <div class="col-2 p-4">
+          <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header my-3">
+              <h4 id="category-title" class="m-auto">MENU</h4>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>
                 <div class="d-flex flex-column flex-shrink-0 bg-light">
-                    <h4 id="category-title">Categories</h4>
+                    <h4 id="category-title" class="ms-3 mb-3">Categories</h4>
                     <ul class="nav nav-pills flex-column mb-auto">
                       <li class="nav-item navCat">
                         <a href="{{ url('category', ['category' => 'Electronics']) }}" class="nav-link link-dark">
@@ -103,16 +111,18 @@
                       
                     </ul>
                 </div>
-                </div>
-            <div class="sidebar-divider"></div>
-            <div class="col-9 py-3">
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="py-3 bg-white">
                 <h5 style="display: inline-block;">Products for {{ $cat }} Category</h5>
                 {{-- <h5 id="searched_input" style="display:inline-block;"> Category</h5> --}}
                 @if ($results->count() > 0)
-                  <div class="row align-items-center product">
+                  <div class="cards">
                   @foreach($results as $result)
-                      <div class="col-sm-6 col-lg-4 col-xl-3 my-5" @click="seeProduct({{ $result->id }})">
-                          <div class="card mx-auto shadow" style="width: 16rem; height: 18rem;">
+                      <div @click="seeProduct({{ $result->id }})">
+                          <div class="card card-hover" style="height: 18rem;">
                               @if($result->mediaFile->isNotEmpty())
                                   <img src="{{ asset($result->mediaFile->first()->file_path . $result->mediaFile->first()->file_name) }}" style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
                               @else
@@ -130,9 +140,10 @@
                   <p class="fw-medium mt-5 text-center">no products for this category.</p>
                 @endif
             </div>
-            <div class="col"></div>
         </div>
-    </div>
+      </div>
+  </div>
+    @include('includes/footer2')
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>
 </body>
