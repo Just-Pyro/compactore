@@ -28,4 +28,8 @@ class SwapPost extends Model
     public function swapMedia(){
         return $this->hasMany(SwapmeMedia::class, "swapPost_id");
     }
+
+    public function swapBookmark(){
+        return $this->hasMany(SwapmeBookmark::class, 'user_id');
+    }
 }

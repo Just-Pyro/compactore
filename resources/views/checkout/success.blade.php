@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row mt-2">
             <div class="col"></div>
-            <div class="col-4 bg-white rounded">
+            <div class="col-4 bg-white rounded px-3 py-2">
                 <p class="fw-medium fs-2 text-start mt-2">Product:  {{ $details }}</p>
                 <p class="fw-normal fs-5 text-start mt-2">{{ $shippingAddress }}</p>
                 <p class="fw-normal fs-5 text-start mt-2">{{ $paymentMethod }}</p>
@@ -26,7 +26,7 @@
         <div class="row mt-2 bg-transparent rounded">
             <div class="col"></div>
             <div class="col-4 d-flex justify-content-center">
-                <a href="{{ url('/url') }}" class="btn btn-success">Go back</a>
+                <a href="{{ url('/cart') }}" class="btn btn-success">Go back</a>
             </div>
             <div class="col"></div>
         </div>

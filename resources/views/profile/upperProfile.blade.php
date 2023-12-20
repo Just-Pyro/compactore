@@ -1,4 +1,4 @@
-@if($user)
+@if($user != null)
 <div class="row">
     <div class="col-3 p-2">
         @if($profile)

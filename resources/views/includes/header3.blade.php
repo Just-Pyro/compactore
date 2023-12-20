@@ -10,7 +10,7 @@
   </header>
   <nav id="head1" class="navbar navbar-expand-lg bg-light navbar-light shadow">
     <div class="container">
-        <a id="title" href="{{ url('/ecommerce') }}" class="navbar-brand">COMPACTORE
+        <a id="title" href="{{ url('/surplus') }}" class="navbar-brand">COMPACTORE
             <img src="{{ url('images/surplus.png') }}" style="width: 28px; height: 28px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#compactoreMenu" aria-controls="#compactoreMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@
         <div class="" id="ulOptions">
           <ul class="navbar-nav ms-2">
             <li class="nav-item mx-2">
-              <a class="nav-link" href="{{ url('/cart') }}"><i class="fa-solid fa-bookmark"></i></a>
+              <a class="nav-link" href="{{ url('/surplusBookmark') }}"><i class="fa-solid fa-bookmark"></i></a>
             </li>
             <li class="nav-item mx-2">
               <a class="nav-link" href="{{ url('/profile') }}"><i class="fa-solid fa-user"></i></a>

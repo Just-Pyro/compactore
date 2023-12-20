@@ -49,10 +49,10 @@
                     {{-- head tabs --}}
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a href="" class="nav-link active">Reviews</a>
+                            <a href="{{ url('/swapProfile') }}" class="nav-link active">Reviews</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link link-dark">Bookmarks</a>
+                            <a href="{{ url('/swapMeBookmark') }}" class="nav-link link-dark">Bookmarks</a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link link-dark">Post History</a>

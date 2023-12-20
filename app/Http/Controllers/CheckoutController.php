@@ -43,9 +43,13 @@ class CheckoutController extends Controller
         // dump($successUrl);
         // dump($totalPrice);
         // dump($totalAmount);
-
+        $paymentMethod = "";
         // Process the order based on the selected payment method
-        $paymentMethod = $request->paymentMethod;
+        if($request->paymentMethod == "CoD"){
+            $paymentMethod = "Cash on Delivery";
+        }else{
+            $paymentMethod = $request->paymentMethod;
+        }
         $successUrl .= "&paymentMethod=".urlencode($paymentMethod);
 
         $shippingAddress = "$request->shippingAddress";

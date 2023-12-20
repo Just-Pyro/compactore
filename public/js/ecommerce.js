@@ -246,6 +246,9 @@ const app = Vue.createApp({
         },
         submitEditProductForm(){
             document.getElementById('editProductForm').submit();
+        },
+        submitReportStore(){
+            document.getElementById('reportStore').submit();
         }
     },
     computed: {

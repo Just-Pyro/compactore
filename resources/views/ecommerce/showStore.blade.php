@@ -36,7 +36,11 @@
                     </form>
                 </div>
             </div>
-            <div class="flex-1 d-flex ps-1 align-items-start" style="flex-wrap: wrap;"></div>
+            <div class="flex-1 d-flex ps-1 align-items-start" style="flex-wrap: wrap;">
+                <p class="ms-3 fs-6 fw-normal" style="flex-basis: 50%">Items: </p>
+                <p class="ms-3 fs-6 fw-normal" style="flex-basis: 50%">Bio: </p>
+                <button class="ms-3 btn btn-danger btn-sm" style="flex-basis: 50%" data-bs-toggle="modal" data-bs-target="#reportStore">Report</button>
+            </div>
         </div>
     </div>
     <div class="container pt-3">
@@ -65,6 +69,7 @@
             <p class="fw-medium mt-5 text-center">no products for this category.</p>
         @endif --}}
     </div>
+    @include('includes/reportStore')
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>
 </body>

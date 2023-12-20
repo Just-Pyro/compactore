@@ -31,12 +31,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/swapProfile') }}" class="nav-link fs-5 fw-medium link-dark">
+                            <a href="{{ url('/swapProfile') }}" class="nav-link fs-5 fw-medium active">
                                 Swap Me
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/surplusProfile') }}" class="nav-link fs-5 fw-medium active">
+                            <a href="{{ url('/surplusProfile') }}" class="nav-link fs-5 fw-medium link-dark">
                                 Surplus
                             </a>
                         </li>
@@ -49,10 +49,10 @@
                     {{-- head tabs --}}
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a href="{{ url('/surplusProfile') }}" class="nav-link active">Reviews</a>
+                            <a href="{{ url('/swapProfile') }}" class="nav-link link-dark">Reviews</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/surplusBookmark') }}" class="nav-link link-dark">Bookmarks</a>
+                            <a href="{{ url('/swapMeBookmark') }}" class="nav-link active">Bookmarks</a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link link-dark">Post History</a>
@@ -62,15 +62,18 @@
                     {{-- content for each tabs --}}
                     <div class="mt-4">
                         <div class="row mb-3">
-                            <div class="col-1">
-                                <div class="float-end" style="height: 50px; width:50px; border:solid 1px">sample Image</div>
+                            <div class="col-2">
+                                <div class="float-end" style="height: 100px; width:100px; border:solid 1px">sample Image</div>
                             </div>
-                            <div class="col-11">
+                            <div class="col-8">
                                 <div class="d-flex flex-column">
-                                    <div class="">Kyle</div>
-                                    <div class="">4.8</div>
-                                    <div class="">Date w/ her</div>
-                                    <div class="pt-2">Comment: This is surplus seller is very accomodating and gives a very detailed and honest information that I need to know about the item</div>
+                                    <div class="">PostTitle</div>
+                                    <div class="text-secondary">author sa nagpost</div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-danger btn-sm">Remove</button>
                                 </div>
                             </div>
                         </div>

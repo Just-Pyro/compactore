@@ -82,4 +82,8 @@ class User extends Authenticatable
     public function claimVoucher(){
         return $this->hasMany(ClaimVoucher::class, 'claimed_by');
     }
+
+    public function swapBookmark(){
+        return $this->hasMany(SwapmeBookmark::class, 'user_id');
+    }
 }

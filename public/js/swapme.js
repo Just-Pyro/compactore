@@ -1,4 +1,9 @@
 const app = Vue.createApp({
+    data(){
+        return {
+            bookMarkPost: 0,
+        }
+    },
     methods: {
         //for the main header of ecommerce
         switchHover() {
@@ -26,6 +31,18 @@ const app = Vue.createApp({
         },
         submitPost(){
             document.getElementById('addPostForm').submit();
+        },
+        bookMark(id){
+            this.bookMarkPost = id;
+            console.log(id);
+            console.log(this.bookMarkPost);
+            setTimeout(() => document.getElementById('saveBookMarkForm').submit(), 10);
+        },
+        unbookMark(id){
+            this.bookMarkPost = id;
+            console.log(id);
+            console.log(this.bookMarkPost);
+            setTimeout(() => document.getElementById('unBookMarkForm').submit(), 10);
         }
     }
 }).mount("body");

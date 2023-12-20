@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use App\Models\Surplus;
+use App\Models\User;
+use App\Models\Shop;
 use Illuminate\Support\Str;
 use App\Models\SurplusMedia;
 use Illuminate\Http\Request;
@@ -11,6 +13,16 @@ use Illuminate\Support\Facades\File;
 
 class SurplusController extends Controller
 {
+    public function displaybookmarks(){
+        $user = auth()->user();
+        $profile = $user->profile;
+        // $address = ShippingAddress::all();
+        $address = $user->address()->latest()->get();
+        $addressId = null;
+        $addressUpdated = null;
+        return view("surplus.surplusBookmark", compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
+    }
+
     public function postSurplus(Request $request){
         $user = auth()->user();
         $profile = $user->profile;
@@ -81,8 +93,9 @@ class SurplusController extends Controller
 
 
         $product = Surplus::find($id); // pangitaon ang row sa surplus nga item
-        $user = Profile::find($product->user_id);
-
+        $user = User::find($product->user_id);
+        $profile = Profile::where("user_id", $user->id)->first();
+        
         if($product){
 
             $images = $product->surplusMedia;
@@ -106,7 +119,7 @@ class SurplusController extends Controller
                     break;
             }
 
-            return view('surplus.surplusProductPage',compact('product', 'images', 'conditionDesc', 'user'));
+            return view('surplus.surplusProductPage',compact('product', 'images', 'conditionDesc', 'profile'));
         }
         return back();
     }

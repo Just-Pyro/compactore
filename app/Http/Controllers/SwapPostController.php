@@ -10,13 +10,29 @@ use Illuminate\Support\Facades\File;
 
 class SwapPostController extends Controller
 {
+    public function displaybookmarks(){
+        $user = auth()->user();
+        $profile = $user->profile;
+        // $address = ShippingAddress::all();
+        $address = $user->address()->latest()->get();
+        $addressId = null;
+        $addressUpdated = null;
+        
+        return view("trading.swapMeBookmark", compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
+    }
+
     public function getallPost(){
         
         $swapMedia = SwapmeMedia::all();
 
         $swapPosts = SwapPost::latest()->get();
 
-        return view('trading.swapme', compact('swapPosts', 'swapMedia'));
+        $user = auth()->user();
+        $swapPost = $user->swapBookmark;
+
+        // dump($swapPost);
+
+        return view('trading.swapme', compact('swapPosts', 'swapMedia', 'swapPost'));
     }
 
     public function addPost(Request $request){

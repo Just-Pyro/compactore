@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SwapmeBookmark;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
@@ -14,7 +15,9 @@ use App\Http\Controllers\SwapPostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ShippingAddressController;
+use App\Http\Controllers\BookmarkController;
 use App\Models\ShippingAddress;
+use App\Models\ReportController;
 
 Route::get('/', [UserController::class, 'check']);
 
@@ -119,15 +122,37 @@ Route::get('/addVoucher-admin',function(){//nagamit
 
 
 Route::get('/ecommerceProfile', function(){
-    return view('profile.ecommerceProfile');
+    $user = auth()->user();
+    $profile = $user->profile;
+    // $address = ShippingAddress::all();
+    $address = $user->address()->latest()->get();
+    $addressId = null;
+    $addressUpdated = null;
+
+    return view('profile.ecommerceProfile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
 });
 
 Route::get('/swapProfile', function(){
-    return view('profile.swapProfile');
+    $user = auth()->user();
+    $profile = $user->profile;
+    // $address = ShippingAddress::all();
+    $address = $user->address()->latest()->get();
+    $addressId = null;
+    $addressUpdated = null;
+    return view('profile.swapProfile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
 });
 
+Route::get('/swapMeBookmark', [SwapPostController::class, "displaybookmarks"]);
+Route::get('/surplusBookmark', [SurplusController::class, "displaybookmarks"]);
+
 Route::get('/surplusProfile', function(){
-    return view('profile.surplusProfile');
+    $user = auth()->user();
+    $profile = $user->profile;
+    // $address = ShippingAddress::all();
+    $address = $user->address()->latest()->get();
+    $addressId = null;
+    $addressUpdated = null;
+    return view('profile.surplusProfile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
 });
 
 //change Pass
@@ -152,3 +177,10 @@ Route::get('/create-session', [CheckoutController::class, 'createSession']);
 Route::post('/checkoutOrder', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');//nagamit
 Route::get('/checkout/success', [CheckoutController::class, 'checkoutSuccess'])->name('checkout.success');//nagamit
 Route::get('/checkout/failed', [CheckoutController::class, 'checkoutFailed'])->name('checkout.failed');
+
+// bookmarks
+Route::post('/swapmeBookmark', [BookmarkController::class, 'swapmeBookmark']);
+Route::post('/swapmeUnBookmark', [BookmarkController::class, 'swapmeUnBookmark']);
+
+// reports
+Route::post('/reportStore', [ReportController::class, '']);
