@@ -84,10 +84,10 @@
                 </div>
               </form>
 
-              <div class="row mx-2">
+              {{-- <div class="row mx-2">
                 <div class="col"><p class="fs-7"><a href="#">Forgot Password</a></p></div>
                 <div class="col"><p class="fs-7"><a href="#">Login with Phone Number</a></p></div>
-              </div>
+              </div> --}}
 
               <p class="mx-auto" style="width:150px">New User? <a href="#" @click="change">Sign up</a></p>
             </div>
@@ -129,10 +129,10 @@
                 </div>
               </form>
 
-              <div class="row mx-2">
+              {{-- <div class="row mx-2">
                 <div class="col"><p class="fs-7"><a href="#">Forgot Password</a></p></div>
                 <div class="col"><p class="fs-7"><a href="#">Login with Phone Number</a></p></div>
-              </div>
+              </div> --}}
 
               <p class="mx-auto" style="width:150px">New User? <a href="#" @click="change">Sign up</a></p>
             </div>

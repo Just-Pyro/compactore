@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/openStore" method="post" id="formOpenStore">
+                <form action="/openStore" method="post" id="formOpenStore" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col">
@@ -17,6 +17,10 @@
                             <div class="form-floating mb-2">
                                 <input name="contact" type="number" class="form-control" id="forContactNumber" placeholder="Contact" required>
                                 <label for="forContactNumber">Contact Number</label>
+                            </div>
+                            <div>
+                                <label>Upload a Store Photo</label>
+                                <input type="file" name="storeImg" class="form-control">
                             </div>
                         </div>
                     </div>

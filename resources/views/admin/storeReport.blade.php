@@ -59,10 +59,10 @@
                         <nav class="navbar navbar-light">
                             <div class="container-fluid">
                                 <a class="navbar-brand fw-bolder fs-2">Reported Stores</a>
-                                <form class="d-flex">
+                                {{-- <form class="d-flex">
                                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                     <button class="btn btn-outline-success" type="submit">Search</button>
-                                </form>
+                                </form> --}}
                             </div>
                         </nav>
                         <div class="table" style="height: 60vh">
@@ -78,12 +78,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- <tr v-for="AdminUser in AdminUsers" :key="AdminUser.admin_id">
-                                    <th scope="row">{{AdminUser.number}}</th>
-                                    <td>{{AdminUser.admin_name}}</td>
-                                    <td>{{AdminUser.assigned_section}}</td>
-                                    <td><button class="btn btn-danger m-1" :disabled="AdminUser.disabled" @click="fnDisableModerator(AdminUser.admin_id)">disable</button></td>
-                                    </tr> --}}
+                                    @php
+                                        $count = 1;
+                                    @endphp
+                                    @if (count($reportedStores) > 0)
+                                        @foreach ($reportedStores as $item)
+                                            <tr>
+                                                <td scope="row">{{ $count }}</td>
+                                                @foreach ($profile as $prof)
+                                                    @if ($prof->user_id == $item->user_id)
+                                                        <td scope="row">{{ $prof->username}}</td>
+                                                        @break
+                                                    @endif
+                                                @endforeach
+                                                @foreach ($store as $stor)
+                                                    @if ($stor->id == $item->reportedStore_id)
+                                                        <td>{{ $stor->shopName }}</td>
+                                                        @break
+                                                    @endif
+                                                @endforeach
+                                                <td>{{ $item->reportDetails }}</td>
+                                                <td>{{ $item->created_at }}</td>
+                                                <td><button class="btn btn-danger m-1">disable Store</button></td>
+                                            </tr>
+                                            @php
+                                                $count++;
+                                            @endphp
+                                        @endforeach
+                                    @else
+                                        <tr>no Reports.</tr>
+                                    @endif
+                                    
                                 </tbody>
                             </table>
                         </div>

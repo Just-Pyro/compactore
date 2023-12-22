@@ -7,6 +7,15 @@
     <title>Shop</title>
     <link rel="stylesheet" href="/customcss/ecommerce.css">
     @include('includes/header1')
+    <style>
+        .card {
+            transition: 0.15s;
+            cursor: pointer;
+        }
+        .card:hover{
+            transform:scale(1.05);
+        }
+    </style>
 </head>
 <body class="bg-body-secondary">
     @include('includes/header2')
@@ -15,7 +24,7 @@
         <div class="d-flex overflow-hidden">
             <div class="overflow-hidden rounded-1 py-3 px-5" style="width: 400px; height: 150px; background: radial-gradient(circle at 10% 20%, rgb(98, 114, 128) 0%, rgb(52, 63, 51) 90.1%);">
                 @if ($shop->shopImg != null)
-                    <img style="height:70px;">
+                    <img style="height:70px; width: 70px; object-fit: cover;" class="rounded-circle me-4" src="{{ asset('uploads/storeProfile/' . $shop->shopImg) }}">
                 @else
                     <div style="height:70px; width: 70px; border: solid 1px;" class="rounded-circle d-inline-block align-top me-4">store Profile</div>
                 @endif
@@ -44,32 +53,34 @@
         </div>
     </div>
     <div class="container pt-3">
-        {{-- @if ($results->count() > 0) --}}
+        @if (isset($products) && count($products) > 0)
             <div class="row align-items-center product">
-            {{-- @foreach($results as $result) --}}
-                {{-- <div class="w-20" style="flex-basis: 20%;" @click="seeProduct({{ $result->id }})"> --}}
-                    <div class="w-20" style="flex-basis: 20%;" @click="seeProduct()">
+            @foreach($products as $product)
+                <div class="w-20" style="flex-basis: 20%;" @click="seeProduct({{ $product->id }})">
                     <div class="card mx-auto shadow" style="height: 18rem;">
-                        {{-- @if($result->mediaFile->isNotEmpty())
-                            <img src="{{ asset($result->mediaFile->first()->file_path . $result->mediaFile->first()->file_name) }}" style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                        @if(count($mediaFiles) > 0)
+                            @foreach($mediaFiles as $mediaFile)
+                                @if($mediaFile[0]->product_id == $product->id)
+                                    <img src="{{ asset($mediaFile[0]->file_path . $mediaFile[0]->file_name) }}" style="height:12rem; object-fit:cover;" class="card-img-top" :alt="">
+                                    @break
+                                @endif
+                            @endforeach
                         @else
                             <img src="{{ asset('/compactoreCircleFav.png') }}" style="height:12rem; object-fit:cover;" class="card-img-top" alt="">
-                        @endif --}}
+                        @endif
                         <div class="card-body bg-light" style="height: 10rem;">
-                            {{-- <p class="card-title productname" style="white-space:nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $result->productName }}</p> --}}
-                            <p class="card-title productname" style="white-space:nowrap; overflow: hidden; text-overflow: ellipsis;">product</p>
-                            {{-- <p class="card-text text-danger price">{{$result->price}}</p> --}}
-                            <p class="card-text text-danger price">1000</p>
+                            <p class="card-title productname" style="white-space:nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $product->productName }}</p>
+                            <p class="card-text text-danger price">P{{$product->price}}</p>
                         </div>
                     </div>
                 </div>
-            {{-- @endforeach --}}
+            @endforeach
             </div>
-        {{-- @else
-            <p class="fw-medium mt-5 text-center">no products for this category.</p>
-        @endif --}}
+        @else
+            <p class="fw-medium mt-5 text-center">no products for this shop.</p>
+        @endif
     </div>
-    @include('includes/reportStore')
+    @include('modals/reportStore')
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>
 </body>

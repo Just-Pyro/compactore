@@ -35,8 +35,8 @@
               <a href="{{ url('/goto-addVoucher') }}" class="nav-link fw-medium">Add Store Voucher</a>
             </li>
             <li class="nav-item mx-2">
-              @if ($profile)
-              <a href="{{ url('/profile') }}" class="nav-link p-0"><img src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="dp" class="rounded-circle border" style="height:40px; width:40px; object-fit:contain;"></a>                        
+              @if ($shop)
+              <a href="{{ url('/profile') }}" class="nav-link p-0"><img src="{{ asset('uploads/storeProfile/' . $shop->shopImg) }}" alt="dp" class="rounded-circle border" style="height:40px; width:40px; object-fit:contain;"></a>                        
               @else
               <a href="{{ url('/profile') }}" class="nav-link"><i class="fa-solid fa-user"></i></a>                        
               @endif

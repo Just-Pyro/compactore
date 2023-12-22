@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\SwapmeBookmark;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
@@ -16,8 +14,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ShippingAddressController;
 use App\Http\Controllers\BookmarkController;
-use App\Models\ShippingAddress;
-use App\Models\ReportController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\OfferController;
 
 Route::get('/', [UserController::class, 'check']);
 
@@ -56,6 +54,7 @@ Route::post('/add-to-cart', [ShopCartController::class, 'add']);//nagamit
 Route::get('/category/{category}', [ProductController::class, 'categoryProduct']);
 
 Route::get('/checkOut/{ids}',[ShopCartController::class, 'checkout']);//nagamit
+Route::get('/buyNow/{productId}', [ShopCartController::class, 'buyNow']);//nagamit
 
 // all Profile
 Route::get('/profile', function(){//nagamit
@@ -87,12 +86,13 @@ Route::post('/saveGcash', [ProfileController::class, 'saveGcash']);
 //for Users Shop
 Route::post('/openStore', [ShopController::class, 'createShop']);//nagamit
 Route::get('/CompactoreSeller', function(){//nagamit
-    $profile = auth()->user()->profile;
-    return view('seller.sellerPage', ['profile'=>$profile]);
+    $shop = auth()->user()->shop;
+    return view('seller.sellerPage', compact('shop'));
 });
 Route::get('/addProduct', function(){//nagamit
     $profile = auth()->user()->profile;
-    return view('seller.addProducts', ['profile'=>$profile]);
+    $shop = auth()->user()->shop;
+    return view('seller.addProducts', compact('shop', 'profile'));
 });
 Route::post('/addProduct-ecommerce', [ProductController::class, 'addProduct']);//nagamit
 Route::get('/gotoeditProduct-ecommerce', [ProductController::class, 'gotoeditProduct']);//nagamit
@@ -103,7 +103,8 @@ Route::get('/myProduct', [ProductController::class, 'displaySellerProducts']);//
 //for vouchers
 Route::get('/goto-addVoucher', function(){
     $profile = auth()->user()->profile;
-    return view('seller.addVouchers',['profile'=>$profile]);//nagamit
+    $shop = auth()->user()->shop;
+    return view('seller.addVouchers',compact('shop', 'profile'));//nagamit
 });
 Route::post('/addVoucher',[VoucherController::class, 'addVoucher']);//nagamit
 
@@ -176,6 +177,14 @@ Route::post('/swapmeUnBookmark', [BookmarkController::class, 'swapmeUnBookmark']
 Route::post('/surplusBookmark', [BookmarkController::class, 'surplusBookmark']);
 Route::post('/surplusUnBookmark', [BookmarkController::class, 'surplusUnBookmark']);
 Route::post('/removeBookmarkSurplus', [BookmarkController::class, "removeBookmarkSurplus"]);
+Route::post('/removeBookmarkSwapme', [BookmarkController::class, "removeBookmarkSwapme"]);
 
 // reports
-Route::post('/reportStore', [ReportController::class, '']);
+Route::post('/reportStore', [ReportController::class, 'reportStore']);
+
+
+// offer item for swapme
+Route::get('/add-offer/{id}', [SwapPostController::class, 'openOfferForm']);
+Route::post('/addOffer', [OfferController::class, 'addOffer']);
+
+Route::get('/searchSwapme', [SearchController::class, 'searchSwapme']);

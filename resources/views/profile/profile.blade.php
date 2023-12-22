@@ -54,12 +54,9 @@
                         <li class="nav-item">
                             <span data-bs-toggle="modal" data-bs-target="#changeAddressModal" class="nav-link link-dark" style="cursor: pointer;">Delivery Addresses</span>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/set-gcash') }}" class="nav-link link-dark">Gcash Account</a>
-                        </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ url('/changePassword') }}" class="nav-link link-dark">Change Password</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     {{-- content for each tabs --}}

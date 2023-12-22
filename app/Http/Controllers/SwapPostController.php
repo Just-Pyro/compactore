@@ -46,17 +46,21 @@ class SwapPostController extends Controller
     }
 
     public function getallPost(){
-        
+        // $breakLoop
         $swapMedia = SwapmeMedia::all();
 
         $swapPosts = SwapPost::latest()->get();
 
         $user = auth()->user();
         $swapPost = $user->swapBookmark;
+        $offerPost = null;
+
+        $query = null;
+        $results = null;
 
         // dump($swapPost);
 
-        return view('trading.swapme', compact('swapPosts', 'swapMedia', 'swapPost'));
+        return view('trading.swapme', compact('swapPosts', 'swapMedia', 'swapPost', 'offerPost', 'query', 'results'));
     }
 
     public function addPost(Request $request){
@@ -103,5 +107,19 @@ class SwapPostController extends Controller
         }
 
         return back();
+    }
+
+    public function openOfferForm($id){
+        $swapMedia = SwapmeMedia::all();
+
+        $swapPosts = SwapPost::latest()->get();
+
+        $user = auth()->user();
+        $swapPost = $user->swapBookmark;
+        $offerPost = SwapPost::find($id);
+
+        // dump($offerPost);
+
+        return view('trading.swapme', compact('swapPosts', 'swapMedia', 'swapPost', 'offerPost'));
     }
 }

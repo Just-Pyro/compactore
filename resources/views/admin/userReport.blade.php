@@ -59,10 +59,10 @@
                         <nav class="navbar navbar-light">
                             <div class="container-fluid">
                                 <a class="navbar-brand fw-bolder fs-2">Reported Users</a>
-                                <form class="d-flex">
+                                {{-- <form class="d-flex">
                                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                     <button class="btn btn-outline-success" type="submit">Search</button>
-                                </form>
+                                </form> --}}
                             </div>
                         </nav>
                         <div class="table" style="height: 60vh">

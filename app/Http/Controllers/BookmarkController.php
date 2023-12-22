@@ -100,9 +100,20 @@ class BookmarkController extends Controller
         $bookmarks = $user->surplusBookmark;
         // dump($request->bookmarkSurplusId);
         foreach($bookmarks as $bookmark){
-             SurplusBookmarks::where("surplus_id", $request->bookmarkSurplusId)->first()->delete();
+            SurplusBookmarks::where("surplus_id", $request->bookmarkSurplusId)->where("user_id", $user->id)->first()->delete();
         }
 
         return redirect('/surplusBookmarks');
+    }
+
+    public function removeBookmarkSwapme(Request $request){
+        $user = auth()->user();
+        $bookmarks = $user->swapBookmark;
+        // dump($bookmarks);
+        foreach($bookmarks as $bookmark){
+            SwapmeBookmark::where("swapPost_id", $request->bookmarkSwapmeId)->where("user_id", $user->id)->first()->delete();
+        }
+
+        return redirect('/swapMeBookmark');
     }
 }

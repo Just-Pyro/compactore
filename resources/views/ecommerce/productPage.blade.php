@@ -51,9 +51,9 @@
                             </div>
                         </div>
                         <div class="p-2">Price P{{ $product->price }}.00</div>
-                        <div class="p-2" style="height: 200px;">
+                        {{-- <div class="p-2" style="height: 200px;">
                             shipping Info
-                        </div>
+                        </div> --}}
                         
                         {{-- <form @submit.prevent="addToCart"> --}}
                         <form action="/add-to-cart" method="post">
@@ -70,7 +70,11 @@
                             {{-- <input type="hidden" v-model="productId" name="product_id" :value="product.id"> --}}
                             <div class="p-2">
                                 <button type="submit" class="btn btn-outline-dark me-2">Add to Cart</button>
-                                <button class="btn btn-dark">Buy Now</button>
+                                {{-- <form action="/buyNow" id="buyNow" method="get">
+                                    @csrf --}}
+                                    {{-- <input type="number" value="{{ $product->id }}" name="productId" style="display: block;"> --}}
+                                    <a href="{{ url('/buyNow', ['productId' => $product->id]) }}" class="btn btn-dark">Buy Now</a>
+                                {{-- </form> --}}
                             </div>
                         </form>
                     </div>
@@ -79,21 +83,25 @@
         </div>
         <div class="row mb-3" style="background: white;">
             <div class="col-1 p-2">
-                <div style="height:70px; border: solid 1px;">store Profile</div>
+                @if ($shop->shopImg != null)
+                    <img style="height:70px; width: 70px; object-fit: cover;" class="rounded-circle" src="{{ asset('uploads/storeProfile/' . $shop->shopImg) }}" alt="">
+                @else
+                    <div style="height:70px; border: solid 1px;">store Profile</div>
+                @endif
             </div>
             <div class="col-2 p-2 px-0">
                 <div style="height:70px;"><p class="fs-6 fw-medium">{{ $shop->shopName }} </p><a href="{{ url('showStore', ['id' => $shop->id]) }}" class="btn btn-light btn-sm">View shop</a></div>
             </div>
             <div class="col-9 p-2">
-                <div style="height:70px;border: solid 1px;">store info ratings blablabla</div>
+                {{-- <div style="height:70px;border: solid 1px;">store info ratings blablabla</div> --}}
             </div>
         </div>
         <div class="row p-0">
             <div class="d-flex flex-column mb-3" style="background: white;">
-                <div class="p-2">
+                {{-- <div class="p-2">
                     <h5>Product Specifications</h5>
                     <p>specification 1</p>
-                </div>
+                </div> --}}
                 <div class="p-2">
                     <h5>Product Description</h5>
                     <p>{{ $product->description }}</p>
@@ -133,6 +141,19 @@
             </div>
         </div>
     </div>
+    @endif
+
+    @include('modals/incompleteProfile')
+    @if ($details == false)
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get the modal element
+                var myModal = new bootstrap.Modal(document.getElementById('profileDetailsIncomplete'));
+
+                // Show the modal
+                myModal.show();
+            });
+        </script>
     @endif
     @include('includes/footer1')
     <script src="/js/ecommerce.js"></script>

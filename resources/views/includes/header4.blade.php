@@ -19,8 +19,8 @@
   
       <div id="compactoreMenu" class="collapse navbar-collapse d-flex justify-content-end">
         <div class="flex-grow-1">
-          <form class="flex-grow-1 mx-2" method="GET" action="">
-            <input class="form-control" type="search" placeholder="Search products">
+          <form class="flex-grow-1 mx-2" method="GET" action="{{ url('/searchSwapme') }}">
+            <input class="form-control" name="query" type="search" placeholder="Search products">
           </form>
         </div>
         <div class="" id="ulOptions">

@@ -21,7 +21,7 @@
                             </div>
                         @endforeach
                     @else
-                        <p class="fw-normal text-center">No vouchers created.</p>
+                        <p class="fw-normal text-center">No vouchers created by Compactore.</p>
                     @endif
                     
                 </div>

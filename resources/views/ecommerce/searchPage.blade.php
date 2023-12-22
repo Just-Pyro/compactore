@@ -23,11 +23,11 @@
         <div class="row">
             <div class="col-2 p-3">
                 <div class="d-flex flex-column">
-                    <h5>By Category</h5>
+                    {{-- <h5>By Category</h5>
                     <div class="form-check">
                         <input type="checkbox" id="forCategory" class="form-check-input">
                         <label for="forCategory" class="form-check-label">Category1</label>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="sidebar-divider"></div>

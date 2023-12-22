@@ -75,7 +75,7 @@
                         <div class="row">
                             <div class="col-3">
                                 @if (isset($profile->profileImg))
-                                    <img class="rounded-circle" src="{{ asset('/uploads/userprofile/'.$user->profileImg)}}" alt="userProfile" style="height:70px; width:70px; border: solid 1px; object-fit:contain;">
+                                    <img class="rounded-circle" src="{{ asset('/uploads/userprofile/'.$profile->profileImg)}}" alt="userProfile" style="height:70px; width:70px; border: solid 1px; object-fit:contain;">
                                 @else
                                     <div class="rounded-circle" style="height:70px; width:70px; border: solid 1px;"></div>
                                 @endif
@@ -88,15 +88,16 @@
                                     no username
                                     @endif
                                 </a>
+                                @if (isset($profile->phoneNumber))
+                                    <p class="fw-normal mt-3">{{ $profile->phoneNumber }} <i class="fa-solid fa-phone"></i><span class="fw-medium"> call number</span></p>
+                                @else
+                                    <p class="fw-normal mt-3">no number added. <i class="fa-solid fa-phone"></i><span class="fw-medium"> call number</span></p>
+                                @endif
                             </div>
-                            <div class="d-grid my-3">
+                            {{-- <div class="d-grid my-3">
                                 <button class="btn btn-outline-dark">Chat with Seller</button>
-                            </div>
-                            @if (isset($profile->phoneNumber))
-                                <p class="fw-normal text-center mt-3">{{ $profile->phoneNumber }} <i class="fa-solid fa-phone"></i><span class="fw-medium"> call number</span></p>
-                            @else
-                                <p class="fw-normal text-center mt-3">no number added. <i class="fa-solid fa-phone"></i><span class="fw-medium"> call number</span></p>
-                            @endif
+                            </div> --}}
+                            
                         </div>
                     </div>
                 </div>

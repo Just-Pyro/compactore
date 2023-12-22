@@ -63,19 +63,22 @@ class ProductController extends Controller
         $profile = $user->profile;
         $products = $user->shop->product;
         $productId = null;
+        $shop = $user->shop;
 
-        return view('seller.myProducts', compact('mediaFiles', 'profile','products', 'productId'));
+        return view('seller.myProducts', compact('mediaFiles', 'profile','products', 'productId', 'shop'));
     }
 
     public function productPage($id){
         $product = Product::find($id);
+        $shop = Shop::find($product->shop_id);
+        $details = true;
 
         if($product){
             $shop = Shop::find($product->shop_id);
 
             $images = $product->mediaFile;
 
-            return view('ecommerce.productPage',compact('product', 'images', 'shop'));
+            return view('ecommerce.productPage',compact('product', 'images', 'shop', 'details'));
         }
         return back();
         

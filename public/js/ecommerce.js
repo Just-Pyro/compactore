@@ -248,8 +248,16 @@ const app = Vue.createApp({
             document.getElementById('editProductForm').submit();
         },
         submitReportStore(){
-            document.getElementById('reportStore').submit();
-        }
+            var report = document.getElementById('reportdetails');
+            if(report.value != ""){
+                document.getElementById('reportStoreForm').submit();
+            }else{
+                alert("please input details in your report");
+            }
+        },
+        // BuyNow(id){
+        //     document.getElementById('')
+        // },
     },
     computed: {
         selectedPaymentMethodLabel() {

@@ -54,14 +54,15 @@
                         <li class="nav-item">
                             <a href="{{ url('/swapMeBookmark') }}" class="nav-link active">Bookmarks</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="" class="nav-link link-dark">Post History</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     {{-- content for each tabs --}}
                     <div class="mt-4">
-                        @if(isset($posts))
+                        <form action="/removeBookmarkSwapme" method="post" id="removeBookmark">@csrf<input type="number" name="bookmarkSwapmeId" v-model="bookMarkPost" style="display: none;"></form>
+                        @if(isset($posts) && count($posts))
                             @foreach ($posts as $item)
                                 <div class="row mb-3">
                                     <div class="col-2">
@@ -80,7 +81,7 @@
                                     </div>
                                     <div class="col-2">
                                         <div class="d-flex align-items-center">
-                                            <button class="btn btn-danger btn-sm">Remove</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" @click="removeBookmark({{ $item['id'] }})">Remove</button>
                                         </div>
                                     </div>
                                 </div>
@@ -97,6 +98,7 @@
         </div>
     </div>
     @include('includes/footer1')
-    <script src="/js/ecommerce.js"></script>
+    {{-- <script src="/js/ecommerce.js"></script> --}}
+    <script src="/js/swapme.js"></script>
 </body>
 </html>

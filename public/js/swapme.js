@@ -32,6 +32,17 @@ const app = Vue.createApp({
         submitPost(){
             document.getElementById('addPostForm').submit();
         },
+        submitOffer(){
+            console.log('here')
+            var item = document.getElementById('forTitle');
+            var des = document.getElementById('description');
+            var img = document.getElementById('postImg');
+            if(item.value != "" && des.value != "" && img.value != ""){
+                document.getElementById('addOfferForm').submit();
+            }else{
+                alert('please fill in the input details');
+            }
+        },
         bookMark(id){
             this.bookMarkPost = id;
             console.log(id);
@@ -43,6 +54,15 @@ const app = Vue.createApp({
             console.log(id);
             console.log(this.bookMarkPost);
             setTimeout(() => document.getElementById('unBookMarkForm').submit(), 10);
+        },
+        addOffer(id){
+            window.location.href = `/add-offer/${id}`;
+        },
+        removeBookmark(id){
+            this.bookMarkPost = id;
+            console.log(id);
+            console.log(this.bookMarkPost);
+            setTimeout(() => document.getElementById('removeBookmark').submit(), 10);
         }
     }
 }).mount("body");

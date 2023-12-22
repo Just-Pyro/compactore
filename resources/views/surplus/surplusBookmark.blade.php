@@ -54,9 +54,9 @@
                         <li class="nav-item">
                             <a href="{{ url('/surplusBookmarks') }}" class="nav-link active">Bookmarks</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="" class="nav-link link-dark">Post History</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     {{-- content for each tabs --}}

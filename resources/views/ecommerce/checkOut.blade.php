@@ -159,33 +159,6 @@
                 <div class="col"></div>
                 <div class="col"></div>
                 <div class="col-2">
-                    {{-- <form action="/checkoutOrder" id="checkOutForm" method="POST">
-                        @csrf
-                        @foreach ($forCheckout as $item => $innerItem)
-                            <input type="text" name="productName[]" value="{{ $innerItem['productName'] }}" style="display:none;">
-                            <input type="number" name="stock[]" value="{{ $innerItem['quantity'] }}" style="display: none;">
-                            <input type="number" name="product[]" value="{{ $innerItem['product_id'] }}" style="display: none;">
-                            <input type="number" name="id[]" value="{{ $innerItem['id'] }}" style="display: none;">
-                        @endforeach
-                        
-                        <input type="hidden" name="paymentMethod" v-model="paymentMethod">
-                        <input type="number" name="totalPrice" value="{{ $Subtotal+120 }}" style="display:none;">
-
-                        @foreach ($address as $item => $deliveryAddress)
-                            @if ( $deliveryAddress['status'] == 1)
-                                <input type="hidden" class="form-control me-3" name="shippingAddress" value="{{ $deliveryAddress['contact'] }} | {{ $deliveryAddress['fullname'] }} | {{ $deliveryAddress['province'] }}, {{ $deliveryAddress['city'] }}, {{ $deliveryAddress['barangay'] }}, {{ $deliveryAddress['postal'] }} | {{ $deliveryAddress['detailed_address'] }}" required>
-                                @php $breakLoop = true; @endphp
-                                @break
-                            @endif
-                        @endforeach
-                        
-                        @if (isset($breakLoop))
-                        <button class="btn btn-orange" type="submit">Place Order Now</button>
-                        @else
-                        <button class="btn btn-orange" type="button" data-bs-toggle="modal" data-bs-target="#selectAddress">Place Order Now</button>
-                        @endif
-                        
-                    </form> --}}
                     <form action="/checkoutOrder" id="checkOutForm" method="POST">
                         @csrf
                         @foreach ($forCheckout as $item => $innerItem)

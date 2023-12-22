@@ -88,15 +88,33 @@
                 <span id="selectVoucher" data-bs-toggle="modal" data-bs-target="#selectVoucherModal">Select Voucher</span>
             </div>
             <div class="d-grid">
-                <button class="btn btn-outline-warning" data-toggle="modal" data-target="#selectProductModal" @click="showCheckOut">Check Out</button>
+                {{-- @if ($cart == null)
+                    <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#noProductMessage">Check Out</button>
+                @else --}}
+                    <button class="btn btn-outline-warning" data-bs-toggle="modal" @click="showCheckOut">Check Out</button>
+                {{-- @endif --}}
             </div>
         </div>
     </div>
     <!-- Modals -->
     {{-- Modal for Compactore Voucher --}}
+
+    @include('modals/incompleteProfile')
     @include('modals/selectProductEcommerce')
     @include('modals/compactoreVoucher')
     @include('includes/footer1')
+    @if ($details == false)
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Get the modal element
+                var myModal = new bootstrap.Modal(document.getElementById('profileDetailsIncomplete'));
+
+                // Show the modal
+                myModal.show();
+            });
+        </script>
+    @endif
+
     @if ($addressId != null)
         <script>
             document.addEventListener("DOMContentLoaded", function () {

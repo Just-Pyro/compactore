@@ -7,14 +7,16 @@
             </div>
             <div class="modal-body">
                 <div class="content m-3 p-2">
-                    <form action="/reportStore" id="reportStoreForm">
+                    <form action="/reportStore" method="post" id="reportStoreForm">
+                        @csrf
                         <input type="number" name="shopId" value="{{ $shop->id }}" style="display: none;">
-                        <textarea name="reportdetails" cols="30" rows="10"></textarea>
+                        <input type="number" name="userId" value="{{ $user->id }}" style="display: none;">
+                        <textarea id="reportdetails" name="reportdetails" class="form-control" cols="30" rows="5" placeholder="Enter reason for report here..."></textarea>
                     </form>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger" @click="submitReportStore" data-bs-dismiss="modal">Submit Report</button>
+                <button type="submit" class="btn btn-danger" @click="submitReportStore">Submit Report</button>
             </div>
         </div>
     </div>

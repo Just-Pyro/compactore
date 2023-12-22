@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\voucher;
+use App\Models\ReportStore;
+use App\Models\Profile;
 
 class AdminController extends Controller
 {
@@ -67,7 +69,19 @@ class AdminController extends Controller
 
     public function displayReportedStores() {
         $role = auth()->user()->role;
+        $reportedStores = ReportStore::all();
 
-        return view('admin.storeReport', compact('role'));
+        $profile = [];
+        $store = [];
+        foreach($reportedStores as $report){
+            $profile[] = Profile::where('user_id', $report->user_id)->first();
+            $store[] = Shop::find($report->reportedStore_id);
+        }
+
+        // dump($store);
+        // foreach($store as $p){
+        //     dump($p->shopName);
+        // }
+        return view('admin.storeReport', compact('role', 'reportedStores', 'profile', 'store'));
     }
 }

@@ -72,6 +72,8 @@ class ShopCartController extends Controller
         $cart = $user->cart;
         $admin = Shop::first();
 
+        $details = true;
+
         // $vouchers = voucher::whereNotIn('id', [$admin->id])->get();
         $vouchers = voucher::all();
 
@@ -98,7 +100,7 @@ class ShopCartController extends Controller
             $addressId = null;
             $addressUpdated = null;
 
-            return view('ecommerce.cart', compact("cartProducts", "productImages", "shop", "address", 'addressId', 'addressUpdated', 'vouchers'));
+            return view('ecommerce.cart', compact("cartProducts", "productImages", "shop", "address", 'addressId', 'addressUpdated', 'vouchers', 'details'));
         }
 
         $cartProducts = null;
@@ -106,47 +108,145 @@ class ShopCartController extends Controller
         $addressId = null;
         $addressUpdated = null;
 
-        return view('ecommerce.cart', compact("cartProducts", 'address', 'addressId', 'addressUpdated'));
+        // dump($cart);
+
+        return view('ecommerce.cart', compact("cartProducts", 'address', 'addressId', 'addressUpdated', 'vouchers', 'cart'));
     }
 
     public function checkout($ids){
+        $user = auth()->user();
+        $profile = $user->profile;
+        if($profile->fullname == null || $profile->phoneNumber == null || $profile->birthdate == null || $profile->profileImg == null || $profile->gender == null){
+            $details = false;
+            
+            $cart = $user->cart;
+            $admin = Shop::first();
+
+            // $vouchers = voucher::whereNotIn('id', [$admin->id])->get();
+            $vouchers = voucher::all();
+
+            if($cart){
+                //this will return a collection
+                $addtoCart = AddtoCart::where('shopCart_id', $cart->id)->get();
+
+                $cartProducts = [];
+                $productImages = [];
+                $shop = null;
+                
+                //mo loop ka sa collection and then i store nimo sa $cartProducts
+                foreach ($addtoCart as $key => $value) {
+                    $cartProducts[$key] = $value->toArray();
+
+                    $images = MediaFile::where('product_id', $value['product_id'])->first();
+                    $product = Product::find($value['product_id']);
+                    $shop = Shop::find($product->shop_id);
+
+                    $productImages[$key] = $images;
+                }
+
+                $address = auth()->user()->address()->latest()->get();
+                $addressId = null;
+                $addressUpdated = null;
+
+                return view('ecommerce.cart', compact("cartProducts", "productImages", "shop", "address", 'addressId', 'addressUpdated', 'vouchers', 'details'));
+            }
+
+            $cartProducts = null;
+            $address = auth()->user()->address()->latest()->get();
+            $addressId = null;
+            $addressUpdated = null;
+
+            // dump($cart);
+
+            return view('ecommerce.cart', compact("cartProducts", 'address', 'addressId', 'addressUpdated', 'vouchers', 'cart'));
+
+        }else{
+            $ids = explode(',', $ids);
+            $idArray = [];
+     
+            foreach($ids as $id){
+                $idArray[] = Str::after($id, "-");
+                // dump($idArray);
+            }
+    
+            // dump(count($idArray));
+    
+            $forCheckout = [];
+            $images = [];
+            $products = [];
+            foreach($idArray as $i => $id){
+                $addtoCart = AddtoCart::find($id);
+                // dump($addtoCart->product_id);
+                $product = Product::find($addtoCart->product_id);
+                // ->where('product_id', $addtoCart->product_id)
+                // $products[] = $addtoCart->product_id;
+                $images[] = $product->mediaFile->first();
+                // dump($images);
+    
+                $forCheckout[] = $addtoCart;
+            }
+    
+            $address = auth()->user()->address()->latest()->get();
+            $addressId = null;
+            $addressUpdated = null;
+    
+            $admin = Shop::first();
+    
+            // $vouchers = voucher::whereNotIn('id', [$admin->id])->get();
+            $vouchers = voucher::all();
+    
+            $Subtotal = null;
+            return view('ecommerce.checkOut', compact('forCheckout', 'images', 'Subtotal', 'address', 'addressId', 'addressUpdated','vouchers'));
+        }
         // dump($ids);
 
-        $ids = explode(',', $ids);
-        $idArray = [];
+        
+    }
 
-        foreach($ids as $id){
-            $idArray[] = Str::after($id, "-");
-            // dump($idArray);
-        }
+    public function buyNow($id){
+        $user = auth()->user();
+        $profile = $user->profile;
+        if($profile->fullname == null || $profile->phoneNumber == null || $profile->birthdate == null || $profile->profileImg == null || $profile->gender == null){
+            $details = false;
+            
+            $product = Product::find($id);
+            $shop = Shop::find($product->shop_id);
 
-        // dump(count($idArray));
+            if($product != null){
+                $shop = Shop::find($product->shop_id);
 
-        $forCheckout = [];
-        $images = [];
-        $products = [];
-        foreach($idArray as $i => $id){
-            $addtoCart = AddtoCart::find($id);
-            // dump($addtoCart->product_id);
-            $product = Product::find($addtoCart->product_id);
-            // ->where('product_id', $addtoCart->product_id)
-            // $products[] = $addtoCart->product_id;
+                $images = $product->mediaFile;
+
+                // dump('im here');
+                return view('ecommerce.productPage',compact('product', 'images', 'shop', 'details'));
+            }
+            // return back();
+        }else{
+            // $id = (int)$id;
+
+            $forCheckout = [];
+            $images = [];
+            $products = [];
+            // dump($id);
+            $addtoCart = AddtoCart::where('product_id', $id)->first();
+            // dump($addtoCart);
+            $product = Product::find($id);
             $images[] = $product->mediaFile->first();
             // dump($images);
 
             $forCheckout[] = $addtoCart;
+    
+            $address = auth()->user()->address()->latest()->get();
+            $addressId = null;
+            $addressUpdated = null;
+    
+            $vouchers = voucher::all();
+    
+            $Subtotal = null;
+            return view('ecommerce.checkOut', compact('forCheckout', 'images', 'Subtotal', 'address', 'addressId', 'addressUpdated','vouchers'));
         }
+        // dump($ids);
 
-        $address = auth()->user()->address()->latest()->get();
-        $addressId = null;
-        $addressUpdated = null;
-
-        $admin = Shop::first();
-
-        // $vouchers = voucher::whereNotIn('id', [$admin->id])->get();
-        $vouchers = voucher::all();
-
-        $Subtotal = null;
-        return view('ecommerce.checkOut', compact('forCheckout', 'images', 'Subtotal', 'address', 'addressId', 'addressUpdated','vouchers'));
+        
     }
 }
