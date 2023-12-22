@@ -52,7 +52,7 @@
                             <a href="{{ url('/surplusProfile') }}" class="nav-link active">Reviews</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/surplusBookmark') }}" class="nav-link link-dark">Bookmarks</a>
+                            <a href="{{ url('/surplusBookmarks') }}" class="nav-link link-dark">Bookmarks</a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link link-dark">Post History</a>

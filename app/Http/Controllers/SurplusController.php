@@ -16,11 +16,29 @@ class SurplusController extends Controller
     public function displaybookmarks(){
         $user = auth()->user();
         $profile = $user->profile;
-        // $address = ShippingAddress::all();
+
         $address = $user->address()->latest()->get();
         $addressId = null;
         $addressUpdated = null;
-        return view("surplus.surplusBookmark", compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
+
+        $bookMarks = $user->surplusBookmark;
+        $posts = [];
+        $surplusmedia = [];
+
+        foreach($bookMarks as $bookmark){
+            $posts[] = Surplus::find($bookmark->surplus_id);
+            $surplusmedia = SurplusMedia::with('surplus')
+            ->orderBy('surplus_id')
+            ->get()
+            ->groupBy('surplus_id');
+        }
+
+        $users = [];
+        foreach($posts as $post){
+            $users[] = Profile::where('user_id', $post->user_id)->first();
+        }
+
+        return view("surplus.surplusBookmark", compact('user', 'profile', 'address', 'addressId', 'addressUpdated', 'posts', 'surplusmedia', 'users'));
     }
 
     public function postSurplus(Request $request){
@@ -70,6 +88,9 @@ class SurplusController extends Controller
     }
 
     public function search(){
+        $user = auth()->user();
+        $surplus = $user->surplusBookmark;
+        
         $query = request('query');
         $location = request('location');
         $location = strtolower($location);
@@ -85,8 +106,13 @@ class SurplusController extends Controller
         }else{
             $results = null;
         }
+
+        // dump($surplus);
+        // foreach($surplus as $item){
+        //     dump($item);
+        // }
         
-        return view('surplus.surplusSearchResult', compact('results', 'query'));
+        return view('surplus.surplusSearchResult', compact('results', 'query', 'location', 'surplus'));
     }
 
     public function displayProduct($id){

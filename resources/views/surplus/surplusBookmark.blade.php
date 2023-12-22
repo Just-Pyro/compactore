@@ -31,12 +31,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/swapProfile') }}" class="nav-link fs-5 fw-medium active">
+                            <a href="{{ url('/swapProfile') }}" class="nav-link fs-5 fw-medium link-dark">
                                 Swap Me
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/surplusProfile') }}" class="nav-link fs-5 fw-medium link-dark">
+                            <a href="{{ url('/surplusProfile') }}" class="nav-link fs-5 fw-medium active">
                                 Surplus
                             </a>
                         </li>
@@ -52,7 +52,7 @@
                             <a href="{{ url('/surplusProfile') }}" class="nav-link link-dark">Reviews</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/surplusBookmark') }}" class="nav-link active">Bookmarks</a>
+                            <a href="{{ url('/surplusBookmarks') }}" class="nav-link active">Bookmarks</a>
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link link-dark">Post History</a>
@@ -61,31 +61,54 @@
 
                     {{-- content for each tabs --}}
                     <div class="mt-4">
-                        <div class="row mb-3">
-                            <div class="col-2">
-                                <div class="float-end" style="height: 100px; width:100px; border:solid 1px">sample Image</div>
-                            </div>
-                            <div class="col-8">
-                                <div class="d-flex flex-column">
-                                    <div class="">Name sa product</div>
-                                    <div class="text-secondary">name sa nagpost</div>
-                                    <div class="text-secondary">meetup location</div>
-                                    <div class="text-secondary">number</div>
+                        <form action="/removeBookmarkSurplus" method="post" id="removeBookmark">@csrf<input type="number" name="bookmarkSurplusId" v-model="bookMarkPost" style="display: none;"></form>
+                        @if(isset($posts) && count($posts) > 0)
+                            @foreach ($posts as $item)
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        @if ($surplusmedia->has($item->id) && $surplusmedia[$item->id]->isNotEmpty())
+                                            <img class="float-end" style="height:100px; width:100px; object-fit: cover;" src="{{ asset($surplusmedia[$item->id][0]->file_path . $surplusmedia[$item->id][0]->file_name) }}" alt="First Media">
+                                        @else
+                                            <div class="float-end" style="height: 100px; width:100px; border:solid 1px">no Image Found</div>
+                                        @endif
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="d-flex flex-column">
+                                            <p class="mb-0">{{ $item['productName'] }}</p>
+                                            @foreach ($users as $user)
+                                                @if ($user->user_id== $item->user_id)
+                                                    <p class="text-secondary fs-7 fst-italic mb-0">{{ $user['username']}}</p>
+                                                    <p class="text-light-emphasis fs-7 overflow-x-hidden mb-0">{{ $item['location'] }}</p>
+                                                    @if ($user->phoneNumber == null)
+                                                        <p class="text-light-emphasis fs-7 overflow-x-hidden mb-0 fst-italic">no phone number</p>
+                                                    @else
+                                                        <p class="text-light-emphasis fs-7 overflow-x-hidden mb-0">{{ $user['phoneNumber'] }}</p>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="d-flex align-items-center">
+                                            <button type="submit" class="btn btn-danger btn-sm" @click="removeBookmark({{ $item['id'] }})">Remove</button>
+                                        </div>
+                                    </div>
                                 </div>
+                                <hr>
+                            @endforeach
+                        @else
+                            <div class="d-flex justify-content-center">
+                                <p class="fw-normal fs-6">no bookmarked.</p>
                             </div>
-                            <div class="col-2">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-danger btn-sm">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
+                        @endif
+                        {{-- <hr> --}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
     @include('includes/footer1')
-    <script src="/js/ecommerce.js"></script>
+    {{-- <script src="/js/ecommerce.js"></script> --}}
+    <script src="/js/surplus.js"></script>
 </body>
 </html>

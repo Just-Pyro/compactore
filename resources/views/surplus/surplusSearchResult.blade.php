@@ -23,11 +23,20 @@
     @include('includes/header3')
 
     <div class="container mt-5">
-        <h3>blabla search Result for "{{ $query }}"</h3>
+        @if ($location == "")
+            <h3>blabla search Result for "{{ $query }}"</h3>
+        @else
+            <h3>blabla search Result for "{{ $query }}" in "{{ $location }}"</h3>
+        @endif
     </div>    
 
     <div class="container mt-5 rounded shadow px-5">
         <div class="row align-items-center product">
+            {{-- @php
+                dump($location);
+            @endphp --}}
+            <form action="/surplusBookmark" method="post" id="saveBookMarkForm">@csrf<input type="number" name="postIdBookmark" v-model="bookMarkPost" style="display: none;"><input type="text" name="passQuery" value="{{ $query }}" style="display: none;"><input type="text" name="passlocation" value="{{ $location }}" style="display: none;"></form>
+            <form action="/surplusUnBookmark" method="post" id="unBookMarkForm">@csrf<input type="number" name="postIdBookmark" v-model="bookMarkPost" style="display: none;"><input type="text" name="passQuery" value="{{ $query }}" style="display: none;"><input type="text" name="passlocation" value="{{ $location }}" style="display: none;"></form>
             {{-- each items in search result --}}
             @if (!$results)
                 <div class="row mt-2 bg-white rounded">
@@ -36,7 +45,36 @@
             @else
                 @foreach($results as $result)
                 <div class="p-0 col-sm-6 col-lg-4 col-xl-3 my-5 rounded" @click="seeProduct({{ $result->id }})">
-                    <div class="card mx-2 rounded" style="width: 16rem; height: 18rem;">
+                    <div class="card mx-2 rounded position-relative" style="width: 16rem; height: 18rem;">
+                        {{-- @php
+                            echo $result['id'];
+                        @endphp --}}
+                        @if ($surplus->count()>0)
+                            @foreach ($surplus as $item)
+                            {{-- @php
+                                echo $result['id'];
+                                echo $item['surplus_id'];
+                            @endphp --}}
+                                @if ($item['surplus_id'] == $result['id'])
+                                    <span class="mx-3 fs-5 position-absolute top-0 end-0 text-warning" style="cursor:pointer; z-index: 1000;" @click="unbookMark({{ $result['id'] }})"><i class="fa-solid fa-bookmark"></i></span>
+                                    @php
+                                        $breakLoop = true;
+                                    @endphp
+                                    @break
+                                @endif
+                                @php
+                                    $breakLoop = false;
+                                @endphp
+                            @endforeach
+                            @if(isset($breakLoop))
+                                @if (!$breakLoop)
+                                    <span class="mx-3 fs-5 position-absolute top-0 end-0 next" style="cursor:pointer; z-index: 1000;" @click="bookMark({{ $result['id'] }})"><i class="fa-regular fa-bookmark"></i></span>
+                                @endif
+                            @endif
+                        @else
+                            <span class="mx-3 fs-5 position-absolute top-0 end-0 firstelse" style="cursor:pointer; z-index: 1000;" @click="bookMark({{ $result['id'] }})"><i class="fa-regular fa-bookmark"></i></span>
+                        @endif
+
                         @if($result->surplusMedia->isNotEmpty())
                             <img src="{{ asset($result->surplusMedia->first()->file_path . $result->surplusMedia->first()->file_name) }}" style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border" :alt="">
                         @else

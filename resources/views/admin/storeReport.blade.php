@@ -70,8 +70,10 @@
                                 <thead class="bg-light">
                                     <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Moderator Name</th>
-                                    <th scope="col">Assigned Section</th>
+                                    <th scope="col">User (reporter)</th>
+                                    <th scope="col">Store (reported)</th>
+                                    <th scope="col">Report Details</th>
+                                    <th scope="col">Date Reported</th>
                                     <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -87,7 +89,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success ml-2 my-3" data-bs-toggle="modal" data-bs-target="#add-new-admin">Add Moderator</button>
+                                {{-- <button class="btn btn-success ml-2 my-3" data-bs-toggle="modal" data-bs-target="#add-new-admin">Add Moderator</button> --}}
                             </div>
                         </div>
                      </div>

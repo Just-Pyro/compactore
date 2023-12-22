@@ -27,4 +27,8 @@ class Surplus extends Model
     public function user(){
         return $this->hasOne(User::class, 'user_id');
     }
+
+    public function surplusBookmark(){
+        return $this->hasMany(SurplusBookmarks::class, 'user_id');
+    }
 }

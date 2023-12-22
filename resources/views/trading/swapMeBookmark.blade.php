@@ -61,23 +61,36 @@
 
                     {{-- content for each tabs --}}
                     <div class="mt-4">
-                        <div class="row mb-3">
-                            <div class="col-2">
-                                <div class="float-end" style="height: 100px; width:100px; border:solid 1px">sample Image</div>
-                            </div>
-                            <div class="col-8">
-                                <div class="d-flex flex-column">
-                                    <div class="">PostTitle</div>
-                                    <div class="text-secondary">author sa nagpost</div>
+                        @if(isset($posts))
+                            @foreach ($posts as $item)
+                                <div class="row mb-3">
+                                    <div class="col-2">
+                                        @if ($swapmedia->has($item->id) && $swapmedia[$item->id]->isNotEmpty())
+                                            <img class="float-end" style="height:100px; width:100px; object-fit: cover;" src="{{ asset($swapmedia[$item->id][0]->file_path . $swapmedia[$item->id][0]->file_name) }}" alt="First Media">
+                                        @else
+                                            <div class="float-end" style="height: 100px; width:100px; border:solid 1px">no Image Found</div>
+                                        @endif
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="d-flex flex-column">
+                                            <p class="mb-0">{{ $item['title'] }}</p>
+                                            <p class="text-secondary fs-6 fst-italic">{{ $item['author']}}</p>
+                                            <p class="text-light-emphasis fs-7 overflow-x-hidden mb-0">{{ $item['description'] }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="d-flex align-items-center">
+                                            <button class="btn btn-danger btn-sm">Remove</button>
+                                        </div>
+                                    </div>
                                 </div>
+                                <hr>
+                            @endforeach
+                        @else
+                            <div class="d-flex justify-content-center">
+                                <p class="fw-normal fs-6">no bookmarked.</p>
                             </div>
-                            <div class="col-2">
-                                <div class="d-flex align-items-center">
-                                    <button class="btn btn-danger btn-sm">Remove</button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
+                        @endif
                     </div>
                 </div>
             </div>

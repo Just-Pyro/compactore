@@ -86,4 +86,8 @@ class User extends Authenticatable
     public function swapBookmark(){
         return $this->hasMany(SwapmeBookmark::class, 'user_id');
     }
+
+    public function surplusBookmark(){
+        return $this->hasMany(SurplusBookmarks::class, 'user_id');
+    }
 }

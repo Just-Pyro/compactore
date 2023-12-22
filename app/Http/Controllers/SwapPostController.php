@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 
 class SwapPostController extends Controller
 {
-    public function displaybookmarks(){
+    public function gotoswapProfile(){
         $user = auth()->user();
         $profile = $user->profile;
         // $address = ShippingAddress::all();
@@ -18,7 +18,31 @@ class SwapPostController extends Controller
         $addressId = null;
         $addressUpdated = null;
         
-        return view("trading.swapMeBookmark", compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
+        return view('profile.swapProfile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
+    }
+
+    public function displaybookmarks(){
+        $user = auth()->user();
+        $profile = $user->profile;
+        // $address = ShippingAddress::all();
+        $address = $user->address()->latest()->get();
+        $addressId = null;
+        $addressUpdated = null;
+
+        $bookMarks = $user->swapBookmark;
+        // dump($bookMarks);
+        $posts = [];
+        $swapmedia = [];
+        foreach($bookMarks as $bookmark){
+            // dump($bookmark->swapPost_id);
+            $posts[] = SwapPost::find($bookmark->swapPost_id);
+            $swapmedia = SwapmeMedia::with('swapPost')
+            ->orderBy('swapPost_id')
+            ->get()
+            ->groupBy('swapPost_id');
+        }
+        
+        return view("trading.swapMeBookmark", compact('user', 'profile', 'address', 'addressId', 'addressUpdated', 'posts', 'swapmedia'));
     }
 
     public function getallPost(){

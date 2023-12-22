@@ -3,6 +3,7 @@ const app = Vue.createApp({
         return {
             location: "",
             placeholder: "Choose Location",
+            bookMarkPost: 0,
         }
     },
     methods: {
@@ -92,6 +93,24 @@ const app = Vue.createApp({
         },
         submitForm(){
             document.querySelector('#surplusSearchForm').submit();
+        },
+        bookMark(id){
+            this.bookMarkPost = id;
+            console.log(id);
+            console.log(this.bookMarkPost);
+            setTimeout(() => document.getElementById('saveBookMarkForm').submit(), 10);
+        },
+        unbookMark(id){
+            this.bookMarkPost = id;
+            console.log(id);
+            console.log(this.bookMarkPost);
+            setTimeout(() => document.getElementById('unBookMarkForm').submit(), 10);
+        },
+        removeBookmark(id){
+            this.bookMarkPost = id;
+            console.log(id);
+            console.log(this.bookMarkPost);
+            setTimeout(() => document.getElementById('removeBookmark').submit(), 10);
         }
     }
 }).mount("body");

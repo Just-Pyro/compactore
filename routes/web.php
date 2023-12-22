@@ -132,18 +132,10 @@ Route::get('/ecommerceProfile', function(){
     return view('profile.ecommerceProfile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
 });
 
-Route::get('/swapProfile', function(){
-    $user = auth()->user();
-    $profile = $user->profile;
-    // $address = ShippingAddress::all();
-    $address = $user->address()->latest()->get();
-    $addressId = null;
-    $addressUpdated = null;
-    return view('profile.swapProfile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
-});
+Route::get('/swapProfile', [SwapPostController::class, "gotoswapProfile"]);
 
 Route::get('/swapMeBookmark', [SwapPostController::class, "displaybookmarks"]);
-Route::get('/surplusBookmark', [SurplusController::class, "displaybookmarks"]);
+Route::get('/surplusBookmarks', [SurplusController::class, "displaybookmarks"]);
 
 Route::get('/surplusProfile', function(){
     $user = auth()->user();
@@ -181,6 +173,9 @@ Route::get('/checkout/failed', [CheckoutController::class, 'checkoutFailed'])->n
 // bookmarks
 Route::post('/swapmeBookmark', [BookmarkController::class, 'swapmeBookmark']);
 Route::post('/swapmeUnBookmark', [BookmarkController::class, 'swapmeUnBookmark']);
+Route::post('/surplusBookmark', [BookmarkController::class, 'surplusBookmark']);
+Route::post('/surplusUnBookmark', [BookmarkController::class, 'surplusUnBookmark']);
+Route::post('/removeBookmarkSurplus', [BookmarkController::class, "removeBookmarkSurplus"]);
 
 // reports
 Route::post('/reportStore', [ReportController::class, '']);

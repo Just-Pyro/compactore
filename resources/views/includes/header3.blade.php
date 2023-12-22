@@ -22,7 +22,7 @@
           <form class="flex-grow-1 mx-2" method="GET" id="surplusSearchForm" action="{{ route('surplusSearchResult') }}">
 {{--  --}}
             <div class="input-group">
-              <input class="dropdown-toggle form-control" id="location" name="location" type="text" data-bs-toggle="dropdown" aria-expanded="false"  :placeholder="placeholder" v-model="location" style="max-width: 188px;">
+              <input class="dropdown-toggle form-control" id="location" name="location" type="text" data-bs-toggle="dropdown" aria-expanded="false"  :placeholder="placeholder" v-model="location" style="max-width: 188px;" @keyup.enter="submitForm">
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" @click="chooseLocation('All')">All Philippines</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -45,7 +45,7 @@
         <div class="" id="ulOptions">
           <ul class="navbar-nav ms-2">
             <li class="nav-item mx-2">
-              <a class="nav-link" href="{{ url('/surplusBookmark') }}"><i class="fa-solid fa-bookmark"></i></a>
+              <a class="nav-link" href="{{ url('/surplusBookmarks') }}"><i class="fa-solid fa-bookmark"></i></a>
             </li>
             <li class="nav-item mx-2">
               <a class="nav-link" href="{{ url('/profile') }}"><i class="fa-solid fa-user"></i></a>
