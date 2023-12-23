@@ -16,6 +16,7 @@ use App\Http\Controllers\ShippingAddressController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\ReviewController;
 
 Route::get('/', [UserController::class, 'check']);
 
@@ -138,15 +139,8 @@ Route::get('/swapProfile', [SwapPostController::class, "gotoswapProfile"]);
 Route::get('/swapMeBookmark', [SwapPostController::class, "displaybookmarks"]);
 Route::get('/surplusBookmarks', [SurplusController::class, "displaybookmarks"]);
 
-Route::get('/surplusProfile', function(){
-    $user = auth()->user();
-    $profile = $user->profile;
-    // $address = ShippingAddress::all();
-    $address = $user->address()->latest()->get();
-    $addressId = null;
-    $addressUpdated = null;
-    return view('profile.surplusProfile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
-});
+Route::get('/surplusProfile/{id}', [ProfileController::class, "viewSurplusProfile"]);
+// Route::get('/surplusProfile', [ProfileController::class, "viewSurplusProfile"])->name('ownsurplusProfile');
 
 //change Pass
 Route::get('/changePassword', function(){
@@ -188,3 +182,8 @@ Route::get('/add-offer/{id}', [SwapPostController::class, 'openOfferForm']);
 Route::post('/addOffer', [OfferController::class, 'addOffer']);
 
 Route::get('/searchSwapme', [SearchController::class, 'searchSwapme']);
+
+
+
+// swapmeReview
+Route::post('/userReviewSurplus', [ReviewController::class, 'userReviewSurplus']);

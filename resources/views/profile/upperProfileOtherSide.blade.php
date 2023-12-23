@@ -1,17 +1,17 @@
-@if($user != null)
+@if($otherUser != null)
 <div class="row">
     <div class="col-3 p-2">
-        @if($profile)
+        @if($otherProfile)
         <div class="rounded bg-white p-3 text-center">
-            @if($profile->profileImg)
+            @if($otherProfile->profileImg)
                 <div class="d-flex justify-content-center align-items-center mt-4">
-                    <img id="profileImg" src="{{ asset('uploads/userprofile/' . $profile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px; object-fit: cover;">
+                    <img id="profileImg" src="{{ asset('uploads/userprofile/' . $otherProfile->profileImg) }}" alt="Profile Image" class="rounded-circle border border-dark" style="height: 100px; width: 100px; object-fit: cover;">
                 </div>
             @else
                 <div class="rounded-circle border border-dark mt-4 mx-auto" style="height: 100px; width: 100px;"></div>
             @endif
-            <p class="fw-medium m-0">{{ $profile->username }}</p>
-            <p class="fw-normal">{{ auth()->user()->email }}</p>
+            <p class="fw-medium m-0">{{ $otherProfile->username }}</p>
+            <p class="fw-normal">{{ $otherUser->email }}</p>
         </div>
         @endif
     </div>
@@ -25,24 +25,24 @@
         </div>
     </div>
 @endif
-@if ($profile)
+@if ($otherProfile)
     <div class="col p-2">
         <div class="rounded bg-white p-3 position-relative">
-            @if ($profile->shopStatus == 1)
+            {{-- @if ($otherProfile->shopStatus == 1)
                 <a href="{{ url('/CompactoreSeller') }}" class="btn btn-sm btn-outline-success" style="position:absolute; bottom: 10px; right: 10px;">Go to Store</a>
             @else
                 <button class="btn btn-sm btn-outline-warning" style="position:absolute; bottom: 10px; right: 10px;" data-bs-toggle="modal" data-bs-target="#openStore">Open Store</button>
-            @endif
+            @endif --}}
             <div class="row">
                 <div class="col-6">
                     <form id="formBio" action="saveBio" method="post">
                         @csrf
-                        <span class="float-end" id="bioEdit" @click="enableEdit"><i class="fa-regular fa-pen-to-square"></i> Edit</span>
+                        {{-- <span class="float-end" id="bioEdit" @click="enableEdit"><i class="fa-regular fa-pen-to-square"></i> Edit</span>
                         <span class="float-end mx-2" id="saveBio" @click="submitBio"><i class="fa-regular fa-circle-check"></i></span>
-                        <span class="float-end" id="cancelBio" @click="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span>
+                        <span class="float-end" id="cancelBio" @click="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span> --}}
                         <p class="fw-normal">Bio</p>
                         <hr>
-                        <textarea id="bio_input" ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" :disabled="isDisabled">{{ $profile->bio }}</textarea>
+                        <textarea id="bio_input" ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" disabled>{{ $otherProfile->bio }}</textarea>
                     </form>
                 </div>
                 <div class="col">
@@ -69,12 +69,12 @@
                 <div class="col-6">
                     <form id="formBio" action="saveBio" method="post">
                         @csrf
-                        <span class="float-end" id="bioEdit" @click="enableEdit"><i class="fa-regular fa-pen-to-square"></i> Edit</span>
+                        {{-- <span class="float-end" id="bioEdit" @click="enableEdit"><i class="fa-regular fa-pen-to-square"></i> Edit</span>
                         <span class="float-end mx-2" id="saveBio" @click="submitBio"><i class="fa-regular fa-circle-check"></i></span>
-                        <span class="float-end" id="cancelBio" @click="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span>
+                        <span class="float-end" id="cancelBio" @click="cancelBio"><i class="fa-regular fa-circle-xmark"></i></span> --}}
                         <p class="fw-normal">Bio</p>
                         <hr>
-                        <textarea id="bio_input" ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" :disabled="isDisabled"></textarea>
+                        <textarea id="bio_input" ref="bioTextarea" name="bio" placeholder="write something ..." cols="30" rows="5" class="form-control bg-dark-subtle mt-2" disabled></textarea>
                     </form>
                 </div>
                 <div class="col">
@@ -90,5 +90,3 @@
     </div>
 </div>
 @endif
-
-@include('modals/openStore')

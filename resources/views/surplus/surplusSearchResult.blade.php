@@ -24,9 +24,9 @@
 
     <div class="container mt-5">
         @if ($location == "")
-            <h3>blabla search Result for "{{ $query }}"</h3>
+            <h3>search Result for "{{ $query }}"</h3>
         @else
-            <h3>blabla search Result for "{{ $query }}" in "{{ $location }}"</h3>
+            <h3>search Result for "{{ $query }}" in "{{ $location }}"</h3>
         @endif
     </div>    
 
@@ -38,7 +38,10 @@
             <form action="/surplusBookmark" method="post" id="saveBookMarkForm">@csrf<input type="number" name="postIdBookmark" v-model="bookMarkPost" style="display: none;"><input type="text" name="passQuery" value="{{ $query }}" style="display: none;"><input type="text" name="passlocation" value="{{ $location }}" style="display: none;"></form>
             <form action="/surplusUnBookmark" method="post" id="unBookMarkForm">@csrf<input type="number" name="postIdBookmark" v-model="bookMarkPost" style="display: none;"><input type="text" name="passQuery" value="{{ $query }}" style="display: none;"><input type="text" name="passlocation" value="{{ $location }}" style="display: none;"></form>
             {{-- each items in search result --}}
-            @if (!$results)
+            {{-- @php
+                dump($results);
+            @endphp --}}
+            @if (count($results) <= 0 || !isset($results))
                 <div class="row mt-2 bg-white rounded">
                     <p class="my-5 text-center fw-medium">No product found.</p>
                 </div>

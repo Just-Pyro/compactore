@@ -36,7 +36,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/surplusProfile') }}" class="nav-link fs-5 fw-medium link-dark">
+                            <a href="{{ url('/surplusProfile', ['' => 'id']) }}" class="nav-link fs-5 fw-medium link-dark">
                                 Surplus
                             </a>
                         </li>

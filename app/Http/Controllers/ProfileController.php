@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
 use App\Models\GcashUserDetail;
+use App\Models\SurplusReview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
@@ -119,5 +121,26 @@ class ProfileController extends Controller
         
 
         return back();
+    }
+
+    public function viewSurplusProfile($id){
+        $user = auth()->user();
+        $profile = $user->profile;
+
+        $address = $user->address()->latest()->get();
+        $addressId = null;
+        $addressUpdated = null;
+        // dump($id);
+        if($profile->user_id == $id || $id == "id"){
+            return view('profile.surplusProfile', compact('user', 'profile', 'address', 'addressId', 'addressUpdated'));
+        }else{
+            $otherUser = User::find($id);
+            $otherProfile = Profile::where('user_id', $otherUser->id)->first();
+            $reviews = SurplusReview::where('otherUser_id', $otherUser->id)->get();
+
+            // dump($reviews);
+            return view('profile.surplusProfileOtherSide', compact('otherUser', 'otherProfile', 'reviews'));
+        }
+        
     }
 }

@@ -81,7 +81,7 @@
                                 @endif
                             </div>
                             <div class="col">
-                                <a href="{{ url('/surplusProfile') }}" class="userNameSurplus">
+                                <a href="{{ url('/surplusProfile', ["profile" => $profile->user_id]) }}" class="userNameSurplus">
                                     @if (isset($profile->username))
                                     {{ $profile->username }}
                                     @else

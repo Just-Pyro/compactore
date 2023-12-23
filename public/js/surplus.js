@@ -111,6 +111,9 @@ const app = Vue.createApp({
             console.log(id);
             console.log(this.bookMarkPost);
             setTimeout(() => document.getElementById('removeBookmark').submit(), 10);
+        },
+        submitUserReviewSurplus(){
+            document.getElementById('userReviewSurplus').submit();
         }
     }
 }).mount("body");

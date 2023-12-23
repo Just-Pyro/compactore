@@ -118,8 +118,11 @@ class SwapPostController extends Controller
         $swapPost = $user->swapBookmark;
         $offerPost = SwapPost::find($id);
 
+        $query = null;
+        $results = null;
+
         // dump($offerPost);
 
-        return view('trading.swapme', compact('swapPosts', 'swapMedia', 'swapPost', 'offerPost'));
+        return view('trading.swapme', compact('swapPosts', 'swapMedia', 'swapPost', 'offerPost', 'query', 'results'));
     }
 }

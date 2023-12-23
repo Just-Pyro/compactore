@@ -97,11 +97,8 @@ class BookmarkController extends Controller
 
     public function removeBookmarkSurplus(Request $request){
         $user = auth()->user();
-        $bookmarks = $user->surplusBookmark;
-        // dump($request->bookmarkSurplusId);
-        foreach($bookmarks as $bookmark){
-            SurplusBookmarks::where("surplus_id", $request->bookmarkSurplusId)->where("user_id", $user->id)->first()->delete();
-        }
+        
+        SurplusBookmarks::where("surplus_id", $request->bookmarkSurplusId)->where("user_id", $user->id)->first()->delete();
 
         return redirect('/surplusBookmarks');
     }

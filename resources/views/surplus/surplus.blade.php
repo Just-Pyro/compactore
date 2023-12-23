@@ -12,14 +12,13 @@
 <body>
     @include('includes/header3')
     <div class="container mt-3">
-        <h2>Featured Categories</h2>
+        {{-- <h2>Featured Categories</h2>
         <div class="row align-items-center product">
             <div class="p-0 col-sm-6 col-lg-4 col-xl-3 my-5 rounded" @click="seeCategory">
                 <div class="card mx-2 rounded" @mouseover="toggleShadow(card)" @mouseout="toggleShadow(card)" style="width: 16rem; height: 18rem; cursor: pointer;">
                     <img style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border">
                     <div class="card-body bg-light rounded-bottom" style="height: 10rem;">
                         <p class="card-title productname">House</p>
-                        {{-- <p class="card-text text-danger price"></p> --}}
                     </div>
                 </div>
             </div>
@@ -28,7 +27,6 @@
                     <img style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border">
                     <div class="card-body bg-light rounded-bottom" style="height: 10rem;">
                         <p class="card-title productname">Cars</p>
-                        {{-- <p class="card-text text-danger price"></p> --}}
                     </div>
                 </div>
             </div>
@@ -37,7 +35,6 @@
                     <img style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border">
                     <div class="card-body bg-light rounded-bottom" style="height: 10rem;">
                         <p class="card-title productname">Gadgets</p>
-                        {{-- <p class="card-text text-danger price"></p> --}}
                     </div>
                 </div>
             </div>
@@ -46,7 +43,6 @@
                     <img style="height:12rem; object-fit:cover;" class="card-img-top rounded-top border">
                     <div class="card-body bg-light rounded-bottom" style="height: 10rem;">
                         <p class="card-title productname">Clothing</p>
-                        {{-- <p class="card-text text-danger price"></p> --}}
                     </div>
                 </div>
             </div>
@@ -210,7 +206,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
 

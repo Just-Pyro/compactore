@@ -12,7 +12,7 @@
     @include('includes/header2')
     <div class="container" id="forProfile">
         {{-- User Pic and Bio --}}
-        @include('profile/upperProfile')
+        @include('profile/upperProfileOtherSide')
 
         {{-- side tabs and content --}}
         <div class="row">
@@ -21,22 +21,12 @@
                 <div class="rounded bg-white p-3">
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a href="{{ url('/profile') }}" class="nav-link fs-5 fw-medium link-dark">
-                                My Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/ecommerceProfile') }}" class="nav-link fs-5 fw-medium link-dark">
-                                E-commerce
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{ url('/swapProfile') }}" class="nav-link fs-5 fw-medium active">
                                 Swap Me
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/surplusProfile', ['' => 'id']) }}" class="nav-link fs-5 fw-medium link-dark">
+                            <a href="{{ url('/surplusProfile') }}" class="nav-link fs-5 fw-medium link-dark">
                                 Surplus
                             </a>
                         </li>
@@ -51,12 +41,6 @@
                         <li class="nav-item">
                             <a href="{{ url('/swapProfile') }}" class="nav-link active">Reviews</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ url('/swapMeBookmark') }}" class="nav-link link-dark">Bookmarks</a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a href="" class="nav-link link-dark">Post History</a>
-                        </li> --}}
                     </ul>
 
                     {{-- content for each tabs --}}
